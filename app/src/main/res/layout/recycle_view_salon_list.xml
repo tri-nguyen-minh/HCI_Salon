@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="300dp"
+    android:layout_height="260dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="10dp"
+    android:layout_margin="5dp"
+    app:cardElevation="10dp"
+    android:padding="10dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/imgSalon"
+            android:layout_width="wrap_content"
+            android:layout_height="200dp"
+            android:src="@drawable/salon_phuong_tokyo"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:id="@+id/txtDiscount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/background_nav_tab"
+            android:text="-70%"
+            android:textSize="14sp"
+            android:fontFamily="monospace"
+            android:textColor="@color/white"
+            android:paddingVertical="2dp"
+            android:paddingHorizontal="5dp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="left|center"
+            android:orientation="vertical"
+            android:layout_marginTop="2dp"
+            android:padding="3dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imgSalon">
+
+            <TextView
+                android:id="@+id/txtSalonName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="salon Nguyễn Duy"
+                android:fontFamily="monospace"
+                android:textSize="18sp"
+                android:textColor="@color/black"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/txtSalonAddress"
+                    android:layout_width="245dp"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:fontFamily="monospace"
+                    android:maxLines="1"
+                    android:layout_alignParentLeft="true"
+                    android:text="183E Trần Quốc Thảo, Phường 09, Quận 3, Thành phố Hồ Chí Minh"
+                    android:textColor="@color/gray"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/txtSalonDistance"
+                    android:layout_width="55dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="monospace"
+                    android:maxLines="1"
+                    android:text="3.3km"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    android:gravity="right"
+                    android:layout_alignParentRight="true"/>
+
+            </RelativeLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="5dp"
+                android:gravity="left|center">
+
+                <RatingBar
+                    android:id="@+id/ratingSalon"
+                    style="?android:attr/ratingBarStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="7dp"
+                    android:layout_gravity="center"
+                    android:max="5"
+                    android:numStars="5"
+                    android:progressTint="@color/gold"
+                    android:rating="4.5"
+                    android:stepSize="0.5"
+                    android:layout_alignParentLeft="true"/>
+
+
+                <TextView
+                    android:id="@+id/reviewCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:fontFamily="monospace"
+                    android:text="(510)"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>
