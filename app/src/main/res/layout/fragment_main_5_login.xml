@@ -44,7 +44,7 @@
             android:layout_marginTop="20dp"
             android:orientation="horizontal"
             android:gravity="left|center"
-            android:background="@drawable/background_login_phone"
+            android:background="@drawable/background_edit_text_general"
             android:paddingHorizontal="15dp"
             android:paddingVertical="10dp">
 
@@ -64,6 +64,7 @@
                 android:layout_height="50dp"
                 android:id="@+id/editPhone"
                 android:hint="Phone Number"
+                android:textColorHint="@color/black"
                 android:fontFamily="monospace"
                 android:textSize="20sp"
                 android:textColor="@color/black"

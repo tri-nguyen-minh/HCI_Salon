@@ -1,6 +1,4 @@
 <resources>
     <string name="app_name">SalonApp</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="booking_discount">Deals &amp; Discounts</string>
 </resources>

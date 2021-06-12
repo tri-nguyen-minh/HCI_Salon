@@ -1,0 +1,5 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <item android:drawable="@drawable/ic_star_half_inner" />
+    <item android:drawable="@drawable/ic_star_outline" />
+</layer-list>
