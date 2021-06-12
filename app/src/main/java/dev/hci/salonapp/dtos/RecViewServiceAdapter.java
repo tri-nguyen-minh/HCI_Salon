@@ -2,10 +2,10 @@ package dev.hci.salonapp.dtos;
 
 import android.app.Activity;
 import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -27,7 +27,9 @@ public class RecViewServiceAdapter  extends RecyclerView.Adapter<RecViewServiceA
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return null;
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycle_view_service_list, parent, false);
+        ViewHolder holder = new ViewHolder(view);
+        return holder;
     }
 
     public void setServiceList(ArrayList<Service> serviceList) {

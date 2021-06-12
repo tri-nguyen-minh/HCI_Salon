@@ -74,7 +74,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:layout_marginBottom="20dp"/>
+                    android:layout_marginBottom="25dp"/>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -83,7 +83,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Salo with Discount"
+                        android:text="Great Discounts"
                         android:fontFamily="monospace"
                         android:textStyle="bold"
                         android:textSize="20sp"
@@ -110,7 +110,46 @@
                     android:id="@+id/recViewDiscountSalon"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"/>
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="25dp"/>
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Popular Salon"
+                        android:fontFamily="monospace"
+                        android:textStyle="bold"
+                        android:textSize="20sp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+
+                    <TextView
+                        android:layout_width="90dp"
+                        android:layout_height="30dp"
+                        android:text="view More"
+                        android:fontFamily="monospace"
+                        android:textSize="13sp"
+                        android:textColor="@color/gray"
+                        android:background="@drawable/background_login_phone"
+                        android:gravity="center"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recViewPopularSalon"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="25dp"/>
             </LinearLayout>
 
         </ScrollView>
@@ -127,10 +166,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:paddingVertical="3dp"
+                android:paddingVertical="5dp"
                 android:text="SEARCH"
                 android:fontFamily="monospace"
-                android:textSize="18sp"
+                android:textSize="22sp"
                 android:textStyle="bold"
                 android:background="@drawable/background_button_gold"
                 android:textColor="@color/black"

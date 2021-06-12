@@ -21,6 +21,7 @@ public class BookingFragment extends Fragment {
 
     private RecyclerView recViewCommon;
     private ArrayList<Salon> salonList;
+    private RecViewSalonAdapter salonAdapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -36,7 +37,6 @@ public class BookingFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        LinearLayoutManager manager = new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL,false);
 
         recViewCommon = getView().findViewById(R.id.recViewService);
         ArrayList<Service> servicesList = new ArrayList<>();
@@ -52,10 +52,7 @@ public class BookingFragment extends Fragment {
         RecViewServiceAdapter serviceAdapter = new RecViewServiceAdapter(getContext(), getActivity());
         serviceAdapter.setServiceList(servicesList);
         recViewCommon.setAdapter(serviceAdapter);
-        recViewCommon.setLayoutManager(manager);
-
-
-        RecViewSalonAdapter adapter = new RecViewSalonAdapter(getContext(), getActivity());
+        recViewCommon.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL,false));
 
         recViewCommon = getView().findViewById(R.id.recViewNearSalon);
         salonList = new ArrayList<>();
@@ -71,25 +68,46 @@ public class BookingFragment extends Fragment {
         salonList.add(new Salon("Linh R Hair & Salon", "263 Dương Bá Trạc, Phường 01, Quận 8, Thành phố Hồ Chí Minh",
                 3.7, Float.parseFloat("3.5"), 44, 20, R.drawable.salon_linh_r_hair));
 
-        adapter.setSalonList(salonList);
-        recViewCommon.setAdapter(adapter);
-        recViewCommon.setLayoutManager(manager);
+        salonAdapter = new RecViewSalonAdapter(getContext(), getActivity());
+        salonAdapter.setSalonList(salonList);
+        recViewCommon.setAdapter(salonAdapter);
+        recViewCommon.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL,false));
 
         recViewCommon = getView().findViewById(R.id.recViewDiscountSalon);
         salonList = new ArrayList<>();
-        salonList.add(new Salon("Tuan Tay Salon", "Số 578 Sư Vạn Hạnh, Phường 10, Quận 10, Thành phố Hồ Chí Minh",
-                1.5, Float.parseFloat("3.5"), 56, 75, R.drawable.salon_tuan_tay));
         salonList.add(new Salon("Do Tuan Salon", "314 Lê Quang Định, Phường 11, Quận Bình Thạnh, Thành phố Hồ Chí Minh",
                 6.5, Float.parseFloat("4"), 197, 75, R.drawable.image_default));
         salonList.add(new Salon("Nha Ca Hair Salon", "282 Lê Văn Thọ, Phường 11, Quận Gò Vấp, Thành phố Hồ Chí Minh",
                 9.3, Float.parseFloat("4"), 126, 75, R.drawable.image_default));
         salonList.add(new Salon("Nguyen Tuan Salon", "183E Trần Quốc Thảo, Phường 09, Quận 3, Thành phố Hồ Chí Minh",
                 6.6, Float.parseFloat("3.5"), 21, 60, R.drawable.image_default));
+        salonList.add(new Salon("Tuan Tay Salon", "Số 578 Sư Vạn Hạnh, Phường 10, Quận 10, Thành phố Hồ Chí Minh",
+                1.5, Float.parseFloat("3.5"), 56, 75, R.drawable.salon_tuan_tay));
         salonList.add(new Salon("Tay & Tony Salon", "24 Đình Phong Phú, Phường Tăng Nhơn Phú B, Quận 9, Thành phố Hồ Chí Minh",
                 16.1, Float.parseFloat("3.5"), 44, 20, R.drawable.image_default));
 
-        adapter.setSalonList(salonList);
-        recViewCommon.setAdapter(adapter);
-        recViewCommon.setLayoutManager(manager);
+        salonAdapter = new RecViewSalonAdapter(getContext(), getActivity());
+        salonAdapter.setSalonList(salonList);
+        recViewCommon.setAdapter(salonAdapter);
+        recViewCommon.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL,false));
+
+
+        recViewCommon = getView().findViewById(R.id.recViewPopularSalon);
+        salonList = new ArrayList<>();
+        salonList.add(new Salon("Do Tuan Salon", "314 Lê Quang Định, Phường 11, Quận Bình Thạnh, Thành phố Hồ Chí Minh",
+                6.5, Float.parseFloat("4"), 197, 75, R.drawable.image_default));
+        salonList.add(new Salon("Nha Ca Hair Salon", "282 Lê Văn Thọ, Phường 11, Quận Gò Vấp, Thành phố Hồ Chí Minh",
+                9.3, Float.parseFloat("4"), 126, 75, R.drawable.image_default));
+        salonList.add(new Salon("Nguyen Tuan Salon", "183E Trần Quốc Thảo, Phường 09, Quận 3, Thành phố Hồ Chí Minh",
+                6.6, Float.parseFloat("3.5"), 21, 60, R.drawable.image_default));
+        salonList.add(new Salon("Tuan Tay Salon", "Số 578 Sư Vạn Hạnh, Phường 10, Quận 10, Thành phố Hồ Chí Minh",
+                1.5, Float.parseFloat("3.5"), 56, 75, R.drawable.salon_tuan_tay));
+        salonList.add(new Salon("Tay & Tony Salon", "24 Đình Phong Phú, Phường Tăng Nhơn Phú B, Quận 9, Thành phố Hồ Chí Minh",
+                16.1, Float.parseFloat("3.5"), 44, 20, R.drawable.image_default));
+
+        salonAdapter = new RecViewSalonAdapter(getContext(), getActivity());
+        salonAdapter.setSalonList(salonList);
+        recViewCommon.setAdapter(salonAdapter);
+        recViewCommon.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL,false));
     }
 }
