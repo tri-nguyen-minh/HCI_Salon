@@ -54,7 +54,7 @@ public class ReviewFragment extends Fragment {
         RecViewReviewAdapter reviewAdapter = new RecViewReviewAdapter(getContext());
         reviewAdapter.setReviewList(reviewList);
         recViewCommon.setAdapter(reviewAdapter);
-        recViewCommon.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL,false));
+        recViewCommon.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL,false));
 
     }
 }

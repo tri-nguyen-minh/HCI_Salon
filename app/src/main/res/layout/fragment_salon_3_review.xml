@@ -10,7 +10,7 @@
         android:id="@+id/recViewReview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:layout_marginBottom="25dp"/>
 
 </FrameLayout>
