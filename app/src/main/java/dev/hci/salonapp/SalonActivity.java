@@ -28,8 +28,8 @@ public class SalonActivity extends AppCompatActivity {
         intent = getIntent();
 
 
-        tabLayout = findViewById(R.id.tabLayout);
-        viewPager = findViewById(R.id.viewPager);
+        tabLayout = findViewById(R.id.tabLayoutSalon);
+        viewPager = findViewById(R.id.viewPagerSalon);
 
 
         tabCommon = tabLayout.newTab();
