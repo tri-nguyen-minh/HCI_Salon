@@ -87,6 +87,7 @@ public class SearchSalonActivity extends AppCompatActivity {
         recViewSalon.setAdapter(salonAdapter);
         recViewSalon.setLayoutManager(new LinearLayoutManager(SearchSalonActivity.this, RecyclerView.VERTICAL,false));
 
+        this.getSupportActionBar().hide();
     }
 
     public void onBackSearch(View view) {

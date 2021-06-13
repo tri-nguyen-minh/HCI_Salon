@@ -1,6 +1,8 @@
 package dev.hci.salonapp.dtos;
 
-public class Service {
+import java.io.Serializable;
+
+public class Service implements Serializable {
 
     private String service;
     private int imageId;

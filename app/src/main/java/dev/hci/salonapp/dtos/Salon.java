@@ -1,6 +1,8 @@
 package dev.hci.salonapp.dtos;
 
-public class Salon {
+import java.io.Serializable;
+
+public class Salon implements Serializable {
     private String name;
     private String address;
     private double distance;

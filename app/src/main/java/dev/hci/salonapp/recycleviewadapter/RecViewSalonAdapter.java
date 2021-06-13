@@ -2,6 +2,7 @@ package dev.hci.salonapp.recycleviewadapter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,11 +10,13 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
 import dev.hci.salonapp.R;
+import dev.hci.salonapp.SalonActivity;
 import dev.hci.salonapp.dtos.Salon;
 
 public class RecViewSalonAdapter extends RecyclerView.Adapter<RecViewSalonAdapter.ViewHolder>{
@@ -22,6 +25,7 @@ public class RecViewSalonAdapter extends RecyclerView.Adapter<RecViewSalonAdapte
     private Activity activity;
     private ArrayList<Salon> salonList;
     private int layoutId;
+    private Intent intent;
 
     public RecViewSalonAdapter(Context context, Activity activity, int layoutId) {
         this.context = context;
@@ -55,7 +59,16 @@ public class RecViewSalonAdapter extends RecyclerView.Adapter<RecViewSalonAdapte
         holder.txtReviewCount.setText("(" + salonList.get(position).getReviewCount() + ")");
         holder.rating.setRating(salonList.get(position).getRating());
         holder.image.setImageResource(salonList.get(position).getImageId());
-
+        holder.salonCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                intent = activity.getIntent();
+                Intent newIntent = new Intent(context, SalonActivity.class);
+                newIntent.putExtra("salon", salonList.get(position));
+                newIntent.putExtra("logged", intent.getBooleanExtra("logged", false));
+                activity.startActivity(newIntent);
+            }
+        });
     }
 
     @Override
@@ -67,6 +80,7 @@ public class RecViewSalonAdapter extends RecyclerView.Adapter<RecViewSalonAdapte
         private TextView txtSalonName, txtAddress, txtDistance, txtDiscount, txtReviewCount;
         private RatingBar rating;
         private ImageView image;
+        private CardView salonCard;
 
         public ViewHolder(View view) {
             super(view);
@@ -77,6 +91,7 @@ public class RecViewSalonAdapter extends RecyclerView.Adapter<RecViewSalonAdapte
             txtReviewCount = view.findViewById(R.id.reviewCount);
             rating = view.findViewById(R.id.ratingSalon);
             image = view.findViewById(R.id.imgSalon);
+            salonCard = view.findViewById(R.id.salonCard);
         }
     }
 }

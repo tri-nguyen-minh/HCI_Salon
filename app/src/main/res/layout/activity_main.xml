@@ -49,14 +49,10 @@
                 android:text=""
                 android:textColor="@color/white"
                 android:fontFamily="monospace"
-                android:textSize="22sp" />
+                android:textSize="22sp"
+                android:textStyle="bold" />
 
         </LinearLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="right|center"/>
 
     </LinearLayout>
 
