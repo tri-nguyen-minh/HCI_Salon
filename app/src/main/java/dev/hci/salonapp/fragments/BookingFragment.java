@@ -12,8 +12,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 import dev.hci.salonapp.R;
-import dev.hci.salonapp.dtos.RecViewSalonAdapter;
-import dev.hci.salonapp.dtos.RecViewServiceAdapter;
+import dev.hci.salonapp.recycleviewadapter.RecViewSalonAdapter;
+import dev.hci.salonapp.recycleviewadapter.RecViewServiceAdapter;
 import dev.hci.salonapp.dtos.Salon;
 import dev.hci.salonapp.dtos.Service;
 

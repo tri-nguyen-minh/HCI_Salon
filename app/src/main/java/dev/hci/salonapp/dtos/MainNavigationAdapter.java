@@ -2,7 +2,6 @@ package dev.hci.salonapp.dtos;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -10,7 +9,6 @@ import androidx.fragment.app.FragmentPagerAdapter;
 
 import dev.hci.salonapp.fragments.BookingFragment;
 import dev.hci.salonapp.fragments.HistoryFragment;
-import dev.hci.salonapp.fragments.LoginFragment;
 import dev.hci.salonapp.fragments.ProductFragment;
 import dev.hci.salonapp.fragments.ProfileFragment;
 
@@ -38,18 +36,9 @@ public class MainNavigationAdapter extends FragmentPagerAdapter {
             case 2:
                 HistoryFragment historyFragment = new HistoryFragment();
                 return historyFragment;
-            case 3: {
-                Intent intent = activity.getIntent();
-                if (intent != null) {
-                    String user = intent.getStringExtra("user");
-                    if (user != null) {
-                        ProfileFragment profileFragment = new ProfileFragment();
-                        return profileFragment;
-                    }
-                }
-                LoginFragment loginFragment = new LoginFragment();
-                return loginFragment;
-            }
+            case 3:
+                ProfileFragment profileFragment = new ProfileFragment();
+                return profileFragment;
             default:
                 return null;
         }

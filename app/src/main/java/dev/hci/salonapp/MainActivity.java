@@ -1,8 +1,10 @@
 package dev.hci.salonapp;
 
+import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import com.google.android.material.tabs.TabLayout;
 
@@ -16,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private TabLayout.Tab tabCommon;
+    private Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +77,18 @@ public class MainActivity extends AppCompatActivity {
             public void onTabReselected(TabLayout.Tab tab) {
             }
         });
+
+        intent = getIntent();
+        TextView txtTag = findViewById(R.id.txtTag);
+        TextView txtUser = findViewById(R.id.txtUsername);
+        if (!intent.getBooleanExtra("logged", false)) {
+            txtTag.setVisibility(View.GONE);
+            txtUser.setText("You are not logged in!");
+        } else {
+            txtTag.setVisibility(View.GONE);
+            txtTag.setText("Welcome,");
+            txtUser.setText("User Name");
+        }
         this.getSupportActionBar().hide();
     }
 

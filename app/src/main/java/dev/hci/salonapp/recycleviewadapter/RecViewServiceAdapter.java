@@ -1,4 +1,4 @@
-package dev.hci.salonapp.dtos;
+package dev.hci.salonapp.recycleviewadapter;
 
 import android.app.Activity;
 import android.content.Context;
@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 import dev.hci.salonapp.R;
+import dev.hci.salonapp.dtos.Service;
 
 public class RecViewServiceAdapter  extends RecyclerView.Adapter<RecViewServiceAdapter.ViewHolder> {
 
