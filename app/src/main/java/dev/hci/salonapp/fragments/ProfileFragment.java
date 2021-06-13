@@ -38,21 +38,24 @@ public class ProfileFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        Button btn = getView().findViewById(R.id.btnLogin);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                TextView txtTag = getActivity().findViewById(R.id.txtTag);
-                txtTag.setVisibility(View.VISIBLE);
-                txtTag.setText("Welcome,");
-                TextView txtName = getActivity().findViewById(R.id.txtName);
-                txtName.setText("User Name");
-                Intent intent = new Intent(getContext(), MainActivity.class);
-                intent.putExtra("logged", true);
-                getActivity().setIntent(intent);
-                TabLayout tabLayout = getActivity().findViewById(R.id.tabLayout);
-                tabLayout.selectTab(tabLayout.getTabAt(0));
-            }
-        });
+
+        if (!intent.getBooleanExtra("logged", false)) {
+            Button btn = getView().findViewById(R.id.btnLogin);
+            btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    TextView txtTag = getActivity().findViewById(R.id.txtTag);
+                    txtTag.setVisibility(View.VISIBLE);
+                    txtTag.setText("Welcome,");
+                    TextView txtName = getActivity().findViewById(R.id.txtName);
+                    txtName.setText("User Name");
+                    Intent intent = new Intent(getContext(), MainActivity.class);
+                    intent.putExtra("logged", true);
+                    getActivity().setIntent(intent);
+                    TabLayout tabLayout = getActivity().findViewById(R.id.tabLayout);
+                    tabLayout.selectTab(tabLayout.getTabAt(0));
+                }
+            });
+        }
     }
 }

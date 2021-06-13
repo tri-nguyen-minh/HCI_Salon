@@ -1,9 +1,16 @@
 package dev.hci.salonapp.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.RatingBar;
+import android.widget.Spinner;
+import android.widget.Switch;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -12,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 import dev.hci.salonapp.R;
+import dev.hci.salonapp.SearchSalonActivity;
 import dev.hci.salonapp.recycleviewadapter.RecViewSalonAdapter;
 import dev.hci.salonapp.recycleviewadapter.RecViewServiceAdapter;
 import dev.hci.salonapp.dtos.Salon;
@@ -22,6 +30,8 @@ public class BookingFragment extends Fragment {
     private RecyclerView recViewCommon;
     private ArrayList<Salon> salonList;
     private RecViewSalonAdapter salonAdapter;
+    private Spinner spinnerService;
+    private ArrayList<String> dataSpinner;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -42,12 +52,27 @@ public class BookingFragment extends Fragment {
         ArrayList<Service> servicesList = new ArrayList<>();
         servicesList.add(new Service("Discount", R.drawable.ic_service_discount));
         servicesList.add(new Service("Haircut", R.drawable.ic_service_cut));
-        servicesList.add(new Service("Hair\nWashing", R.drawable.ic_service_wash));
-        servicesList.add(new Service("Hair\nRestore", R.drawable.ic_service_restore));
+        servicesList.add(new Service("Hair Wash", R.drawable.ic_service_wash));
+        servicesList.add(new Service("Hair Restore", R.drawable.ic_service_restore));
         servicesList.add(new Service("Coloring", R.drawable.ic_service_color));
         servicesList.add(new Service("Curling", R.drawable.ic_service_curling));
         servicesList.add(new Service("Straightening", R.drawable.ic_service_straight));
-        servicesList.add(new Service("Hair\nStyling", R.drawable.ic_service_style));
+        servicesList.add(new Service("Hair Styling", R.drawable.ic_service_style));
+
+        spinnerService = getView().findViewById(R.id.spinnerService);
+        dataSpinner = new ArrayList<>();
+        dataSpinner.add("Choose Services");
+        dataSpinner.add("Discount");
+        dataSpinner.add("Haircut");
+        dataSpinner.add("Hair Wash");
+        dataSpinner.add("Hair Restore");
+        dataSpinner.add("Coloring");
+        dataSpinner.add("Curling");
+        dataSpinner.add("Straightening");
+        dataSpinner.add("Hair Styling");
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, dataSpinner);
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerService.setAdapter(dataAdapter);
 
         RecViewServiceAdapter serviceAdapter = new RecViewServiceAdapter(getContext(), getActivity());
         serviceAdapter.setServiceList(servicesList);
@@ -109,5 +134,23 @@ public class BookingFragment extends Fragment {
         salonAdapter.setSalonList(salonList);
         recViewCommon.setAdapter(salonAdapter);
         recViewCommon.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL,false));
+
+        TextView txtSearch = getView().findViewById(R.id.searchSalon);
+        txtSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                EditText editSearch = getView().findViewById(R.id.editSearchSalon);
+                RatingBar rating = getView().findViewById(R.id.searchRatingSalon);
+                Switch discountSwitch = getView().findViewById(R.id.searchDiscountSwitch);
+
+                Intent intent = new Intent(getContext(), SearchSalonActivity.class);
+                intent.putExtra("nameSearch", editSearch.getText().toString());
+                intent.putExtra("ratingSearch", rating.getRating());
+                intent.putExtra("serviceSearch", dataSpinner.get(spinnerService.getSelectedItemPosition()));
+                intent.putExtra("discountSearch", discountSwitch.isChecked());
+                startActivity(intent);
+            }
+        });
+
     }
 }
