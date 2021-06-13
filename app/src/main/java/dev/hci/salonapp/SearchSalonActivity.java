@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.Spinner;
 import android.widget.Switch;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -30,6 +31,11 @@ public class SearchSalonActivity extends AppCompatActivity {
         setContentView(R.layout.activity_search_salon);
 
         intent = getIntent();
+
+        Salon salon = (Salon)intent.getSerializableExtra("salon");
+
+        TextView txtTitle = findViewById(R.id.salonTitle);
+        txtTitle.setText(salon.getName());
 
         EditText editSearch = findViewById(R.id.editSearchSalon);
         RatingBar rating = findViewById(R.id.searchRatingSalon);

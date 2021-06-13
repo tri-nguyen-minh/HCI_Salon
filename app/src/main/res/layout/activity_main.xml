@@ -68,6 +68,7 @@
         android:id="@+id/tabLayout"
         android:layout_width="match_parent"
         android:layout_height="80dp"
+        android:layout_marginTop="-5dp"
         app:tabIndicatorColor="@color/gold"
         app:tabBackground="@drawable/background_nav_tab"
         app:tabIndicatorGravity="top"

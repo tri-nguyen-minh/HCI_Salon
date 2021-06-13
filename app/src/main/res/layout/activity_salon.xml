@@ -27,6 +27,7 @@
             app:layout_constraintBottom_toBottomOf="parent"/>
 
         <TextView
+            android:id="@+id/salonTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Search Salon"
@@ -64,6 +65,7 @@
         android:id="@+id/tabLayoutSalon"
         android:layout_width="match_parent"
         android:layout_height="80dp"
+        android:layout_marginTop="-5dp"
         app:tabIndicatorColor="@color/gold"
         app:tabBackground="@drawable/background_nav_tab"
         app:tabIndicatorGravity="top"
