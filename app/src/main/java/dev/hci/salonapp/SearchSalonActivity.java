@@ -32,11 +32,6 @@ public class SearchSalonActivity extends AppCompatActivity {
 
         intent = getIntent();
 
-        Salon salon = (Salon)intent.getSerializableExtra("salon");
-
-        TextView txtTitle = findViewById(R.id.salonTitle);
-        txtTitle.setText(salon.getName());
-
         EditText editSearch = findViewById(R.id.editSearchSalon);
         RatingBar rating = findViewById(R.id.searchRatingSalon);
         Switch discountSwitch = findViewById(R.id.searchDiscountSwitch);
@@ -88,7 +83,7 @@ public class SearchSalonActivity extends AppCompatActivity {
                 3.7, Float.parseFloat("3.5"), 44, 20, R.drawable.salon_linh_r_hair));
 
         RecViewSalonAdapter salonAdapter = new RecViewSalonAdapter(SearchSalonActivity.this, SearchSalonActivity.this,
-                R.layout.recycle_view_salon_search);
+                R.layout.recycle_view_search_card);
         salonAdapter.setSalonList(salonList);
         recViewSalon.setAdapter(salonAdapter);
         recViewSalon.setLayoutManager(new LinearLayoutManager(SearchSalonActivity.this, RecyclerView.VERTICAL,false));

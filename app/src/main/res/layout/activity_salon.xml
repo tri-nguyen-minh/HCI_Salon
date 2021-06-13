@@ -18,8 +18,8 @@
         android:background="@color/black">
 
         <ImageView
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
             android:onClick="onBackSalon"
             android:src="@drawable/ic_arrow_back"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -33,9 +33,9 @@
             android:text="Search Salon"
             android:textColor="@color/white"
             android:fontFamily="monospace"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:textStyle="bold"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="15dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -43,8 +43,8 @@
 
 
         <ImageView
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
             android:onClick="onHome"
             android:src="@drawable/ic_home"
             app:layout_constraintTop_toTopOf="parent"

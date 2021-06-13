@@ -7,11 +7,12 @@ import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import com.google.android.material.tabs.TabLayout;
 
-import dev.hci.salonapp.dtos.MainNavigationAdapter;
-import dev.hci.salonapp.dtos.SalonNavigationAdapter;
+import dev.hci.salonapp.dtos.Salon;
+import dev.hci.salonapp.dtos.NavigationSalonAdapter;
 
 public class SalonActivity extends AppCompatActivity {
 
@@ -26,6 +27,10 @@ public class SalonActivity extends AppCompatActivity {
         setContentView(R.layout.activity_salon);
 
         intent = getIntent();
+
+        Salon salon = (Salon)intent.getSerializableExtra("salon");
+        TextView txtTitle = findViewById(R.id.salonTitle);
+        txtTitle.setText(salon.getName());
 
 
         tabLayout = findViewById(R.id.tabLayoutSalon);
@@ -51,7 +56,7 @@ public class SalonActivity extends AppCompatActivity {
         tabLayout.addTab(tabCommon);
 
         tabLayout.setTabTextColors(getResources().getColor(R.color.white), getResources().getColor(R.color.gold));
-        SalonNavigationAdapter adapter = new SalonNavigationAdapter(getSupportFragmentManager(), SalonActivity.this,
+        NavigationSalonAdapter adapter = new NavigationSalonAdapter(getSupportFragmentManager(), SalonActivity.this,
                 SalonActivity.this, tabLayout.getTabCount());
         viewPager.setAdapter(adapter);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
@@ -80,7 +85,7 @@ public class SalonActivity extends AppCompatActivity {
     }
 
     public void onHome(View view) {
-        Intent newIntent = new Intent(SalonActivity.this, SalonActivity.class);
+        Intent newIntent = new Intent(SalonActivity.this, MainActivity.class);
         newIntent.putExtra("logged", intent.getBooleanExtra("logged", false));
         startActivity(newIntent);
     }

@@ -12,12 +12,12 @@ import dev.hci.salonapp.fragments.HistoryFragment;
 import dev.hci.salonapp.fragments.ProductFragment;
 import dev.hci.salonapp.fragments.ProfileFragment;
 
-public class MainNavigationAdapter extends FragmentPagerAdapter {
+public class NavigationMainAdapter extends FragmentPagerAdapter {
     Context context;
     int totalTabs;
     Activity activity;
 
-    public MainNavigationAdapter(FragmentManager fm, Context context, Activity activity, int totalTabs) {
+    public NavigationMainAdapter(FragmentManager fm, Context context, Activity activity, int totalTabs) {
         super(fm);
         this.context = context;
         this.activity = activity;

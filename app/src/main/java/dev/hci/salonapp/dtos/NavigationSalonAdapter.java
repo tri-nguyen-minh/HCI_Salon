@@ -7,20 +7,16 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import dev.hci.salonapp.fragments.BookingFragment;
 import dev.hci.salonapp.fragments.DetailFragment;
-import dev.hci.salonapp.fragments.HistoryFragment;
-import dev.hci.salonapp.fragments.ProductFragment;
-import dev.hci.salonapp.fragments.ProfileFragment;
 import dev.hci.salonapp.fragments.ReviewFragment;
 import dev.hci.salonapp.fragments.ServiceFragment;
 
-public class SalonNavigationAdapter extends FragmentPagerAdapter {
+public class NavigationSalonAdapter extends FragmentPagerAdapter {
     Context context;
     int totalTabs;
     Activity activity;
 
-    public SalonNavigationAdapter(FragmentManager fm, Context context, Activity activity, int totalTabs) {
+    public NavigationSalonAdapter(FragmentManager fm, Context context, Activity activity, int totalTabs) {
         super(fm);
         this.context = context;
         this.activity = activity;

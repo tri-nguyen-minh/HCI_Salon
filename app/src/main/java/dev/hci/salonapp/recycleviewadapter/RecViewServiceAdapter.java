@@ -31,7 +31,7 @@ public class RecViewServiceAdapter  extends RecyclerView.Adapter<RecViewServiceA
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycle_view_service_list, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycle_view_service_card, parent, false);
         ViewHolder holder = new ViewHolder(view);
         return holder;
     }

@@ -11,7 +11,7 @@ import com.google.android.material.tabs.TabLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
-import dev.hci.salonapp.dtos.MainNavigationAdapter;
+import dev.hci.salonapp.dtos.NavigationMainAdapter;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         tabLayout.setTabTextColors(getResources().getColor(R.color.white), getResources().getColor(R.color.gold));
-        MainNavigationAdapter adapter = new MainNavigationAdapter(getSupportFragmentManager(), MainActivity.this,
+        NavigationMainAdapter adapter = new NavigationMainAdapter(getSupportFragmentManager(), MainActivity.this,
                 MainActivity.this, tabLayout.getTabCount());
         viewPager.setAdapter(adapter);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
