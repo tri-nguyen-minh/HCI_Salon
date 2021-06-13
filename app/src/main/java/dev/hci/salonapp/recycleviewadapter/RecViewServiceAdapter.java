@@ -52,7 +52,7 @@ public class RecViewServiceAdapter  extends RecyclerView.Adapter<RecViewServiceA
                 if (intent.getBooleanExtra("logged", false)) {
                     newIntent.putExtra("logged", true);
                 }
-                newIntent.putExtra("service", serviceList.get(position).getService());
+                newIntent.putExtra("serviceSearch", serviceList.get(position).getService());
                 activity.startActivity(newIntent);
             }
         });

@@ -40,14 +40,14 @@ public class ProfileFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         if (!intent.getBooleanExtra("logged", false)) {
-            Button btn = getView().findViewById(R.id.btnLogin);
-            btn.setOnClickListener(new View.OnClickListener() {
+            TextView btnLogin = getView().findViewById(R.id.btnLogin);
+            btnLogin.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     TextView txtTag = getActivity().findViewById(R.id.txtTag);
                     txtTag.setVisibility(View.VISIBLE);
                     txtTag.setText("Welcome,");
-                    TextView txtName = getActivity().findViewById(R.id.txtName);
+                    TextView txtName = getActivity().findViewById(R.id.txtUsername);
                     txtName.setText("User Name");
                     Intent intent = new Intent(getContext(), MainActivity.class);
                     intent.putExtra("logged", true);
