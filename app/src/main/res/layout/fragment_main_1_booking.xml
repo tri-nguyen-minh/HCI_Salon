@@ -13,7 +13,7 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="60dp"
             android:paddingHorizontal="15dp">
 
             <LinearLayout
@@ -28,6 +28,7 @@
                         android:fontFamily="monospace"
                         android:textStyle="bold"
                         android:textSize="20sp"
+                        android:textColor="@color/dark_gray"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"/>
@@ -50,6 +51,7 @@
                         android:fontFamily="monospace"
                         android:textStyle="bold"
                         android:textSize="20sp"
+                        android:textColor="@color/dark_gray"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"/>
@@ -86,6 +88,7 @@
                         android:fontFamily="monospace"
                         android:textStyle="bold"
                         android:textSize="20sp"
+                        android:textColor="@color/dark_gray"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"/>
@@ -158,20 +161,27 @@
             android:handle="@id/searchDrawerHandle"
             android:content="@id/searchDrawerContent">
 
-            <TextView
-                android:id="@+id/searchDrawerHandle"
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:paddingVertical="5dp"
-                android:text="SEARCH"
-                android:fontFamily="monospace"
-                android:textSize="22sp"
-                android:textStyle="bold"
-                android:background="@drawable/background_button_gold"
-                android:textColor="@color/black"
-                android:rotation="180"/>
+                android:id="@+id/searchDrawerHandle"
+                android:gravity="center">
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingVertical="5dp"
+                    android:paddingHorizontal="100dp"
+                    android:text="SEARCH"
+                    android:fontFamily="monospace"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:background="@drawable/background_button_gold"
+                    android:textColor="@color/black"
+                    android:rotation="180"/>
+
+            </RelativeLayout>
 
             <LinearLayout
                 android:id="@+id/searchDrawerContent"
@@ -350,7 +360,6 @@
             </LinearLayout>
 
         </SlidingDrawer>
-
 
     </FrameLayout>
 

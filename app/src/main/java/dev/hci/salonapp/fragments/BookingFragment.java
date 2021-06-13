@@ -59,6 +59,11 @@ public class BookingFragment extends Fragment {
         servicesList.add(new Service("Straightening", R.drawable.ic_service_straight));
         servicesList.add(new Service("Hair Styling", R.drawable.ic_service_style));
 
+        RecViewServiceAdapter serviceAdapter = new RecViewServiceAdapter(getContext(), getActivity());
+        serviceAdapter.setServiceList(servicesList);
+        recViewCommon.setAdapter(serviceAdapter);
+        recViewCommon.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL,false));
+
         spinnerService = getView().findViewById(R.id.spinnerServiceMain);
         dataSpinner = new ArrayList<>();
         dataSpinner.add("Choose Services");
@@ -74,11 +79,6 @@ public class BookingFragment extends Fragment {
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerService.setAdapter(dataAdapter);
 
-        RecViewServiceAdapter serviceAdapter = new RecViewServiceAdapter(getContext(), getActivity());
-        serviceAdapter.setServiceList(servicesList);
-        recViewCommon.setAdapter(serviceAdapter);
-        recViewCommon.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL,false));
-
         recViewCommon = getView().findViewById(R.id.recViewNearSalon);
         salonList = new ArrayList<>();
 
@@ -93,7 +93,7 @@ public class BookingFragment extends Fragment {
         salonList.add(new Salon("Linh R Hair & Salon", "263 Dương Bá Trạc, Phường 01, Quận 8, Thành phố Hồ Chí Minh",
                 3.7, Float.parseFloat("3.5"), 44, 20, R.drawable.salon_linh_r_hair));
 
-        salonAdapter = new RecViewSalonAdapter(getContext(), getActivity());
+        salonAdapter = new RecViewSalonAdapter(getContext(), getActivity(), R.layout.recycle_view_salon_list);
         salonAdapter.setSalonList(salonList);
         recViewCommon.setAdapter(salonAdapter);
         recViewCommon.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL,false));
@@ -111,7 +111,7 @@ public class BookingFragment extends Fragment {
         salonList.add(new Salon("Tay & Tony Salon", "24 Đình Phong Phú, Phường Tăng Nhơn Phú B, Quận 9, Thành phố Hồ Chí Minh",
                 16.1, Float.parseFloat("3.5"), 44, 20, R.drawable.image_default));
 
-        salonAdapter = new RecViewSalonAdapter(getContext(), getActivity());
+        salonAdapter = new RecViewSalonAdapter(getContext(), getActivity(), R.layout.recycle_view_salon_list);
         salonAdapter.setSalonList(salonList);
         recViewCommon.setAdapter(salonAdapter);
         recViewCommon.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL,false));
@@ -130,7 +130,7 @@ public class BookingFragment extends Fragment {
         salonList.add(new Salon("Tay & Tony Salon", "24 Đình Phong Phú, Phường Tăng Nhơn Phú B, Quận 9, Thành phố Hồ Chí Minh",
                 16.1, Float.parseFloat("3.5"), 44, 20, R.drawable.image_default));
 
-        salonAdapter = new RecViewSalonAdapter(getContext(), getActivity());
+        salonAdapter = new RecViewSalonAdapter(getContext(), getActivity(), R.layout.recycle_view_salon_list);
         salonAdapter.setSalonList(salonList);
         recViewCommon.setAdapter(salonAdapter);
         recViewCommon.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL,false));

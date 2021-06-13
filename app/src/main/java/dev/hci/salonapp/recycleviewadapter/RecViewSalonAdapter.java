@@ -21,10 +21,12 @@ public class RecViewSalonAdapter extends RecyclerView.Adapter<RecViewSalonAdapte
     private Context context;
     private Activity activity;
     private ArrayList<Salon> salonList;
+    private int layoutId;
 
-    public RecViewSalonAdapter(Context context, Activity activity) {
+    public RecViewSalonAdapter(Context context, Activity activity, int layoutId) {
         this.context = context;
         this.activity = activity;
+        this.layoutId = layoutId;
     }
 
     public void setSalonList(ArrayList<Salon> salonList) {
@@ -33,7 +35,7 @@ public class RecViewSalonAdapter extends RecyclerView.Adapter<RecViewSalonAdapte
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycle_view_salon_list, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(layoutId, parent, false);
         ViewHolder holder = new ViewHolder(view);
         return holder;
     }
