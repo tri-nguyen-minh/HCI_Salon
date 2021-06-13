@@ -181,7 +181,8 @@
                 android:background="@color/white"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent">
+                app:layout_constraintRight_toRightOf="parent"
+                android:rotation="180">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -201,7 +202,7 @@
                         android:src="@drawable/ic_search" />
 
                     <EditText
-                        android:id="@+id/editSearchSalon"
+                        android:id="@+id/editSearchSalonMain"
                         android:layout_width="match_parent"
                         android:layout_height="35dp"
                         android:layout_marginRight="5dp"
@@ -233,7 +234,7 @@
                         android:src="@drawable/ic_list_service" />
 
                     <Spinner
-                        android:id="@+id/spinnerService"
+                        android:id="@+id/spinnerServiceMain"
                         android:layout_width="match_parent"
                         android:layout_height="35dp"
                         android:layout_marginRight="5dp"
@@ -270,7 +271,7 @@
                         app:layout_constraintBottom_toBottomOf="parent"/>
 
                     <RatingBar
-                        android:id="@+id/searchRatingSalon"
+                        android:id="@+id/searchRatingSalonMain"
                         style="?android:attr/ratingBarStyleIndicator"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -289,7 +290,7 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <Switch
-                    android:id="@+id/searchDiscountSwitch"
+                    android:id="@+id/searchDiscountSwitchMain"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_marginHorizontal="25dp"

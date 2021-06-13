@@ -59,7 +59,7 @@ public class BookingFragment extends Fragment {
         servicesList.add(new Service("Straightening", R.drawable.ic_service_straight));
         servicesList.add(new Service("Hair Styling", R.drawable.ic_service_style));
 
-        spinnerService = getView().findViewById(R.id.spinnerService);
+        spinnerService = getView().findViewById(R.id.spinnerServiceMain);
         dataSpinner = new ArrayList<>();
         dataSpinner.add("Choose Services");
         dataSpinner.add("Discount");
@@ -139,9 +139,9 @@ public class BookingFragment extends Fragment {
         txtSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                EditText editSearch = getView().findViewById(R.id.editSearchSalon);
-                RatingBar rating = getView().findViewById(R.id.searchRatingSalon);
-                Switch discountSwitch = getView().findViewById(R.id.searchDiscountSwitch);
+                EditText editSearch = getView().findViewById(R.id.editSearchSalonMain);
+                RatingBar rating = getView().findViewById(R.id.searchRatingSalonMain);
+                Switch discountSwitch = getView().findViewById(R.id.searchDiscountSwitchMain);
 
                 Intent intent = new Intent(getContext(), SearchSalonActivity.class);
                 intent.putExtra("nameSearch", editSearch.getText().toString());
