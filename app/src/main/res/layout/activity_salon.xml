@@ -14,7 +14,6 @@
         android:gravity="center_vertical"
         android:weightSum="4"
         android:padding="10dp"
-        android:layout_marginBottom="5dp"
         android:background="@color/black">
 
         <ImageView
@@ -65,7 +64,6 @@
         android:id="@+id/tabLayoutSalon"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:layout_marginTop="-5dp"
         app:tabIndicatorColor="@color/gold"
         app:tabBackground="@drawable/background_nav_tab"
         app:tabIndicatorGravity="top"

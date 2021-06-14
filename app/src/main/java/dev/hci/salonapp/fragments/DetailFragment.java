@@ -1,17 +1,25 @@
 package dev.hci.salonapp.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.ViewFlipper;
+
+import androidx.fragment.app.Fragment;
 
 import dev.hci.salonapp.R;
+import dev.hci.salonapp.dtos.Salon;
 
 public class DetailFragment extends Fragment {
 
+    private Intent intent;
+    private ImageView imgCommon;
+    private TextView txtCommon;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,5 +30,43 @@ public class DetailFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_salon_1_detail, container, false);
+    }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        intent = getActivity().getIntent();
+        Salon salon = (Salon)intent.getSerializableExtra("salon");
+
+        ViewFlipper lookFlipper = getView().findViewById(R.id.lookFlipper);
+        imgCommon = new ImageView(getContext());
+        imgCommon.setImageResource(R.drawable.image_look_1);
+        lookFlipper.addView(imgCommon);
+        imgCommon = new ImageView(getContext());
+        imgCommon.setImageResource(R.drawable.image_look_2);
+        lookFlipper.addView(imgCommon);
+        imgCommon = new ImageView(getContext());
+        imgCommon.setImageResource(R.drawable.image_look_3);
+        lookFlipper.addView(imgCommon);
+        imgCommon = new ImageView(getContext());
+        imgCommon.setImageResource(R.drawable.image_look_4);
+        lookFlipper.addView(imgCommon);
+        imgCommon = new ImageView(getContext());
+        imgCommon.setImageResource(R.drawable.image_look_5);
+        lookFlipper.addView(imgCommon);
+        lookFlipper.setAutoStart(true);
+        lookFlipper.setFlipInterval(2000);
+        lookFlipper.setInAnimation(AnimationUtils.loadAnimation(getContext(), R.anim.flipper_left_in));
+        lookFlipper.setOutAnimation(AnimationUtils.loadAnimation(getContext(), R.anim.flipper_left_out));
+        lookFlipper.startFlipping();
+
+        txtCommon = getView().findViewById(R.id.salonName);
+        txtCommon.setText(salon.getName());
+
+        txtCommon = getView().findViewById(R.id.salonAddress);
+        txtCommon.setText(salon.getAddress());
+
+
     }
 }

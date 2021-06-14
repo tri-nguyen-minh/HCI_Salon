@@ -85,9 +85,12 @@ public class MainActivity extends AppCompatActivity {
             txtTag.setVisibility(View.GONE);
             txtUser.setText("You are not logged in!");
         } else {
-            txtTag.setVisibility(View.GONE);
+            txtTag.setVisibility(View.VISIBLE);
             txtTag.setText("Welcome,");
             txtUser.setText("User Name");
+        }
+        if (intent.getBooleanExtra("forced_logged", false)) {
+            tabLayout.selectTab(tabLayout.getTabAt(3));
         }
         this.getSupportActionBar().hide();
     }

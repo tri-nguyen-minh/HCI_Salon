@@ -10,6 +10,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import dev.hci.salonapp.fragments.DetailFragment;
 import dev.hci.salonapp.fragments.ReviewFragment;
 import dev.hci.salonapp.fragments.ServiceFragment;
+import dev.hci.salonapp.fragments.services.WashFragment;
 
 public class NavigationSalonAdapter extends FragmentPagerAdapter {
     Context context;

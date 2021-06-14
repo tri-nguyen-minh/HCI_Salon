@@ -89,4 +89,8 @@ public class SalonActivity extends AppCompatActivity {
         newIntent.putExtra("logged", intent.getBooleanExtra("logged", false));
         startActivity(newIntent);
     }
+
+    public void onCartClick(View view) {
+        System.out.println(intent.getIntExtra("cartCount", 0));
+    }
 }

@@ -46,7 +46,7 @@ public class SearchSalonActivity extends AppCompatActivity {
         dataSpinnerService.add("Discount");
         dataSpinnerService.add("Haircut");
         dataSpinnerService.add("Hair Wash");
-        dataSpinnerService.add("Hair Restore");
+        dataSpinnerService.add("Hair Treatment");
         dataSpinnerService.add("Coloring");
         dataSpinnerService.add("Curling");
         dataSpinnerService.add("Straightening");
@@ -63,7 +63,7 @@ public class SearchSalonActivity extends AppCompatActivity {
         dataSpinnerSort.add("Closest");
         dataSpinnerSort.add("Most Booked");
         dataSpinnerSort.add("Most Reviews");
-        dataAdapter = new ArrayAdapter<>(SearchSalonActivity.this, android.R.layout.simple_spinner_item, dataSpinnerService);
+        dataAdapter = new ArrayAdapter<>(SearchSalonActivity.this, android.R.layout.simple_spinner_item, dataSpinnerSort);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerCommon.setAdapter(dataAdapter);
 

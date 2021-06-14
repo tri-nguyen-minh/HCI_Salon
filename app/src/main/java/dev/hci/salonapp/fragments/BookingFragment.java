@@ -53,7 +53,7 @@ public class BookingFragment extends Fragment {
         servicesList.add(new Service("Discount", R.drawable.ic_service_discount));
         servicesList.add(new Service("Haircut", R.drawable.ic_service_cut));
         servicesList.add(new Service("Hair Wash", R.drawable.ic_service_wash));
-        servicesList.add(new Service("Hair Restore", R.drawable.ic_service_restore));
+        servicesList.add(new Service("Hair Treatment", R.drawable.ic_service_restore));
         servicesList.add(new Service("Coloring", R.drawable.ic_service_color));
         servicesList.add(new Service("Curling", R.drawable.ic_service_curling));
         servicesList.add(new Service("Straightening", R.drawable.ic_service_straight));
@@ -70,7 +70,7 @@ public class BookingFragment extends Fragment {
         dataSpinner.add("Discount");
         dataSpinner.add("Haircut");
         dataSpinner.add("Hair Wash");
-        dataSpinner.add("Hair Restore");
+        dataSpinner.add("Hair Treatment");
         dataSpinner.add("Coloring");
         dataSpinner.add("Curling");
         dataSpinner.add("Straightening");
