@@ -47,115 +47,130 @@
 
     </LinearLayout>
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginHorizontal="10dp"
-        android:padding="10dp"
-        android:background="@drawable/background_booking_component">
+        android:layout_height="wrap_content">
 
-        <CalendarView
-            android:id="@+id/calViewPicker"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/background_separator_bottom"/>
+            android:orientation="vertical"
+            android:layout_marginHorizontal="10dp"
+            android:padding="10dp"
+            android:background="@drawable/background_booking_component">
 
-        <HorizontalScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
 
-            <LinearLayout
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:text="Book Time"
+                android:fontFamily="monospace"
+                android:textSize="26sp"
+                android:textColor="@color/dark_gold"
+                android:gravity="center"/>
 
 
-                <TextView
-                    android:layout_width="wrap_content"
+            <CalendarView
+                android:id="@+id/calViewPicker"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/background_separator_bottom"/>
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="08:00"
-                    android:gravity="center"
-                    android:padding="7dp"
-                    android:layout_margin="5dp"
-                    android:textColor="@color/black"
-                    android:background="@drawable/background_like"/>
+                    android:orientation="horizontal"
+                    android:layout_marginVertical="10dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="09:00"
-                    android:gravity="center"
-                    android:padding="7dp"
-                    android:layout_margin="5dp"
-                    android:textColor="@color/black"
-                    android:background="@drawable/background_like"/>
+                    <TextView
+                        android:id="@+id/timeslot08"
+                        android:onClick="onTimeslotClick"
+                        android:text="08:00"
+                        style="@style/style_timeslot" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="08:00"
-                    android:gravity="center"
-                    android:padding="7dp"
-                    android:layout_margin="5dp"
-                    android:textColor="@color/black"
-                    android:background="@drawable/background_like"/>
+                    <TextView
+                        android:id="@+id/timeslot09"
+                        android:onClick="onTimeslotClick"
+                        android:text="09:00"
+                        style="@style/style_timeslot" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="09:00"
-                    android:gravity="center"
-                    android:padding="7dp"
-                    android:layout_margin="5dp"
-                    android:textColor="@color/black"
-                    android:background="@drawable/background_like"/>
+                    <TextView
+                        android:id="@+id/timeslot10"
+                        android:onClick="onTimeslotClick"
+                        android:text="10:00"
+                        style="@style/style_timeslot" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="08:00"
-                    android:gravity="center"
-                    android:padding="7dp"
-                    android:layout_margin="5dp"
-                    android:textColor="@color/black"
-                    android:background="@drawable/background_like"/>
+                    <TextView
+                        android:id="@+id/timeslot11"
+                        android:onClick="onTimeslotClick"
+                        android:text="11:00"
+                        style="@style/style_timeslot" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="09:00"
-                    android:gravity="center"
-                    android:padding="7dp"
-                    android:layout_margin="5dp"
-                    android:textColor="@color/black"
-                    android:background="@drawable/background_like"/>
+                    <TextView
+                        android:id="@+id/timeslot12"
+                        android:onClick="onTimeslotClick"
+                        android:text="12:00"
+                        style="@style/style_timeslot" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="08:00"
-                    android:gravity="center"
-                    android:padding="7dp"
-                    android:layout_margin="5dp"
-                    android:textColor="@color/black"
-                    android:background="@drawable/background_like"/>
+                    <TextView
+                        android:id="@+id/timeslot13"
+                        android:onClick="onTimeslotClick"
+                        android:text="13:00"
+                        style="@style/style_timeslot" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="09:00"
-                    android:gravity="center"
-                    android:padding="7dp"
-                    android:layout_margin="5dp"
-                    android:textColor="@color/black"
-                    android:background="@drawable/background_like"/>
+                    <TextView
+                        android:id="@+id/timeslot14"
+                        android:onClick="onTimeslotClick"
+                        android:text="14:00"
+                        style="@style/style_timeslot" />
 
-            </LinearLayout>
+                    <TextView
+                        android:id="@+id/timeslot15"
+                        android:onClick="onTimeslotClick"
+                        android:text="15:00"
+                        style="@style/style_timeslot" />
 
-        </HorizontalScrollView>
+                    <TextView
+                        android:id="@+id/timeslot16"
+                        android:onClick="onTimeslotClick"
+                        android:text="16:00"
+                        style="@style/style_timeslot" />
 
-    </LinearLayout>
+                    <TextView
+                        android:id="@+id/timeslot17"
+                        android:onClick="onTimeslotClick"
+                        android:text="17:00"
+                        style="@style/style_timeslot" />
+
+                    <TextView
+                        android:id="@+id/timeslot18"
+                        android:onClick="onTimeslotClick"
+                        android:text="18:00"
+                        style="@style/style_timeslot" />
+
+                    <TextView
+                        android:id="@+id/timeslot19"
+                        android:onClick="onTimeslotClick"
+                        android:text="19:00"
+                        style="@style/style_timeslot" />
+
+                    <TextView
+                        android:id="@+id/timeslot20"
+                        android:onClick="onTimeslotClick"
+                        android:text="20:00"
+                        style="@style/style_timeslot" />
+
+                </LinearLayout>
+
+            </HorizontalScrollView>
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </LinearLayout>
