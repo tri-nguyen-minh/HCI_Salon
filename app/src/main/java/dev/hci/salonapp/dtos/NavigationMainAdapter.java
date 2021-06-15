@@ -16,6 +16,7 @@ public class NavigationMainAdapter extends FragmentPagerAdapter {
     Context context;
     int totalTabs;
     Activity activity;
+    Fragment fragmentCommon;
 
     public NavigationMainAdapter(FragmentManager fm, Context context, Activity activity, int totalTabs) {
         super(fm);
@@ -28,17 +29,17 @@ public class NavigationMainAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                BookingFragment bookingFragment = new BookingFragment();
-                return bookingFragment;
+                fragmentCommon = new BookingFragment();
+                return fragmentCommon;
             case 1:
-                ProductFragment productFragment = new ProductFragment();
-                return productFragment;
+                fragmentCommon = new ProductFragment();
+                return fragmentCommon;
             case 2:
-                HistoryFragment historyFragment = new HistoryFragment();
-                return historyFragment;
+                fragmentCommon = new HistoryFragment();
+                return fragmentCommon;
             case 3:
-                ProfileFragment profileFragment = new ProfileFragment();
-                return profileFragment;
+                fragmentCommon = new ProfileFragment();
+                return fragmentCommon;
             default:
                 return null;
         }

@@ -20,6 +20,7 @@ public class NavigationServiceAdapter extends FragmentPagerAdapter {
     Context context;
     int totalTabs;
     Activity activity;
+    Fragment fragmentCommon;
 
     public NavigationServiceAdapter(FragmentManager fm, Context context, Activity activity, int totalTabs) {
         super(fm);
@@ -32,29 +33,29 @@ public class NavigationServiceAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                DiscountFragment discountFragment = new DiscountFragment();
-                return discountFragment;
+                fragmentCommon = new DiscountFragment();
+                return fragmentCommon;
             case 1:
-                HaircutFragment haircutFragment = new HaircutFragment();
-                return haircutFragment;
+                fragmentCommon = new HaircutFragment();
+                return fragmentCommon;
             case 2:
-                WashFragment washFragment = new WashFragment();
-                return washFragment;
+                fragmentCommon = new WashFragment();
+                return fragmentCommon;
             case 3:
-                TreatmentFragment treatmentFragment = new TreatmentFragment();
-                return treatmentFragment;
+                fragmentCommon = new TreatmentFragment();
+                return fragmentCommon;
             case 4:
-                ColoringFragment coloringFragment = new ColoringFragment();
-                return coloringFragment;
+                fragmentCommon = new ColoringFragment();
+                return fragmentCommon;
             case 5:
-                CurlingFragment curlingFragment = new CurlingFragment();
-                return curlingFragment;
+                fragmentCommon = new CurlingFragment();
+                return fragmentCommon;
             case 6:
-                StraightenFragment straightenFragment = new StraightenFragment();
-                return straightenFragment;
+                fragmentCommon = new StraightenFragment();
+                return fragmentCommon;
             case 7:
-                StylingFragment stylingFragment = new StylingFragment();
-                return stylingFragment;
+                fragmentCommon = new StylingFragment();
+                return fragmentCommon;
             default:
                 return null;
         }

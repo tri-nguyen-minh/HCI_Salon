@@ -25,12 +25,10 @@ public class RecViewSalonServiceAdapter extends RecyclerView.Adapter<RecViewSalo
     private ArrayList<Service> serviceList;
     private Context context;
     private Activity activity;
-    private int selectedService;
 
     public RecViewSalonServiceAdapter(Context context, Activity activity) {
         this.context = context;
         this.activity = activity;
-        this.selectedService = -1;
     }
 
     @Override
@@ -42,14 +40,6 @@ public class RecViewSalonServiceAdapter extends RecyclerView.Adapter<RecViewSalo
 
     public void setServiceList(ArrayList<Service> serviceList) {
         this.serviceList = serviceList;
-    }
-
-    public int getSelectedService() {
-        return selectedService;
-    }
-
-    public void setSelectedService(int selectedService) {
-        this.selectedService = selectedService;
     }
 
     @Override
