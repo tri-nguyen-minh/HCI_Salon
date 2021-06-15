@@ -21,6 +21,7 @@ public class HistoryFragment extends Fragment {
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private Intent intent;
+    private TextView txtBooking, txtShopping;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -36,7 +37,7 @@ public class HistoryFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        intent = getActivity().getIntent();
+//        intent = getActivity().getIntent();
 
         tabLayout = getView().findViewById(R.id.tabLayoutHistory);
         viewPager = getView().findViewById(R.id.viewPagerHistory);
@@ -63,8 +64,8 @@ public class HistoryFragment extends Fragment {
         });
         tabLayout.setVisibility(View.GONE);
 
-        TextView txtBooking = getView().findViewById(R.id.txtBookingHistory);
-        TextView txtShopping = getView().findViewById(R.id.txtShoppingHistory);
+        txtBooking = getView().findViewById(R.id.txtBookingHistory);
+        txtShopping = getView().findViewById(R.id.txtShoppingHistory);
 
         txtBooking.setOnClickListener(new View.OnClickListener() {
             @Override

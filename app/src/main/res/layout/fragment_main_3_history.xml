@@ -23,7 +23,7 @@
             android:text="HISTORY"
             android:fontFamily="monospace"
             android:textStyle="bold"
-            android:textSize="30sp"
+            android:textSize="26sp"
             android:textColor="@color/black"
             android:layout_marginVertical="18dp"/>
 
@@ -41,9 +41,9 @@
                 android:text="Booking"
                 android:fontFamily="monospace"
                 android:textStyle="bold"
-                android:textSize="22sp"
+                android:textSize="20sp"
                 android:textColor="@color/white"
-                android:paddingVertical="15dp"
+                android:paddingVertical="10dp"
                 android:layout_marginHorizontal="10dp"
                 android:background="@drawable/background_history_selected"/>
 
@@ -55,9 +55,9 @@
                 android:text="Shopping"
                 android:fontFamily="monospace"
                 android:textStyle="bold"
-                android:textSize="22sp"
+                android:textSize="20sp"
                 android:textColor="@color/black"
-                android:paddingVertical="15dp"
+                android:paddingVertical="10dp"
                 android:layout_marginHorizontal="10dp"
                 android:background="@drawable/background_edit_text_general"/>
 
@@ -68,8 +68,7 @@
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewPagerHistory"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
-        android:layout_marginBottom="15dp"
+        android:layout_height="420dp"
         android:layout_centerInParent="true"
         android:background="@drawable/background_history_tab"
         app:layout_constraintLeft_toLeftOf="parent"
