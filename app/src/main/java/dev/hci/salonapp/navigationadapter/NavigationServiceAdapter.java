@@ -1,4 +1,4 @@
-package dev.hci.salonapp.dtos;
+package dev.hci.salonapp.navigationadapter;
 
 import android.app.Activity;
 import android.content.Context;

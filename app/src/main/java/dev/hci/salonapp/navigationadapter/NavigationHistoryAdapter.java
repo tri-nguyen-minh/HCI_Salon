@@ -1,4 +1,4 @@
-package dev.hci.salonapp.dtos;
+package dev.hci.salonapp.navigationadapter;
 
 import android.app.Activity;
 import android.content.Context;
@@ -7,18 +7,16 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import dev.hci.salonapp.fragments.BookingFragment;
-import dev.hci.salonapp.fragments.HistoryFragment;
-import dev.hci.salonapp.fragments.ProductFragment;
-import dev.hci.salonapp.fragments.ProfileFragment;
+import dev.hci.salonapp.fragments.history.BookingHistoryFragment;
+import dev.hci.salonapp.fragments.history.ShoppingHistoryFragment;
 
-public class NavigationMainAdapter extends FragmentPagerAdapter {
+public class NavigationHistoryAdapter extends FragmentPagerAdapter {
     Context context;
     int totalTabs;
     Activity activity;
     Fragment fragmentCommon;
 
-    public NavigationMainAdapter(FragmentManager fm, Context context, Activity activity, int totalTabs) {
+    public NavigationHistoryAdapter(FragmentManager fm, Context context, Activity activity, int totalTabs) {
         super(fm);
         this.context = context;
         this.activity = activity;
@@ -29,17 +27,12 @@ public class NavigationMainAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                fragmentCommon = new BookingFragment();
+                fragmentCommon = new BookingHistoryFragment();
                 return fragmentCommon;
             case 1:
-                fragmentCommon = new ProductFragment();
+                fragmentCommon = new ShoppingHistoryFragment();
                 return fragmentCommon;
             case 2:
-                fragmentCommon = new HistoryFragment();
-                return fragmentCommon;
-            case 3:
-                fragmentCommon = new ProfileFragment();
-                return fragmentCommon;
             default:
                 return null;
         }

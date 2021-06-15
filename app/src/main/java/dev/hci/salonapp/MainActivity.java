@@ -11,7 +11,7 @@ import com.google.android.material.tabs.TabLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
-import dev.hci.salonapp.dtos.NavigationMainAdapter;
+import dev.hci.salonapp.navigationadapter.NavigationMainAdapter;
 
 public class MainActivity extends AppCompatActivity {
 

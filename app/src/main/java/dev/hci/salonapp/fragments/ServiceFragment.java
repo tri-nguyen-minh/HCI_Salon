@@ -1,17 +1,13 @@
 package dev.hci.salonapp.fragments;
 
 import android.content.Intent;
-import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,14 +15,10 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.util.ArrayList;
 
-import dev.hci.salonapp.MainActivity;
 import dev.hci.salonapp.R;
-import dev.hci.salonapp.dtos.NavigationMainAdapter;
-import dev.hci.salonapp.dtos.NavigationServiceAdapter;
+import dev.hci.salonapp.navigationadapter.NavigationServiceAdapter;
 import dev.hci.salonapp.dtos.Service;
 import dev.hci.salonapp.recycleviewadapter.RecViewSalonServiceAdapter;
 
@@ -95,7 +87,6 @@ public class ServiceFragment extends Fragment {
         tabLayout.addTab(tabLayout.newTab().setText("style"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
-        tabLayout.setTabTextColors(getResources().getColor(R.color.black), getResources().getColor(R.color.gold));
         NavigationServiceAdapter adapter = new NavigationServiceAdapter(getActivity().getSupportFragmentManager(), getContext(),
                 getActivity(), tabLayout.getTabCount());
         viewPager.setAdapter(adapter);

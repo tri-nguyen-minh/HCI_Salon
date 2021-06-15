@@ -12,7 +12,7 @@ import android.widget.TextView;
 import com.google.android.material.tabs.TabLayout;
 
 import dev.hci.salonapp.dtos.Salon;
-import dev.hci.salonapp.dtos.NavigationSalonAdapter;
+import dev.hci.salonapp.navigationadapter.NavigationSalonAdapter;
 
 public class SalonActivity extends AppCompatActivity {
 
