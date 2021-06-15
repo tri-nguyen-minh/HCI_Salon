@@ -10,11 +10,13 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import dev.hci.salonapp.fragments.DetailFragment;
 import dev.hci.salonapp.fragments.ReviewFragment;
 import dev.hci.salonapp.fragments.ServiceFragment;
+import dev.hci.salonapp.fragments.services.WashFragment;
 
 public class NavigationSalonAdapter extends FragmentPagerAdapter {
     Context context;
     int totalTabs;
     Activity activity;
+    Fragment fragmentCommon;
 
     public NavigationSalonAdapter(FragmentManager fm, Context context, Activity activity, int totalTabs) {
         super(fm);
@@ -27,14 +29,14 @@ public class NavigationSalonAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                DetailFragment detailFragment = new DetailFragment();
-                return detailFragment;
+                fragmentCommon = new DetailFragment();
+                return fragmentCommon;
             case 1:
-                ServiceFragment serviceFragment = new ServiceFragment();
-                return serviceFragment;
+                fragmentCommon = new ServiceFragment();
+                return fragmentCommon;
             case 2:
-                ReviewFragment reviewFragment = new ReviewFragment();
-                return reviewFragment;
+                fragmentCommon = new ReviewFragment();
+                return fragmentCommon;
             default:
                 return null;
         }

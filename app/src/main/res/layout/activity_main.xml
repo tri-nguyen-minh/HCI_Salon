@@ -14,7 +14,7 @@
         android:layout_marginBottom="5dp"
         android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:weightSum="4"
+        android:weightSum="4"   
         android:padding="10dp"
         android:background="@color/black">
 

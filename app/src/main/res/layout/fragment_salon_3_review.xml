@@ -15,7 +15,8 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -38,7 +39,7 @@
                 android:background="@drawable/background_sort">
 
                 <Spinner
-                    android:id="@+id/spinnerSort"
+                    android:id="@+id/spinnerSortReview"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"/>
 

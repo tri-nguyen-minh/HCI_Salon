@@ -11,12 +11,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
 import dev.hci.salonapp.R;
+import dev.hci.salonapp.SearchSalonActivity;
 import dev.hci.salonapp.dtos.Review;
 import dev.hci.salonapp.dtos.Service;
 import dev.hci.salonapp.recycleviewadapter.RecViewReviewAdapter;
@@ -55,6 +58,17 @@ public class ReviewFragment extends Fragment {
         reviewAdapter.setReviewList(reviewList);
         recViewCommon.setAdapter(reviewAdapter);
         recViewCommon.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL,false));
+
+
+        Spinner spinnerSort = getView().findViewById(R.id.spinnerSortReview);
+        ArrayList<String> dataSpinnerService = new ArrayList<>();
+        dataSpinnerService.add("Most Recent");
+        dataSpinnerService.add("Highest Rated");
+        dataSpinnerService.add("Most Liked");
+        dataSpinnerService.add("Your Reviews");
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, dataSpinnerService);
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerSort.setAdapter(dataAdapter);
 
     }
 }
