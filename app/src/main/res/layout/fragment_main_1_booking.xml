@@ -158,6 +158,7 @@
         <SlidingDrawer
             android:layout_width="match_parent"
             android:layout_height="390dp"
+            android:layout_marginTop="5dp"
             android:rotation="180"
             android:handle="@id/searchDrawerHandle"
             android:content="@id/searchDrawerContent">

@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.cardview.widget.CardView;
@@ -17,7 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-import dev.hci.salonapp.MainActivity;
+import dev.hci.salonapp.activities.MainActivity;
 import dev.hci.salonapp.R;
 import dev.hci.salonapp.dtos.ServiceDetail;
 

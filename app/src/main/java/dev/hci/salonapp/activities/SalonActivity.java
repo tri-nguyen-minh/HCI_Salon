@@ -1,4 +1,7 @@
-package dev.hci.salonapp;
+package dev.hci.salonapp.activities;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.graphics.PorterDuff;
@@ -8,12 +11,11 @@ import android.widget.TextView;
 
 import com.google.android.material.tabs.TabLayout;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.viewpager.widget.ViewPager;
+import dev.hci.salonapp.R;
+import dev.hci.salonapp.dtos.Salon;
+import dev.hci.salonapp.navigationadapter.NavigationSalonAdapter;
 
-import dev.hci.salonapp.navigationadapter.NavigationMainAdapter;
-
-public class MainActivity extends AppCompatActivity {
+public class SalonActivity extends AppCompatActivity {
 
     private TabLayout tabLayout;
     private ViewPager viewPager;
@@ -23,42 +25,40 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_salon);
 
-        setContentView(R.layout.activity_main);
+        intent = getIntent();
 
-        tabLayout = findViewById(R.id.tabLayout);
-        viewPager = findViewById(R.id.viewPager);
+        Salon salon = (Salon)intent.getSerializableExtra("salon");
+        TextView txtTitle = findViewById(R.id.salonTitle);
+        txtTitle.setText(salon.getName());
+
+
+        tabLayout = findViewById(R.id.tabLayoutSalon);
+        viewPager = findViewById(R.id.viewPagerSalon);
 
 
         tabCommon = tabLayout.newTab();
-        tabCommon.setIcon(R.drawable.ic_nav_booking);
-        tabCommon.setText("Booking");
+        tabCommon.setIcon(R.drawable.ic_info);
+        tabCommon.setText("About Us");
         tabCommon.getIcon().setColorFilter(getResources().getColor(R.color.white), PorterDuff.Mode.SRC_IN);
         tabLayout.addTab(tabCommon);
 
         tabCommon = tabLayout.newTab();
-        tabCommon.setIcon(R.drawable.ic_nav_shopping);
-        tabCommon.setText("Shopping");
+        tabCommon.setIcon(R.drawable.ic_service);
+        tabCommon.setText("Services");
         tabCommon.getIcon().setColorFilter(getResources().getColor(R.color.white), PorterDuff.Mode.SRC_IN);
         tabLayout.addTab(tabCommon);
 
         tabCommon = tabLayout.newTab();
-        tabCommon.setIcon(R.drawable.ic_nav_history);
-        tabCommon.setText("History");
+        tabCommon.setIcon(R.drawable.ic_message);
+        tabCommon.setText("Reviews");
         tabCommon.getIcon().setColorFilter(getResources().getColor(R.color.white), PorterDuff.Mode.SRC_IN);
         tabLayout.addTab(tabCommon);
-
-        tabCommon = tabLayout.newTab();
-        tabCommon.setIcon(R.drawable.ic_nav_profile);
-        tabCommon.setText("Account");
-        tabCommon.getIcon().setColorFilter(getResources().getColor(R.color.white), PorterDuff.Mode.SRC_IN);
-        tabLayout.addTab(tabCommon);
-
-        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         tabLayout.setTabTextColors(getResources().getColor(R.color.white), getResources().getColor(R.color.gold));
-        NavigationMainAdapter adapter = new NavigationMainAdapter(getSupportFragmentManager(), MainActivity.this,
-                MainActivity.this, tabLayout.getTabCount());
+        NavigationSalonAdapter adapter = new NavigationSalonAdapter(getSupportFragmentManager(), SalonActivity.this,
+                SalonActivity.this, tabLayout.getTabCount());
         viewPager.setAdapter(adapter);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
             public void onTabSelected(TabLayout.Tab tab) {
                 viewPager.setCurrentItem(tab.getPosition());
                 if (tab.getIcon() != null)
-                tab.getIcon().setColorFilter(getResources().getColor(R.color.gold), PorterDuff.Mode.SRC_IN);
+                    tab.getIcon().setColorFilter(getResources().getColor(R.color.gold), PorterDuff.Mode.SRC_IN);
             }
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
@@ -78,24 +78,20 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        intent = getIntent();
-        TextView txtTag = findViewById(R.id.txtTag);
-        TextView txtUser = findViewById(R.id.txtUsername);
-        if (!intent.getBooleanExtra("logged", false)) {
-            txtTag.setVisibility(View.GONE);
-            txtUser.setText("You are not logged in!");
-        } else {
-            txtTag.setVisibility(View.VISIBLE);
-            txtTag.setText("Welcome,");
-            txtUser.setText("User Name");
-        }
-        if (intent.getBooleanExtra("forced_logged", false)) {
-            tabLayout.selectTab(tabLayout.getTabAt(3));
-        }
         this.getSupportActionBar().hide();
     }
 
-    public void onUserClick(View view) {
-        tabLayout.selectTab(tabLayout.getTabAt(3));
+    public void onBackSalon(View view) {
+        finish();
+    }
+
+    public void onHome(View view) {
+        Intent newIntent = new Intent(SalonActivity.this, MainActivity.class);
+        newIntent.putExtra("logged", intent.getBooleanExtra("logged", false));
+        startActivity(newIntent);
+    }
+
+    public void onCartClick(View view) {
+        System.out.println(intent.getIntExtra("cartCount", 0));
     }
 }

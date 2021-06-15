@@ -19,7 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 import dev.hci.salonapp.R;
-import dev.hci.salonapp.SearchSalonActivity;
+import dev.hci.salonapp.activities.SearchSalonActivity;
 import dev.hci.salonapp.recycleviewadapter.RecViewSalonAdapter;
 import dev.hci.salonapp.recycleviewadapter.RecViewServiceAdapter;
 import dev.hci.salonapp.dtos.Salon;

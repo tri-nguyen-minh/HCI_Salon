@@ -2,8 +2,6 @@ package dev.hci.salonapp.fragments;
 
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,16 +12,11 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.util.ArrayList;
 
 import dev.hci.salonapp.R;
-import dev.hci.salonapp.SearchSalonActivity;
 import dev.hci.salonapp.dtos.Review;
-import dev.hci.salonapp.dtos.Service;
 import dev.hci.salonapp.recycleviewadapter.RecViewReviewAdapter;
-import dev.hci.salonapp.recycleviewadapter.RecViewServiceAdapter;
 
 public class ReviewFragment extends Fragment {
 

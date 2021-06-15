@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 import dev.hci.salonapp.R;
-import dev.hci.salonapp.SearchSalonActivity;
+import dev.hci.salonapp.activities.SearchSalonActivity;
 import dev.hci.salonapp.dtos.Service;
 
 public class RecViewServiceAdapter  extends RecyclerView.Adapter<RecViewServiceAdapter.ViewHolder> {

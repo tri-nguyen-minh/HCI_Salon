@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 import dev.hci.salonapp.R;
-import dev.hci.salonapp.SalonActivity;
+import dev.hci.salonapp.activities.SalonActivity;
 import dev.hci.salonapp.dtos.Salon;
 
 public class RecViewSalonAdapter extends RecyclerView.Adapter<RecViewSalonAdapter.ViewHolder>{

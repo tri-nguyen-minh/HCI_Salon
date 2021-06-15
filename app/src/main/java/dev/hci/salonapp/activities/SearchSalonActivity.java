@@ -1,4 +1,4 @@
-package dev.hci.salonapp;
+package dev.hci.salonapp.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -12,10 +12,10 @@ import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.Spinner;
 import android.widget.Switch;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import dev.hci.salonapp.R;
 import dev.hci.salonapp.dtos.Salon;
 import dev.hci.salonapp.recycleviewadapter.RecViewSalonAdapter;
 
