@@ -13,6 +13,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.google.android.material.tabs.TabLayout;
 
 import dev.hci.salonapp.R;
+import dev.hci.salonapp.navigationadapter.NavigationHistoryAdapter;
 import dev.hci.salonapp.navigationadapter.NavigationServiceAdapter;
 
 public class HistoryFragment extends Fragment {
@@ -44,7 +45,7 @@ public class HistoryFragment extends Fragment {
         tabLayout.addTab(tabLayout.newTab().setText("shopping"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
-        NavigationServiceAdapter adapter = new NavigationServiceAdapter(getActivity().getSupportFragmentManager(), getContext(),
+        NavigationHistoryAdapter adapter = new NavigationHistoryAdapter(getActivity().getSupportFragmentManager(), getContext(),
                 getActivity(), tabLayout.getTabCount());
         viewPager.setAdapter(adapter);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
