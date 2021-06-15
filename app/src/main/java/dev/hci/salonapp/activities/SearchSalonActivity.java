@@ -30,7 +30,7 @@ public class SearchSalonActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_salon);
 
-        intent = getIntent();
+        intent = SearchSalonActivity.this.getIntent();
 
         EditText editSearch = findViewById(R.id.editSearchSalon);
         RatingBar rating = findViewById(R.id.searchRatingSalon);

@@ -27,7 +27,7 @@ public class SalonActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_salon);
 
-        intent = getIntent();
+        intent = SalonActivity.this.getIntent();
 
         Salon salon = (Salon)intent.getSerializableExtra("salon");
         TextView txtTitle = findViewById(R.id.salonTitle);

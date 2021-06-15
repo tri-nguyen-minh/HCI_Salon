@@ -2,6 +2,7 @@ package dev.hci.salonapp.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CalendarView;
@@ -12,6 +13,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 import dev.hci.salonapp.R;
+import dev.hci.salonapp.dtos.Salon;
 
 public class BookingCartActivity extends AppCompatActivity {
 
@@ -23,11 +25,16 @@ public class BookingCartActivity extends AppCompatActivity {
                                         R.id.timeslot18, R.id.timeslot19,
                                         R.id.timeslot20};
     private TextView textViewCommon;
+    private Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_booking_cart);
+
+        intent = BookingCartActivity.this.getIntent();
+
+        Salon salon = (Salon)intent.getSerializableExtra("salon");
 
         CalendarView calendarView = findViewById(R.id.calViewPicker);
 

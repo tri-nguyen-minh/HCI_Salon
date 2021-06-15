@@ -18,6 +18,8 @@ import com.google.android.material.tabs.TabLayout;
 import java.util.ArrayList;
 
 import dev.hci.salonapp.R;
+import dev.hci.salonapp.activities.BookingCartActivity;
+import dev.hci.salonapp.dtos.Salon;
 import dev.hci.salonapp.navigationadapter.NavigationServiceAdapter;
 import dev.hci.salonapp.dtos.Service;
 import dev.hci.salonapp.recycleviewadapter.RecViewSalonServiceAdapter;
@@ -57,6 +59,14 @@ public class ServiceFragment extends Fragment {
             layoutServiceCart.setVisibility(View.VISIBLE);
             ((TextView)getView().findViewById(R.id.txtCartCount)).setText(cartCount + "");
         }
+        layoutServiceCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent newIntent = new Intent(getContext(), BookingCartActivity.class);
+                newIntent.putExtra("salon", (Salon)intent.getSerializableExtra("salon"));
+                startActivity(newIntent);
+            }
+        });
 
         ArrayList<Service> servicesList = new ArrayList<>();
         servicesList.add(new Service("Discount", R.drawable.ic_service_discount));
@@ -103,6 +113,7 @@ public class ServiceFragment extends Fragment {
             public void onTabReselected(TabLayout.Tab tab) {
             }
         });
+
         tabLayout.setVisibility(View.GONE);
     }
 }

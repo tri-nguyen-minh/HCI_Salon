@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        intent = getIntent();
+        intent = MainActivity.this.getIntent();
         TextView txtTag = findViewById(R.id.txtTag);
         TextView txtUser = findViewById(R.id.txtUsername);
         if (!intent.getBooleanExtra("logged", false)) {
