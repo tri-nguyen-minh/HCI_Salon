@@ -1,6 +1,8 @@
 package dev.hci.salonapp.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,6 +16,8 @@ import java.util.Date;
 
 import dev.hci.salonapp.R;
 import dev.hci.salonapp.dtos.Salon;
+import dev.hci.salonapp.dtos.ServiceDetail;
+import dev.hci.salonapp.recycleviewadapter.RecViewServiceBookedAdapter;
 
 public class BookingCartActivity extends AppCompatActivity {
 
@@ -42,6 +46,16 @@ public class BookingCartActivity extends AppCompatActivity {
 
         calendarView.setMinDate((new Date().getTime()));
         calendarView.setSelectedWeekBackgroundColor(getResources().getColor(R.color.gold));
+
+        RecyclerView recViewService = findViewById(R.id.recViewServiceBooked);
+        ArrayList<ServiceDetail> serviceDetailsList = new ArrayList<>();
+        serviceDetailsList.add(new ServiceDetail("Male Haircut", "30 - 40 minutes", "60", "0"));
+        serviceDetailsList.add(new ServiceDetail("Hair Keratin Treatment", "30 - 60 minutes", "450", "600"));
+        serviceDetailsList.add(new ServiceDetail("Hair Styling", "30 minutes", "70", "0"));
+        RecViewServiceBookedAdapter adapter = new RecViewServiceBookedAdapter(BookingCartActivity.this, BookingCartActivity.this);
+        adapter.setServiceDetailsList(serviceDetailsList);
+        recViewService.setAdapter(adapter);
+        recViewService.setLayoutManager(new LinearLayoutManager(BookingCartActivity.this, RecyclerView.VERTICAL,false));
 
     }
 

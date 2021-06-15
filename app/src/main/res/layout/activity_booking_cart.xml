@@ -182,40 +182,37 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:paddingVertical="10dp"
+                android:paddingVertical="15dp"
                 android:paddingHorizontal="10dp"
                 android:background="@drawable/background_booking_component">
 
 
                 <TextView
+                    android:id="@+id/txtSalonName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Book Time"
+                    android:text="salon Nguyễn Duy"
                     android:fontFamily="monospace"
-                    android:textSize="26sp"
-                    android:textColor="@color/dark_gold"
-                    android:gravity="center"/>
+                    android:textSize="22sp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:paddingVertical="5dp"/>
 
-
-                <CalendarView
+                <TextView
+                    android:id="@+id/txtSalonAddress"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:background="@drawable/background_separator_bottom"/>
+                    android:ellipsize="end"
+                    android:fontFamily="monospace"
+                    android:layout_alignParentLeft="true"
+                    android:text="183E Trần Quốc Thảo, Phường 09, Quận 3, Thành phố Hồ Chí Minh"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="16sp" />
 
-                <HorizontalScrollView
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recViewServiceBooked"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_marginVertical="10dp">
-
-                    </LinearLayout>
-
-                </HorizontalScrollView>
+                    android:layout_height="wrap_content"/>
 
             </LinearLayout>
 
