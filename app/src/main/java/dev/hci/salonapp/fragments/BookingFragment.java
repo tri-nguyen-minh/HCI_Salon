@@ -7,7 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RatingBar;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -191,6 +193,15 @@ public class BookingFragment extends Fragment {
                 intent.putExtra("serviceSearch", dataSpinner.get(spinnerService.getSelectedItemPosition()));
                 intent.putExtra("discountSearch", discountSwitch.isChecked());
                 startActivity(intent);
+            }
+        });
+
+        ImageView imgSearchSlider = getView().findViewById(R.id.imgSearchSlider);
+        imgSearchSlider.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                RelativeLayout searchDrawerHandle = getView().findViewById(R.id.searchDrawerHandle);
+                searchDrawerHandle.performClick();
             }
         });
 

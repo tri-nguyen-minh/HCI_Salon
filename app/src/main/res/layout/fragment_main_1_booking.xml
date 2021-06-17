@@ -11,6 +11,7 @@
         android:layout_height="match_parent">
 
         <ImageView
+            android:id="@+id/imgSearchSlider"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginVertical="5dp"
