@@ -36,7 +36,7 @@ public class StylingFragment extends Fragment {
 
         RecyclerView recyclerView = getView().findViewById(R.id.recViewServiceDetailStyle);
         ArrayList<ServiceDetail> serviceDetailsList = new ArrayList<>();
-        serviceDetailsList.add(new ServiceDetail("Hair Styling", "30 minutes", "70", "0"));
+        serviceDetailsList.add(new ServiceDetail("Hair Styling", "30 minutes", "70", "0", 0));
         RecViewServiceDetailAdapter adapter = new RecViewServiceDetailAdapter(getContext(), getActivity());
         adapter.setServiceDetailsList(serviceDetailsList);
         recyclerView.setAdapter(adapter);

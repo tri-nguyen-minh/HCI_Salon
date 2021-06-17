@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="10dp"
     android:layout_marginHorizontal="5dp"
-    android:layout_marginVertical="10dp"
+    android:layout_marginVertical="5dp"
     app:cardCornerRadius="10dp"
     app:cardElevation="10dp"
     android:id="@+id/serviceDetailCard">
@@ -80,18 +80,41 @@
                         android:textSize="17sp"
                         android:textStyle="bold"
                         android:textColor="@color/dark_gold"
-                        android:layout_marginVertical="5dp"
+                        android:layout_marginVertical="7dp"
                         android:fontFamily="monospace"/>
 
-                    <TextView
-                        android:id="@+id/txtServiceOrgPrice"
+                    <LinearLayout
+                        android:id="@+id/layoutDiscount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="100.000d"
-                        android:textSize="13sp"
-                        android:fontFamily="monospace"
-                        android:layout_marginBottom="5dp"
-                        />
+                        android:orientation="horizontal"
+                        android:gravity="center">
+
+                        <TextView
+                            android:id="@+id/txtServiceDiscount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/background_discount"
+                            android:gravity="center"
+                            android:text="-70%"
+                            android:textSize="13sp"
+                            android:fontFamily="monospace"
+                            android:textColor="@color/white"
+                            android:paddingHorizontal="10dp"
+                            android:paddingVertical="2dp"
+                            android:layout_marginRight="10dp"/>
+
+                        <TextView
+                            android:id="@+id/txtServiceOrgPrice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="100.000d"
+                            android:textColor="@color/red"
+                            android:textSize="13sp"
+                            android:fontFamily="monospace"/>
+
+
+                    </LinearLayout>
 
                 </LinearLayout>
 

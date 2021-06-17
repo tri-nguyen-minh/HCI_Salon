@@ -36,8 +36,8 @@ public class HaircutFragment extends Fragment {
 
         RecyclerView recyclerView = getView().findViewById(R.id.recViewServiceDetailCut);
         ArrayList<ServiceDetail> serviceDetailsList = new ArrayList<>();
-        serviceDetailsList.add(new ServiceDetail("Male Haircut", "30 - 40 minutes", "60", "0"));
-        serviceDetailsList.add(new ServiceDetail("Female Haircut", "30 - 45 minutes", "120", "0"));
+        serviceDetailsList.add(new ServiceDetail("Male Haircut", "30 - 40 minutes", "30", "60", 50));
+        serviceDetailsList.add(new ServiceDetail("Female Haircut", "30 - 45 minutes", "60", "120", 50));
         RecViewServiceDetailAdapter adapter = new RecViewServiceDetailAdapter(getContext(), getActivity());
         adapter.setServiceDetailsList(serviceDetailsList);
         recyclerView.setAdapter(adapter);

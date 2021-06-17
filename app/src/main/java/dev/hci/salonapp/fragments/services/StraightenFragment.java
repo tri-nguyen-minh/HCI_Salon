@@ -36,7 +36,7 @@ public class StraightenFragment extends Fragment {
 
         RecyclerView recyclerView = getView().findViewById(R.id.recViewServiceDetailStraight);
         ArrayList<ServiceDetail> serviceDetailsList = new ArrayList<>();
-        serviceDetailsList.add(new ServiceDetail("Hair Straightening", "60 - 120 minutes", "400", "0"));
+        serviceDetailsList.add(new ServiceDetail("Hair Straightening", "60 - 120 minutes", "400", "0", 0));
         RecViewServiceDetailAdapter adapter = new RecViewServiceDetailAdapter(getContext(), getActivity());
         adapter.setServiceDetailsList(serviceDetailsList);
         recyclerView.setAdapter(adapter);

@@ -5,13 +5,15 @@ import java.io.Serializable;
 public class ServiceDetail implements Serializable {
     private String name, duration, price, orgPrice;
     private boolean inCart;
+    private int discount;
 
-    public ServiceDetail(String name, String duration, String price, String orgPrice) {
+    public ServiceDetail(String name, String duration, String price, String orgPrice, int discount) {
         this.name = name;
         this.duration = duration;
         this.price = price;
         this.orgPrice = orgPrice;
-        inCart = false;
+        this.inCart = false;
+        this.discount = discount;
 
     }
 
@@ -53,5 +55,13 @@ public class ServiceDetail implements Serializable {
 
     public void setInCart(boolean inCart) {
         this.inCart = inCart;
+    }
+
+    public int getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(int discount) {
+        this.discount = discount;
     }
 }

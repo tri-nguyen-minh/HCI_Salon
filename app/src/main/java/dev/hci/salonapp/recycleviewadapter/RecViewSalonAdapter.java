@@ -49,13 +49,13 @@ public class RecViewSalonAdapter extends RecyclerView.Adapter<RecViewSalonAdapte
         holder.txtSalonName.setText(salonList.get(position).getName());
         holder.txtAddress.setText(salonList.get(position).getAddress());
         holder.txtDistance.setText(salonList.get(position).getDistance() + "km");
-        int discount = salonList.get(position).getDiscount();
-        if (discount == 0) {
-            holder.txtDiscount.setVisibility(View.GONE);
-        } else {
-            holder.txtDiscount.setVisibility(View.VISIBLE);
-            holder.txtDiscount.setText("-" + discount + "%");
-        }
+//        int discount = salonList.get(position).getDiscount();
+//        if (discount == 0) {
+//            holder.txtDiscount.setVisibility(View.GONE);
+//        } else {
+//            holder.txtDiscount.setVisibility(View.VISIBLE);
+//            holder.txtDiscount.setText("-" + discount + "%");
+//        }
         holder.txtReviewCount.setText("(" + salonList.get(position).getReviewCount() + ")");
         holder.rating.setRating(salonList.get(position).getRating());
         holder.image.setImageResource(salonList.get(position).getImageId());

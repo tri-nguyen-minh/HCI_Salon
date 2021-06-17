@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.google.android.material.tabs.TabLayout;
@@ -97,6 +98,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onUserClick(View view) {
-        tabLayout.selectTab(tabLayout.getTabAt(3));
+        RelativeLayout searchDrawerHandle = findViewById(R.id.searchDrawerHandle);
+        searchDrawerHandle.performClick();
+//        tabLayout.selectTab(tabLayout.getTabAt(3));
     }
 }

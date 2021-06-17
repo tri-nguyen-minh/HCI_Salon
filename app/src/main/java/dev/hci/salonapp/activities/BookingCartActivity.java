@@ -50,9 +50,9 @@ public class BookingCartActivity extends AppCompatActivity {
 
         RecyclerView recViewService = findViewById(R.id.recViewServiceBooked);
         ArrayList<ServiceDetail> serviceDetailsList = new ArrayList<>();
-        serviceDetailsList.add(new ServiceDetail("Male Haircut", "30 - 40 minutes", "60", "0"));
-        serviceDetailsList.add(new ServiceDetail("Hair Keratin Treatment", "30 - 60 minutes", "450", "600"));
-        serviceDetailsList.add(new ServiceDetail("Hair Styling", "30 minutes", "70", "0"));
+        serviceDetailsList.add(new ServiceDetail("Male Haircut", "30 - 40 minutes", "30", "60", 60));
+        serviceDetailsList.add(new ServiceDetail("Hair Keratin Treatment", "30 - 60 minutes", "450", "600", 25));
+        serviceDetailsList.add(new ServiceDetail("Hair Styling", "30 minutes", "70", "0", 0));
         RecViewServiceBookedAdapter adapter = new RecViewServiceBookedAdapter(BookingCartActivity.this, BookingCartActivity.this);
         adapter.setServiceDetailsList(serviceDetailsList);
         recViewService.setAdapter(adapter);

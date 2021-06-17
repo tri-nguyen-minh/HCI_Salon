@@ -36,8 +36,8 @@ public class ColoringFragment extends Fragment {
 
         RecyclerView recyclerView = getView().findViewById(R.id.recViewServiceDetailColor);
         ArrayList<ServiceDetail> serviceDetailsList = new ArrayList<>();
-        serviceDetailsList.add(new ServiceDetail("Coloring (Short)", "60 - 90 minutes", "600", "0"));
-        serviceDetailsList.add(new ServiceDetail("Coloring (Long)", "60 - 90 minutes", "900", "0"));
+        serviceDetailsList.add(new ServiceDetail("Coloring (Short)", "60 - 90 minutes", "600", "0", 0));
+        serviceDetailsList.add(new ServiceDetail("Coloring (Long)", "60 - 90 minutes", "900", "0", 0));
         RecViewServiceDetailAdapter adapter = new RecViewServiceDetailAdapter(getContext(), getActivity());
         adapter.setServiceDetailsList(serviceDetailsList);
         recyclerView.setAdapter(adapter);

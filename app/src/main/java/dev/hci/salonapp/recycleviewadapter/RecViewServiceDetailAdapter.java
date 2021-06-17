@@ -50,12 +50,13 @@ public class RecViewServiceDetailAdapter extends RecyclerView.Adapter<RecViewSer
         holder.txtServiceName.setText(serviceDetailsList.get(position).getName());
         holder.txtDuration.setText(serviceDetailsList.get(position).getDuration());
         holder.txtPrice.setText(serviceDetailsList.get(position).getPrice() + ".000d");
-        if(serviceDetailsList.get(position).getOrgPrice().equals("0")) {
-            holder.txtOrgPrice.setVisibility(View.GONE);
+        if(serviceDetailsList.get(position).getDiscount() == 0) {
+            holder.layoutDiscount.setVisibility(View.GONE);
         } else {
-            holder.txtOrgPrice.setVisibility(View.VISIBLE);
+            holder.layoutDiscount.setVisibility(View.VISIBLE);
             holder.txtOrgPrice.setPaintFlags(Paint.STRIKE_THRU_TEXT_FLAG);
             holder.txtOrgPrice.setText(serviceDetailsList.get(position).getOrgPrice() + ".000d");
+            holder.txtDiscount.setText("-" + serviceDetailsList.get(position).getDiscount() + "%");
         }
         intent = activity.getIntent();
         holder.imgView.setImageResource(R.drawable.ic_add);
@@ -86,9 +87,10 @@ public class RecViewServiceDetailAdapter extends RecyclerView.Adapter<RecViewSer
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView txtServiceName, txtDuration, txtPrice, txtOrgPrice, txtCartStatus;
+        private TextView txtServiceName, txtDuration, txtPrice, txtOrgPrice, txtDiscount, txtCartStatus;
         private CardView parent;
         private ImageView imgView;
+        private LinearLayout layoutDiscount;
 
         public ViewHolder(View view) {
             super(view);
@@ -96,9 +98,11 @@ public class RecViewServiceDetailAdapter extends RecyclerView.Adapter<RecViewSer
             txtDuration = view.findViewById(R.id.txtDuration);
             txtPrice = view.findViewById(R.id.txtServicePrice);
             txtOrgPrice = view.findViewById(R.id.txtServiceOrgPrice);
+            txtDiscount = view.findViewById(R.id.txtServiceDiscount);
             txtCartStatus = view.findViewById(R.id.txtCartStatus);
             imgView = view.findViewById(R.id.imgAddService);
             parent = view.findViewById(R.id.serviceCard);
+            layoutDiscount = view.findViewById(R.id.layoutDiscount);
         }
     }
 }

@@ -35,7 +35,7 @@ public class WashFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         RecyclerView recyclerView = getView().findViewById(R.id.recViewServiceDetailWash);
         ArrayList<ServiceDetail> serviceDetailsList = new ArrayList<>();
-        serviceDetailsList.add(new ServiceDetail("Wash + Massage", "60 minutes", "70", "0"));
+        serviceDetailsList.add(new ServiceDetail("Wash + Massage", "60 minutes", "70", "0", 0));
         RecViewServiceDetailAdapter adapter = new RecViewServiceDetailAdapter(getContext(), getActivity());
         adapter.setServiceDetailsList(serviceDetailsList);
         recyclerView.setAdapter(adapter);
