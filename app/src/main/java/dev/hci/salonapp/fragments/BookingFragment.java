@@ -20,6 +20,7 @@ import java.util.ArrayList;
 
 import dev.hci.salonapp.R;
 import dev.hci.salonapp.activities.SearchSalonActivity;
+import dev.hci.salonapp.dtos.ServiceDetail;
 import dev.hci.salonapp.recycleviewadapter.RecViewSalonAdapter;
 import dev.hci.salonapp.recycleviewadapter.RecViewServiceAdapter;
 import dev.hci.salonapp.dtos.Salon;
@@ -32,6 +33,8 @@ public class BookingFragment extends Fragment {
     private RecViewSalonAdapter salonAdapter;
     private Spinner spinnerService;
     private ArrayList<String> dataSpinner;
+    private ArrayList<ServiceDetail> serviceDetailList;
+    private Salon salon;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
