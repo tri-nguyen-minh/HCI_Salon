@@ -17,6 +17,7 @@ import java.util.ArrayList;
 
 import dev.hci.salonapp.R;
 import dev.hci.salonapp.dtos.Salon;
+import dev.hci.salonapp.dtos.ServiceDetail;
 import dev.hci.salonapp.recycleviewadapter.RecViewSalonAdapter;
 
 public class SearchSalonActivity extends AppCompatActivity {
@@ -24,6 +25,8 @@ public class SearchSalonActivity extends AppCompatActivity {
     private Intent intent;
     private Spinner spinnerCommon;
     private ArrayAdapter<String> dataAdapter;
+    private ArrayList<ServiceDetail> serviceDetailsList;
+    private Salon salon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,10 +74,26 @@ public class SearchSalonActivity extends AppCompatActivity {
         RecyclerView recViewSalon = findViewById(R.id.recViewNearSalon);
         ArrayList<Salon> salonList = new ArrayList<>();
 
-        salonList.add(new Salon("Tuan Tay Salon", "Số 578 Sư Vạn Hạnh, Phường 10, Quận 10, Thành phố Hồ Chí Minh",
-                1.5, Float.parseFloat("3.5"), 56, R.drawable.salon_tuan_tay));
-        salonList.add(new Salon("Phuong Tokyo Salon", "686 Cách Mạng Tháng 8, Phường 05, Quận Tân Bình, Thành phố Hồ Chí Minh",
-                2.9, Float.parseFloat("4"), 78, R.drawable.salon_phuong_tokyo));
+        salon = new Salon("Tuan Tay Salon", "Số 578 Sư Vạn Hạnh, Phường 10, Quận 10, Thành phố Hồ Chí Minh",
+                1.5, Float.parseFloat("3.5"), 56, R.drawable.salon_tuan_tay);
+        serviceDetailsList = new ArrayList<>();
+        serviceDetailsList.add(new ServiceDetail("Male Haircut", "30 - 40 minutes", "30", "60", 50));
+        serviceDetailsList.add(new ServiceDetail("Female Haircut", "30 - 45 minutes", "60", "120", 50));
+        serviceDetailsList.add(new ServiceDetail("Hair Loss Treatment", "60 - 120 minutes", "900", "1.200", 25));
+        serviceDetailsList.add(new ServiceDetail("Hair Collagen Treatment", "30 - 60 minutes", "300", "400", 25));
+        serviceDetailsList.add(new ServiceDetail("Hair Keratin Treatment", "30 - 60 minutes", "450", "600", 25));
+        salon.setServiceDetailsList(serviceDetailsList);
+        salonList.add(salon);
+        salon = new Salon("Phuong Tokyo Salon", "686 Cách Mạng Tháng 8, Phường 05, Quận Tân Bình, Thành phố Hồ Chí Minh",
+                2.9, Float.parseFloat("4"), 78, R.drawable.salon_phuong_tokyo);
+        serviceDetailsList = new ArrayList<>();
+        serviceDetailsList.add(new ServiceDetail("Male Haircut", "30 - 40 minutes", "30", "60", 50));
+        serviceDetailsList.add(new ServiceDetail("Female Haircut", "30 - 45 minutes", "60", "120", 50));
+        serviceDetailsList.add(new ServiceDetail("Hair Loss Treatment", "60 - 120 minutes", "900", "1.200", 25));
+        serviceDetailsList.add(new ServiceDetail("Hair Collagen Treatment", "30 - 60 minutes", "300", "400", 25));
+        serviceDetailsList.add(new ServiceDetail("Hair Keratin Treatment", "30 - 60 minutes", "450", "600", 25));
+        salon.setServiceDetailsList(serviceDetailsList);
+        salonList.add(salon);
         salonList.add(new Salon("Mervyn Hair Salon", "Số 16, Cao Bá Nhạ, Phường Nguyễn Cư Trinh, Quận 1, Thành phố Hồ Chí Minh",
                 3.3, Float.parseFloat("4"), 126, R.drawable.salon_mervyn_art));
         salonList.add(new Salon("Nguyen Duy Salon", "183E Trần Quốc Thảo, Phường 09, Quận 3, Thành phố Hồ Chí Minh",

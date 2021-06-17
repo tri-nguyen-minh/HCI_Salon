@@ -125,10 +125,11 @@
 
         </LinearLayout>
 
-        <RelativeLayout
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recViewServiceSalon"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:orientation="horizontal"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/layoutSalonInfo"/>
