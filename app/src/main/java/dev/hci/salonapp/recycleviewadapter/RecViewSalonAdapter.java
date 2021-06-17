@@ -8,9 +8,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RatingBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -18,6 +20,7 @@ import java.util.ArrayList;
 import dev.hci.salonapp.R;
 import dev.hci.salonapp.activities.SalonActivity;
 import dev.hci.salonapp.dtos.Salon;
+import dev.hci.salonapp.dtos.ServiceDetail;
 
 public class RecViewSalonAdapter extends RecyclerView.Adapter<RecViewSalonAdapter.ViewHolder>{
 
@@ -69,6 +72,14 @@ public class RecViewSalonAdapter extends RecyclerView.Adapter<RecViewSalonAdapte
                 activity.startActivity(newIntent);
             }
         });
+        if (salonList.get(position).getServiceDetailsList() != null) {
+            ArrayList<ServiceDetail> serviceDetailList = salonList.get(position).getServiceDetailsList();
+            RecViewServiceDetailAdapter adapter = new RecViewServiceDetailAdapter(context, activity);
+            adapter.setServiceDetailsList(serviceDetailList);
+            holder.recViewServiceSalon.setAdapter(adapter);
+            holder.recViewServiceSalon.setLayoutManager(new LinearLayoutManager(context, RecyclerView.HORIZONTAL,false));
+
+        }
     }
 
     @Override
@@ -77,10 +88,11 @@ public class RecViewSalonAdapter extends RecyclerView.Adapter<RecViewSalonAdapte
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView txtSalonName, txtAddress, txtDistance, txtDiscount, txtReviewCount;
+        private TextView txtSalonName, txtAddress, txtDistance, txtReviewCount;
         private RatingBar rating;
         private ImageView image;
         private CardView salonCard;
+        private RecyclerView recViewServiceSalon;
 
         public ViewHolder(View view) {
             super(view);
@@ -92,6 +104,7 @@ public class RecViewSalonAdapter extends RecyclerView.Adapter<RecViewSalonAdapte
             rating = view.findViewById(R.id.ratingSalon);
             image = view.findViewById(R.id.imgSalon);
             salonCard = view.findViewById(R.id.salonCard);
+            recViewServiceSalon = view.findViewById(R.id.recViewServiceSalon);
         }
     }
 }

@@ -21,6 +21,7 @@
             android:src="@drawable/salon_phuong_tokyo"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="120dp"
             android:layout_height="128dp"
@@ -77,14 +78,16 @@
             </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
         <LinearLayout
+            android:id="@+id/layoutSalonInfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="left|center"
             android:orientation="vertical"
             android:layout_marginTop="2dp"
             android:padding="3dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/recViewServiceSalon"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imgSalon">
 
@@ -122,6 +125,13 @@
 
         </LinearLayout>
 
+        <RelativeLayout
+            android:id="@+id/recViewServiceSalon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layoutSalonInfo"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
