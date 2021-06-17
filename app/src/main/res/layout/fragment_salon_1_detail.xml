@@ -48,7 +48,7 @@
                     android:layout_height="45dp"
                     android:padding="5dp"
                     android:src="@drawable/ic_link"
-                    android:background="@drawable/background_like"
+                    android:background="@drawable/background_link_gold"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent" />
@@ -78,7 +78,7 @@
                 <ImageView
                     android:layout_width="45dp"
                     android:layout_height="45dp"
-                    android:background="@drawable/background_like"
+                    android:background="@drawable/background_link_gold"
                     android:padding="5dp"
                     android:src="@drawable/ic_location"
                     app:layout_constraintBottom_toBottomOf="parent"

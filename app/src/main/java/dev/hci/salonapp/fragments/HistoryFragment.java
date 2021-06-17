@@ -2,6 +2,7 @@ package dev.hci.salonapp.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.DragEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -63,6 +64,35 @@ public class HistoryFragment extends Fragment {
             }
         });
         tabLayout.setVisibility(View.GONE);
+
+        viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                if (position == 0) {
+                    txtBooking.setTextColor(getResources().getColor(R.color.white));
+                    txtBooking.setBackground(getResources().getDrawable(R.drawable.background_history_selected));
+
+                    txtShopping.setTextColor(getResources().getColor(R.color.black));
+                    txtShopping.setBackground(getResources().getDrawable(R.drawable.background_edit_text_general));
+                } else {
+                    txtShopping.setTextColor(getResources().getColor(R.color.white));
+                    txtShopping.setBackground(getResources().getDrawable(R.drawable.background_history_selected));
+
+                    txtBooking.setTextColor(getResources().getColor(R.color.black));
+                    txtBooking.setBackground(getResources().getDrawable(R.drawable.background_edit_text_general));
+                }
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
 
         txtBooking = getView().findViewById(R.id.txtBookingHistory);
         txtShopping = getView().findViewById(R.id.txtShoppingHistory);

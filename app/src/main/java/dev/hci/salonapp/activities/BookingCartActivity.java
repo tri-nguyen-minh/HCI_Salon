@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CalendarView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -56,6 +57,21 @@ public class BookingCartActivity extends AppCompatActivity {
         adapter.setServiceDetailsList(serviceDetailsList);
         recViewService.setAdapter(adapter);
         recViewService.setLayoutManager(new LinearLayoutManager(BookingCartActivity.this, RecyclerView.VERTICAL,false));
+
+        TextView btnKeepShopping = findViewById(R.id.btnKeepShopping);
+        btnKeepShopping.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+        textViewCommon = findViewById(R.id.txtServicePriceTotal);
+        int total = 0;
+        for (ServiceDetail serviceDetail : serviceDetailsList) {
+            total += Integer.parseInt(serviceDetail.getPrice());
+        }
+        textViewCommon.setText(total + ".000d");
 
     }
 

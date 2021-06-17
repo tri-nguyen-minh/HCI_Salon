@@ -7,14 +7,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
 import dev.hci.salonapp.R;
+import dev.hci.salonapp.activities.BookingCartActivity;
 import dev.hci.salonapp.dtos.ServiceDetail;
 
 public class RecViewServiceBookedAdapter extends RecyclerView.Adapter<RecViewServiceBookedAdapter.ViewHolder> {
@@ -49,6 +52,22 @@ public class RecViewServiceBookedAdapter extends RecyclerView.Adapter<RecViewSer
             @Override
             public void onClick(View view) {
                 serviceDetailsList.remove(position);
+                RecyclerView recViewService = activity.findViewById(R.id.recViewServiceBooked);
+                RecViewServiceBookedAdapter adapter = new RecViewServiceBookedAdapter(context, activity);
+                adapter.setServiceDetailsList(serviceDetailsList);
+                recViewService.setAdapter(adapter);
+                recViewService.setLayoutManager(new LinearLayoutManager(context, RecyclerView.VERTICAL,false));
+                if (serviceDetailsList.size() == 0) {
+                    recViewService.setVisibility(View.GONE);
+                    LinearLayout layoutNoService = activity.findViewById(R.id.layoutNoService);
+                    layoutNoService.setVisibility(View.VISIBLE);
+                }
+                TextView txtTotal = activity.findViewById(R.id.txtServicePriceTotal);
+                int total = 0;
+                for (ServiceDetail serviceDetail : serviceDetailsList) {
+                    total += Integer.parseInt(serviceDetail.getPrice());
+                }
+                txtTotal.setText(total + ".000d");
             }
         });
     }

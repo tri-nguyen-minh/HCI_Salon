@@ -87,7 +87,7 @@ public class RecViewSalonAdapter extends RecyclerView.Adapter<RecViewSalonAdapte
             txtSalonName = view.findViewById(R.id.txtSalonName);
             txtAddress = view.findViewById(R.id.txtSalonAddress);
             txtDistance = view.findViewById(R.id.txtSalonDistance);
-            txtDiscount = view.findViewById(R.id.txtDiscount);
+//            txtDiscount = view.findViewById(R.id.txtDiscount);
             txtReviewCount = view.findViewById(R.id.reviewCount);
             rating = view.findViewById(R.id.ratingSalon);
             image = view.findViewById(R.id.imgSalon);
