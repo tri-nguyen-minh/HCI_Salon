@@ -10,11 +10,18 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <ImageView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginVertical="5dp"
+            android:src="@drawable/ic_search"
+            android:background="@drawable/background_like"/>
+
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="60dp"
             android:paddingHorizontal="15dp"
+            android:layout_marginTop="60dp"
             android:scrollbars="none">
 
             <LinearLayout
@@ -167,6 +174,7 @@
             android:content="@id/searchDrawerContent">
 
             <RelativeLayout
+                android:visibility="invisible"
                 android:id="@+id/searchDrawerHandle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

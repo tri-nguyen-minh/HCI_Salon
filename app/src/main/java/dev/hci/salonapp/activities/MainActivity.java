@@ -4,7 +4,11 @@ import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.RatingBar;
 import android.widget.RelativeLayout;
+import android.widget.Spinner;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import com.google.android.material.tabs.TabLayout;
@@ -101,5 +105,18 @@ public class MainActivity extends AppCompatActivity {
         RelativeLayout searchDrawerHandle = findViewById(R.id.searchDrawerHandle);
         searchDrawerHandle.performClick();
 //        tabLayout.selectTab(tabLayout.getTabAt(3));
+    }
+
+    public void onViewMore(View view) {
+        EditText editSearch = findViewById(R.id.editSearchSalonMain);
+        RatingBar rating = findViewById(R.id.searchRatingSalonMain);
+        Switch discountSwitch = findViewById(R.id.searchDiscountSwitchMain);
+        Spinner spinnerService = findViewById(R.id.spinnerServiceMain);
+        Intent intent = new Intent(MainActivity.this, SearchSalonActivity.class);
+        intent.putExtra("nameSearch", editSearch.getText().toString());
+        intent.putExtra("ratingSearch", rating.getRating());
+        intent.putExtra("serviceSearch", spinnerService.getSelectedItem().toString());
+        intent.putExtra("discountSearch", discountSwitch.isChecked());
+        startActivity(intent);
     }
 }
