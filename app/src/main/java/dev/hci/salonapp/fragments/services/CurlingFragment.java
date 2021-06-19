@@ -18,6 +18,8 @@ import dev.hci.salonapp.recycleviewadapter.RecViewServiceDetailAdapter;
 
 public class CurlingFragment extends Fragment {
 
+    private final String SALON = "SALON_ACTIVITY";
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,7 +39,7 @@ public class CurlingFragment extends Fragment {
         RecyclerView recyclerView = getView().findViewById(R.id.recViewServiceDetailCurl);
         ArrayList<ServiceDetail> serviceDetailsList = new ArrayList<>();
         serviceDetailsList.add(new ServiceDetail("Hair Curling", "30 - 60 minutes", "350", "0", 0));
-        RecViewServiceDetailAdapter adapter = new RecViewServiceDetailAdapter(getContext(), getActivity());
+        RecViewServiceDetailAdapter adapter = new RecViewServiceDetailAdapter(getContext(), getActivity(), SALON);
         adapter.setServiceDetailsList(serviceDetailsList);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL,false));

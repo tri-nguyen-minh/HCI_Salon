@@ -26,14 +26,18 @@ public class RecViewServiceDetailAdapter extends RecyclerView.Adapter<RecViewSer
     private Context context;
     private Activity activity;
     private Intent intent;
+    private String activityType;
+    private final String SALON = "SALON_ACTIVITY";
+
 
     public void setServiceDetailsList(ArrayList<ServiceDetail> serviceDetailsList) {
         this.serviceDetailsList = serviceDetailsList;
     }
 
-    public RecViewServiceDetailAdapter(Context context, Activity activity) {
+    public RecViewServiceDetailAdapter(Context context, Activity activity, String activityType) {
         this.context = context;
         this.activity = activity;
+        this.activityType = activityType;
     }
 
     @Override
@@ -59,26 +63,33 @@ public class RecViewServiceDetailAdapter extends RecyclerView.Adapter<RecViewSer
             holder.txtDiscount.setText("-" + serviceDetailsList.get(position).getDiscount() + "%");
         }
         intent = activity.getIntent();
-        holder.imgView.setImageResource(R.drawable.ic_add);
-        holder.imgView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (!intent.getBooleanExtra("logged", false)) {
-                    intent = new Intent(context, MainActivity.class);
-                    intent.putExtra("forced_logged", true);
-                    activity.startActivity(intent);
-                } else {
-                    int cartCount = intent.getIntExtra("cartCount", 0) + 1;
-                    intent.putExtra("cartCount", cartCount);
-                    activity.setIntent(intent);
-                    LinearLayout layoutServiceCart = activity.findViewById(R.id.layoutServiceCart);
-                    layoutServiceCart.setVisibility(View.VISIBLE);
-                    ((TextView)activity.findViewById(R.id.txtCartCount)).setText(cartCount + "");
-                    holder.imgView.setVisibility(View.GONE);
-                    holder.txtCartStatus.setVisibility(View.VISIBLE);
+        if (activityType.equals(SALON)) {
+            holder.imgView.setImageResource(R.drawable.ic_add);
+            holder.imgView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (!intent.getBooleanExtra("logged", false)) {
+                        intent = new Intent(context, MainActivity.class);
+                        intent.putExtra("forced_logged", true);
+                        activity.startActivity(intent);
+                    } else {
+                        int cartCount = intent.getIntExtra("cartCount", 0) + 1;
+                        intent.putExtra("cartCount", cartCount);
+                        activity.setIntent(intent);
+                        LinearLayout layoutServiceCart = activity.findViewById(R.id.layoutServiceCart);
+                        layoutServiceCart.setVisibility(View.VISIBLE);
+                        ((TextView) activity.findViewById(R.id.txtCartCount)).setText(cartCount + "");
+                        holder.imgView.setVisibility(View.GONE);
+                        holder.txtCartStatus.setVisibility(View.VISIBLE);
+                    }
                 }
-            }
-        });
+            });
+        } else {
+            holder.layoutServicePrice.setBackground(null);
+            holder.imgView.setVisibility(View.GONE);
+            holder.txtCartStatus.setVisibility(View.GONE);
+            holder.layoutServicePrice.setPadding(0, 0,0,0);
+        }
     }
 
     @Override
@@ -90,7 +101,7 @@ public class RecViewServiceDetailAdapter extends RecyclerView.Adapter<RecViewSer
         private TextView txtServiceName, txtDuration, txtPrice, txtOrgPrice, txtDiscount, txtCartStatus;
         private CardView parent;
         private ImageView imgView;
-        private LinearLayout layoutDiscount;
+        private LinearLayout layoutDiscount, layoutServicePrice;
 
         public ViewHolder(View view) {
             super(view);
@@ -103,6 +114,7 @@ public class RecViewServiceDetailAdapter extends RecyclerView.Adapter<RecViewSer
             imgView = view.findViewById(R.id.imgAddService);
             parent = view.findViewById(R.id.serviceCard);
             layoutDiscount = view.findViewById(R.id.layoutDiscount);
+            layoutServicePrice = view.findViewById(R.id.layoutServicePrice);
         }
     }
 }

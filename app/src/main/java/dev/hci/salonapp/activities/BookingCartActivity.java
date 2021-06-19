@@ -73,6 +73,7 @@ public class BookingCartActivity extends AppCompatActivity {
         }
         textViewCommon.setText(total + ".000d");
 
+        this.getSupportActionBar().hide();
     }
 
     public void onBackBooking(View view) {

@@ -18,6 +18,8 @@ import dev.hci.salonapp.recycleviewadapter.RecViewServiceDetailAdapter;
 
 public class ColoringFragment extends Fragment {
 
+    private final String SALON = "SALON_ACTIVITY";
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +40,7 @@ public class ColoringFragment extends Fragment {
         ArrayList<ServiceDetail> serviceDetailsList = new ArrayList<>();
         serviceDetailsList.add(new ServiceDetail("Coloring (Short)", "60 - 90 minutes", "600", "0", 0));
         serviceDetailsList.add(new ServiceDetail("Coloring (Long)", "60 - 90 minutes", "900", "0", 0));
-        RecViewServiceDetailAdapter adapter = new RecViewServiceDetailAdapter(getContext(), getActivity());
+        RecViewServiceDetailAdapter adapter = new RecViewServiceDetailAdapter(getContext(), getActivity(), SALON);
         adapter.setServiceDetailsList(serviceDetailsList);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL,false));

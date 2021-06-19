@@ -4,9 +4,12 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
@@ -15,10 +18,12 @@ import com.google.android.material.tabs.TabLayout;
 
 import dev.hci.salonapp.activities.MainActivity;
 import dev.hci.salonapp.R;
+import dev.hci.salonapp.activities.RegisterActivity;
 
 public class ProfileFragment extends Fragment {
 
     private Intent intent;
+    private boolean passwordDisplayed;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -31,6 +36,7 @@ public class ProfileFragment extends Fragment {
         // Inflate the layout for this fragment
         intent = getActivity().getIntent();
         if (!intent.getBooleanExtra("logged", false)) {
+            passwordDisplayed = false;
             return inflater.inflate(R.layout.fragment_main_5_login, container, false);
         }
         return inflater.inflate(R.layout.fragment_main_4_profile, container, false);
@@ -41,6 +47,24 @@ public class ProfileFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         if (!intent.getBooleanExtra("logged", false)) {
+            TextView txtLoginError = getView().findViewById(R.id.txtLoginError);
+            txtLoginError.setText("");
+            EditText editPassword = getView().findViewById(R.id.editPassword);
+            editPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+            ImageView imgDisplayPassword = getView().findViewById(R.id.imgDisplayPassword);
+            imgDisplayPassword.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    System.out.println(passwordDisplayed);
+                    if (passwordDisplayed) {
+                        editPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                        passwordDisplayed = false;
+                    } else {
+                        editPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_NORMAL);
+                        passwordDisplayed = true;
+                    }
+                }
+            });
             TextView btnLogin = getView().findViewById(R.id.btnLogin);
             btnLogin.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -50,11 +74,20 @@ public class ProfileFragment extends Fragment {
 //                    txtTag.setText("Welcome,");
 //                    TextView txtName = getActivity().findViewById(R.id.txtUsername);
 //                    txtName.setText("User Name");
+
                     Intent intent = new Intent(getContext(), MainActivity.class);
                     intent.putExtra("logged", true);
                     getActivity().setIntent(intent);
                     TabLayout tabLayout = getActivity().findViewById(R.id.tabLayout);
                     tabLayout.selectTab(tabLayout.getTabAt(0));
+                }
+            });
+            TextView txtToRegister = getView().findViewById(R.id.txtToRegister);
+            txtToRegister.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getContext(), RegisterActivity.class);
+                    startActivity(intent);
                 }
             });
         } else {
@@ -79,6 +112,7 @@ public class ProfileFragment extends Fragment {
                                     getActivity().setIntent(intent);
                                     TabLayout tabLayout = getActivity().findViewById(R.id.tabLayout);
                                     tabLayout.selectTab(tabLayout.getTabAt(0));
+
                                 }
                             });
                     builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {

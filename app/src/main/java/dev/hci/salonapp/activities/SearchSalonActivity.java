@@ -9,7 +9,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RatingBar;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.Switch;
 
@@ -107,6 +109,14 @@ public class SearchSalonActivity extends AppCompatActivity {
         recViewSalon.setAdapter(salonAdapter);
         recViewSalon.setLayoutManager(new LinearLayoutManager(SearchSalonActivity.this, RecyclerView.VERTICAL,false));
 
+        ImageView imgSearchSlider = findViewById(R.id.imgSearchSlider);
+        imgSearchSlider.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                RelativeLayout searchDrawerHandle = findViewById(R.id.searchDrawerHandle);
+                searchDrawerHandle.performClick();
+            }
+        });
         this.getSupportActionBar().hide();
     }
 

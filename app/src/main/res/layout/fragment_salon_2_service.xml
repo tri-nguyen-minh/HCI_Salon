@@ -70,7 +70,7 @@
                         android:textColor="@color/black"
                         android:textSize="15sp"
                         android:textStyle="bold"
-                        android:background="@drawable/background_circle"
+                        android:background="@drawable/background_circle_yellow"
                         android:layout_width="25dp"
                         android:layout_height="25dp"
                         android:layout_alignParentRight="true"

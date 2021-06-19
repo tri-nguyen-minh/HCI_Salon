@@ -18,6 +18,8 @@ import dev.hci.salonapp.recycleviewadapter.RecViewServiceDetailAdapter;
 
 public class StraightenFragment extends Fragment {
 
+    private final String SALON = "SALON_ACTIVITY";
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,7 +39,7 @@ public class StraightenFragment extends Fragment {
         RecyclerView recyclerView = getView().findViewById(R.id.recViewServiceDetailStraight);
         ArrayList<ServiceDetail> serviceDetailsList = new ArrayList<>();
         serviceDetailsList.add(new ServiceDetail("Hair Straightening", "60 - 120 minutes", "400", "0", 0));
-        RecViewServiceDetailAdapter adapter = new RecViewServiceDetailAdapter(getContext(), getActivity());
+        RecViewServiceDetailAdapter adapter = new RecViewServiceDetailAdapter(getContext(), getActivity(), SALON);
         adapter.setServiceDetailsList(serviceDetailsList);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL,false));

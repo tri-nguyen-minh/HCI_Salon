@@ -78,6 +78,10 @@ public class SalonActivity extends AppCompatActivity {
             }
         });
 
+        if (intent.getBooleanExtra("service", false)) {
+            tabLayout.selectTab(tabLayout.getTabAt(1));
+        }
+
         this.getSupportActionBar().hide();
     }
 
@@ -89,9 +93,5 @@ public class SalonActivity extends AppCompatActivity {
         Intent newIntent = new Intent(SalonActivity.this, MainActivity.class);
         newIntent.putExtra("logged", intent.getBooleanExtra("logged", false));
         startActivity(newIntent);
-    }
-
-    public void onCartClick(View view) {
-        System.out.println(intent.getIntExtra("cartCount", 0));
     }
 }

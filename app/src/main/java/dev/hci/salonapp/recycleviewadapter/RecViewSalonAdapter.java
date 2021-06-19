@@ -29,6 +29,7 @@ public class RecViewSalonAdapter extends RecyclerView.Adapter<RecViewSalonAdapte
     private ArrayList<Salon> salonList;
     private int layoutId;
     private Intent intent;
+    private final String MAIN = "MAIN_ACTIVITY";
 
     public RecViewSalonAdapter(Context context, Activity activity, int layoutId) {
         this.context = context;
@@ -74,12 +75,24 @@ public class RecViewSalonAdapter extends RecyclerView.Adapter<RecViewSalonAdapte
         });
         if (salonList.get(position).getServiceDetailsList() != null) {
             ArrayList<ServiceDetail> serviceDetailList = salonList.get(position).getServiceDetailsList();
-            RecViewServiceDetailAdapter adapter = new RecViewServiceDetailAdapter(context, activity);
+            RecViewServiceDetailAdapter adapter = new RecViewServiceDetailAdapter(context, activity, MAIN);
             adapter.setServiceDetailsList(serviceDetailList);
             holder.recViewServiceSalon.setAdapter(adapter);
-            holder.recViewServiceSalon.setLayoutManager(new LinearLayoutManager(context, RecyclerView.HORIZONTAL,false));
-
+            holder.recViewServiceSalon.setLayoutManager(new LinearLayoutManager(context, RecyclerView.VERTICAL,false));
+        } else {
+            holder.recViewServiceSalon.setVisibility(View.GONE);
         }
+        holder.txtViewSalonService.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent = activity.getIntent();
+                Intent newIntent = new Intent(context, SalonActivity.class);
+                newIntent.putExtra("service", true);
+                newIntent.putExtra("salon", salonList.get(position));
+                newIntent.putExtra("logged", intent.getBooleanExtra("logged", false));
+                activity.startActivity(newIntent);
+            }
+        });
     }
 
     @Override
@@ -88,7 +101,7 @@ public class RecViewSalonAdapter extends RecyclerView.Adapter<RecViewSalonAdapte
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView txtSalonName, txtAddress, txtDistance, txtReviewCount;
+        private TextView txtSalonName, txtAddress, txtDistance, txtReviewCount, txtViewSalonService;
         private RatingBar rating;
         private ImageView image;
         private CardView salonCard;
@@ -105,6 +118,7 @@ public class RecViewSalonAdapter extends RecyclerView.Adapter<RecViewSalonAdapte
             image = view.findViewById(R.id.imgSalon);
             salonCard = view.findViewById(R.id.salonCard);
             recViewServiceSalon = view.findViewById(R.id.recViewServiceSalon);
+            txtViewSalonService = view.findViewById(R.id.txtViewSalonService);
         }
     }
 }
