@@ -2,6 +2,7 @@ package dev.hci.salonapp.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -66,6 +67,23 @@ public class DetailFragment extends Fragment {
 
         txtCommon = getView().findViewById(R.id.salonAddress);
         txtCommon.setText(salon.getAddress());
+
+        txtCommon = getView().findViewById(R.id.salonDescription);
+        TextView txtViewDescription = getView().findViewById(R.id.txtViewDescription);
+        txtViewDescription.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (txtViewDescription.getText().toString().equals("See more")) {
+                    txtCommon.setEllipsize(null);
+                    txtCommon.setMaxLines(50);
+                    txtViewDescription.setText("See less");
+                } else {
+                    txtCommon.setEllipsize(TextUtils.TruncateAt.END);
+                    txtCommon.setMaxLines(2);
+                    txtViewDescription.setText("See more");
+                }
+            }
+        });
 
 
     }

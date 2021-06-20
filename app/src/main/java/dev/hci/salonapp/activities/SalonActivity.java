@@ -81,6 +81,7 @@ public class SalonActivity extends AppCompatActivity {
         if (intent.getBooleanExtra("service", false)) {
             tabLayout.selectTab(tabLayout.getTabAt(1));
         }
+        tabLayout.getTabAt(tabLayout.getSelectedTabPosition()).getIcon().setColorFilter(getResources().getColor(R.color.gold), PorterDuff.Mode.SRC_IN);
 
         this.getSupportActionBar().hide();
     }

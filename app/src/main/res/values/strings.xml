@@ -15,4 +15,7 @@
         <font color="#333333">Confirm Password</font>
         <font color="#FF0000">*</font>
     </string>
+    <string name="name_hint">
+        <font color="#333333">Full Name</font>
+    </string>
 </resources>

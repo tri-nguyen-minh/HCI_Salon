@@ -58,9 +58,11 @@ public class ProfileFragment extends Fragment {
                     System.out.println(passwordDisplayed);
                     if (passwordDisplayed) {
                         editPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                        imgDisplayPassword.setImageResource(R.drawable.ic_eye);
                         passwordDisplayed = false;
                     } else {
                         editPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_NORMAL);
+                        imgDisplayPassword.setImageResource(R.drawable.ic_eye_view);
                         passwordDisplayed = true;
                     }
                 }

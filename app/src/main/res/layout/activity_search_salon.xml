@@ -17,11 +17,12 @@
         app:layout_constraintRight_toRightOf="parent"
         android:gravity="left|center"
         android:background="@color/black"
-        android:paddingVertical="5dp">
+        android:paddingVertical="5dp"
+        android:paddingHorizontal="5dp">
 
         <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
             android:onClick="onBackSearch"
             android:src="@drawable/ic_arrow_back"
             android:layout_marginLeft="5dp"/>

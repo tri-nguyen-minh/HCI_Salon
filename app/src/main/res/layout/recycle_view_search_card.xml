@@ -90,7 +90,7 @@
                 android:gravity="left|center"
                 android:orientation="vertical"
                 android:layout_marginTop="2dp"
-                android:padding="3dp"
+                android:padding="5dp"
                 app:layout_constraintBottom_toTopOf="@+id/recViewServiceSalon"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imgSalon">
@@ -146,11 +146,12 @@
         <TextView
             android:id="@+id/txtViewSalonService"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="45dp"
             android:text="More Services"
             android:fontFamily="monospace"
-            android:textSize="13sp"
+            android:textSize="14sp"
             android:textColor="@color/dark_gold"
+            android:textStyle="bold"
             android:gravity="center"/>
 
     </LinearLayout>

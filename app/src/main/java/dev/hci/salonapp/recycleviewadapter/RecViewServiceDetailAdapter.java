@@ -56,7 +56,9 @@ public class RecViewServiceDetailAdapter extends RecyclerView.Adapter<RecViewSer
         holder.txtPrice.setText(serviceDetailsList.get(position).getPrice() + ".000d");
         if(serviceDetailsList.get(position).getDiscount() == 0) {
             holder.layoutDiscount.setVisibility(View.GONE);
+            holder.txtPrice.setTextColor(context.getResources().getColor(R.color.black));
         } else {
+            holder.txtPrice.setTextColor(context.getResources().getColor(R.color.dark_gold));
             holder.layoutDiscount.setVisibility(View.VISIBLE);
             holder.txtOrgPrice.setPaintFlags(Paint.STRIKE_THRU_TEXT_FLAG);
             holder.txtOrgPrice.setText(serviceDetailsList.get(position).getOrgPrice() + ".000d");
