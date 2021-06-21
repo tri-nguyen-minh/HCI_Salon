@@ -50,5 +50,31 @@
         <item name="android:background">@drawable/background_like</item>
     </style>
 
+    <style name="stylist_layout">
+        <item name="android:layout_width">100dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center|top</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:layout_marginHorizontal">10dp</item>
+    </style>
+
+    <style name="stylist_card">
+        <item name="android:layout_width">60dp</item>
+        <item name="android:layout_height">60dp</item>
+        <item name="cardCornerRadius">15dp</item>
+    </style>
+
+    <style name="profile_tab">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">left|center</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:paddingRight">15dp</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingVertical">5dp</item>
+        <item name="android:background">@drawable/background_separator_bottom</item>
+    </style>
+
 
 </resources>

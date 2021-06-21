@@ -62,9 +62,6 @@ public class DetailFragment extends Fragment {
         lookFlipper.setOutAnimation(AnimationUtils.loadAnimation(getContext(), R.anim.flipper_left_out));
         lookFlipper.startFlipping();
 
-        txtCommon = getView().findViewById(R.id.salonName);
-        txtCommon.setText(salon.getName());
-
         txtCommon = getView().findViewById(R.id.salonAddress);
         txtCommon.setText(salon.getAddress());
 

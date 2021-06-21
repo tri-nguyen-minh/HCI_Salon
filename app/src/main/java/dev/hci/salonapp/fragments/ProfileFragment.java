@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
@@ -24,6 +25,7 @@ public class ProfileFragment extends Fragment {
 
     private Intent intent;
     private boolean passwordDisplayed;
+    private TabLayout tabLayout;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -80,7 +82,7 @@ public class ProfileFragment extends Fragment {
                     Intent intent = new Intent(getContext(), MainActivity.class);
                     intent.putExtra("logged", true);
                     getActivity().setIntent(intent);
-                    TabLayout tabLayout = getActivity().findViewById(R.id.tabLayout);
+                    tabLayout = getActivity().findViewById(R.id.tabLayout);
                     tabLayout.selectTab(tabLayout.getTabAt(0));
                 }
             });
@@ -93,7 +95,7 @@ public class ProfileFragment extends Fragment {
                 }
             });
         } else {
-            TextView btnLogout = getView().findViewById(R.id.btnLogout);
+            LinearLayout btnLogout = getView().findViewById(R.id.btnLogout);
             btnLogout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -112,7 +114,7 @@ public class ProfileFragment extends Fragment {
                                     Intent intent = new Intent(getContext(), MainActivity.class);
                                     intent.putExtra("logged", false);
                                     getActivity().setIntent(intent);
-                                    TabLayout tabLayout = getActivity().findViewById(R.id.tabLayout);
+                                    tabLayout = getActivity().findViewById(R.id.tabLayout);
                                     tabLayout.selectTab(tabLayout.getTabAt(0));
 
                                 }
@@ -126,6 +128,28 @@ public class ProfileFragment extends Fragment {
                     dialog.show();
                 }
             });
+
+//            TabLayout tabHistory = getView().findViewById(R.id.tabLayoutHistory);
+//
+//            LinearLayout profileBooking = getView().findViewById(R.id.profileBooking);
+//            profileBooking.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    tabLayout.selectTab(tabLayout.getTabAt(3));
+//                    tabHistory.selectTab(tabHistory.getTabAt(0));
+//
+//                }
+//            });
+//
+//            LinearLayout profileShopping = getView().findViewById(R.id.profileShopping);
+//            profileShopping.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    tabLayout.selectTab(tabLayout.getTabAt(3));
+//                    tabHistory.selectTab(tabHistory.getTabAt(1));
+//
+//                }
+//            });
         }
     }
 }

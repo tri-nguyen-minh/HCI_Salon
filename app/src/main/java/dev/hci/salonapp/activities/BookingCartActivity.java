@@ -27,8 +27,7 @@ public class BookingCartActivity extends AppCompatActivity {
                                         R.id.timeslot12, R.id.timeslot13,
                                         R.id.timeslot14, R.id.timeslot15,
                                         R.id.timeslot16, R.id.timeslot17,
-                                        R.id.timeslot18, R.id.timeslot19,
-                                        R.id.timeslot20};
+                                        R.id.timeslot18, R.id.timeslot19};
     private TextView textViewCommon;
     private Intent intent;
 

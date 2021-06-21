@@ -1,5 +1,6 @@
 package dev.hci.salonapp.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -10,17 +11,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.RatingBar;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
 import dev.hci.salonapp.R;
 import dev.hci.salonapp.dtos.Review;
+import dev.hci.salonapp.dtos.Salon;
 import dev.hci.salonapp.recycleviewadapter.RecViewReviewAdapter;
 
 public class ReviewFragment extends Fragment {
 
     private RecyclerView recViewCommon;
+    private Intent intent;
+    private TextView txtCommon;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -37,6 +43,16 @@ public class ReviewFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        intent = getActivity().getIntent();
+        Salon salon = (Salon)intent.getSerializableExtra("salon");
+
+        txtCommon = getView().findViewById(R.id.ratingNumberSalon);
+        txtCommon.setText(salon.getRating() + "");
+        RatingBar rating = getView().findViewById(R.id.ratingBarSalon);
+        rating.setRating(salon.getRating());
+        txtCommon = getView().findViewById(R.id.reviewCountSalon);
+        txtCommon.setText(salon.getReviewCount() + " review(s)");
 
         recViewCommon = getView().findViewById(R.id.recViewReview);
         ArrayList<Review> reviewList = new ArrayList<>();
