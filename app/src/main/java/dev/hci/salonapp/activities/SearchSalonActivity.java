@@ -73,7 +73,7 @@ public class SearchSalonActivity extends AppCompatActivity {
         spinnerCommon.setAdapter(dataAdapter);
 
 
-        RecyclerView recViewSalon = findViewById(R.id.recViewNearSalon);
+        RecyclerView recViewSalon = findViewById(R.id.recViewSalonSearch);
         ArrayList<Salon> salonList = new ArrayList<>();
 
         salonList = new ArrayList<>();

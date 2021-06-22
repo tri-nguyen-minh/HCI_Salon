@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -12,6 +13,8 @@ import android.widget.RatingBar;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.Switch;
+import android.widget.TextView;
+import android.widget.ViewFlipper;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -29,6 +32,7 @@ import dev.hci.salonapp.dtos.Service;
 
 public class BookingFragment extends Fragment {
 
+    private ImageView imgCommon;
     private RecyclerView recViewCommon;
     private ArrayList<Salon> salonList;
     private RecViewSalonAdapter salonAdapter;
@@ -50,6 +54,19 @@ public class BookingFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        ViewFlipper lookFlipper = getView().findViewById(R.id.bannerFlipper);
+        imgCommon = new ImageView(getContext());
+        imgCommon.setImageResource(R.drawable.banner_booking_1);
+        lookFlipper.addView(imgCommon);
+        imgCommon = new ImageView(getContext());
+        imgCommon.setImageResource(R.drawable.banner_booking_2);
+        lookFlipper.addView(imgCommon);
+        lookFlipper.setAutoStart(true);
+        lookFlipper.setFlipInterval(3000);
+        lookFlipper.setInAnimation(AnimationUtils.loadAnimation(getContext(), R.anim.flipper_left_in));
+        lookFlipper.setOutAnimation(AnimationUtils.loadAnimation(getContext(), R.anim.flipper_left_out));
+        lookFlipper.startFlipping();
 
         recViewCommon = getView().findViewById(R.id.recViewService);
         ArrayList<Service> servicesList = new ArrayList<>();

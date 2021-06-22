@@ -6,6 +6,345 @@
     android:layout_height="match_parent"
     tools:context=".fragments.ProductFragment">
 
+    <LinearLayout
+        android:id="@+id/layoutSearchSalon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:gravity="left|center"
+        android:background="@color/black"
+        android:paddingVertical="5dp">
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="225dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginVertical="10dp"
+            android:gravity="left|center"
+            android:background="@drawable/background_edit_text_general"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="5dp">
+
+            <EditText
+                android:id="@+id/editSearchSalonMain"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:hint="Search Product..."
+                android:textColorHint="@color/black"
+                android:fontFamily="monospace"
+                android:textSize="14sp"
+                android:textColor="@color/black"
+                android:maxLines="1"
+                android:background="@null"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ImageView
+            android:id="@+id/imgSearchSalonName"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginVertical="5dp"
+            android:layout_marginRight="10dp"
+            android:padding="10dp"
+            android:src="@drawable/ic_search"
+            android:background="@drawable/background_button_search"/>
+
+        <ImageView
+            android:id="@+id/imgSearchSliderMain"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginVertical="5dp"
+            android:padding="10dp"
+            android:src="@drawable/ic_filter"
+            android:background="@drawable/background_button_search"/>
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/layoutSearchSalon"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingHorizontal="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="60dp"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Product Categories"
+                    android:fontFamily="monospace"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:textColor="@color/dark_gray"
+                    android:layout_marginBottom="5dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recViewProductCategories"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="20dp"/>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Recommended for You"
+                        android:fontFamily="monospace"
+                        android:textStyle="bold"
+                        android:textSize="20sp"
+                        android:textColor="@color/dark_gray"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+
+                    <TextView
+                        android:layout_width="90dp"
+                        android:layout_height="30dp"
+                        android:text="View More"
+                        android:fontFamily="monospace"
+                        android:textSize="15sp"
+                        android:textColor="@color/dark_gold"
+                        android:gravity="center"
+                        android:onClick="onViewMore"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recViewProductRecommended"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="25dp"/>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="New Products"
+                        android:fontFamily="monospace"
+                        android:textStyle="bold"
+                        android:textSize="20sp"
+                        android:textColor="@color/dark_gray"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+
+                    <TextView
+                        android:layout_width="90dp"
+                        android:layout_height="30dp"
+                        android:text="View More"
+                        android:fontFamily="monospace"
+                        android:textSize="15sp"
+                        android:textColor="@color/dark_gold"
+                        android:gravity="center"
+                        android:onClick="onViewMore"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recViewProductNew"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="25dp"/>
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Most Popular"
+                        android:fontFamily="monospace"
+                        android:textStyle="bold"
+                        android:textSize="20sp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+
+                    <TextView
+                        android:layout_width="90dp"
+                        android:layout_height="30dp"
+                        android:text="View More"
+                        android:fontFamily="monospace"
+                        android:textSize="15sp"
+                        android:textColor="@color/dark_gold"
+                        android:gravity="center"
+                        android:onClick="onViewMore"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recViewProductPopular"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="25dp"/>
+            </LinearLayout>
+
+        </ScrollView>
+
+        <SlidingDrawer
+            android:layout_width="match_parent"
+            android:layout_height="190dp"
+            android:rotation="180"
+            android:handle="@id/searchDrawerHandle"
+            android:content="@id/searchDrawerContent">
+
+            <RelativeLayout
+                android:visibility="gone"
+                android:id="@+id/searchDrawerHandle"
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:background="@color/dark_gray"
+                android:gravity="center"
+                android:rotation="180"
+                android:paddingBottom="15dp">
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/searchDrawerContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@color/black"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:rotation="180">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginHorizontal="25dp"
+                    android:orientation="horizontal"
+                    android:gravity="left|center"
+                    android:background="@drawable/background_edit_text_general"
+                    android:padding="5dp">
+
+                    <ImageView
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="5dp"
+                        android:src="@drawable/ic_list_service" />
+
+                    <Spinner
+                        android:id="@+id/spinnerServiceMain"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:layout_marginRight="5dp"
+                        android:hint="Search Service"
+                        android:fontFamily="monospace"
+                        android:textSize="18sp"
+                        android:textColor="@color/black"
+                        android:inputType="phone"
+                        android:maxLines="1"
+                        android:background="@null"/>
+
+
+                </LinearLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginHorizontal="25dp"
+                    android:padding="5dp"
+                    android:gravity="left|center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:paddingTop="5dp"
+                        android:text="Salons rating"
+                        android:textColor="@color/white"
+                        android:fontFamily="monospace"
+                        android:textSize="16sp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+
+                    <RatingBar
+                        android:id="@+id/searchRatingSalonMain"
+                        style="?android:attr/ratingBarStyleIndicator"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:isIndicator="false"
+                        android:layout_marginRight="7dp"
+                        android:layout_gravity="center"
+                        android:max="5"
+                        android:numStars="5"
+                        android:stepSize="0.5"
+                        android:progressTint="@color/gold"
+                        android:progressBackgroundTint="@color/white"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <Switch
+                    android:id="@+id/searchDiscountSwitchMain"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginHorizontal="30dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Salons with discounts"
+                    android:fontFamily="monospace"
+                    android:textSize="16sp"
+                    android:textColor="@color/white"
+                    android:thumbTint="@color/gold"
+                    android:trackTint="@color/white"/>
+
+            </LinearLayout>
+
+        </SlidingDrawer>
+
+    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -64,7 +64,7 @@
             android:layout_marginVertical="5dp"
             android:padding="10dp"
             android:src="@drawable/ic_filter"
-            android:background="@drawable/background_button_search"/>
+            android:background="@drawable/background_button_search" />
     </LinearLayout>
 
     <FrameLayout
@@ -87,6 +87,19 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="242dp"
+                    app:cardCornerRadius="10dp"
+                    android:layout_marginVertical="10dp">
+
+                    <ViewFlipper
+                        android:id="@+id/bannerFlipper"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                </androidx.cardview.widget.CardView>
+
                 <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -105,6 +118,44 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:layout_marginBottom="20dp"/>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Salons near You"
+                        android:fontFamily="monospace"
+                        android:textStyle="bold"
+                        android:textSize="20sp"
+                        android:textColor="@color/dark_gray"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+
+                    <TextView
+                        android:layout_width="90dp"
+                        android:layout_height="30dp"
+                        android:text="View More"
+                        android:fontFamily="monospace"
+                        android:textSize="15sp"
+                        android:textColor="@color/dark_gold"
+                        android:gravity="center"
+                        android:onClick="onViewMore"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recViewNearSalon"
+                    android:layout_width="match_parent"
+                    android:layout_height="500dp"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="25dp"/>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -138,50 +189,11 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recViewNearSalon"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginBottom="25dp"/>
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/booking_discount"
-                        android:fontFamily="monospace"
-                        android:textStyle="bold"
-                        android:textSize="20sp"
-                        android:textColor="@color/dark_gray"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"/>
-
-                    <TextView
-                        android:layout_width="90dp"
-                        android:layout_height="30dp"
-                        android:text="View More"
-                        android:fontFamily="monospace"
-                        android:textSize="15sp"
-                        android:textColor="@color/dark_gold"
-                        android:gravity="center"
-                        android:onClick="onViewMore"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"/>
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recViewMostBookedSalon"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:layout_marginBottom="25dp"/>
-
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
