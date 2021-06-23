@@ -79,6 +79,9 @@ public class BookingCartActivity extends AppCompatActivity {
         }
         textViewCommon.setText(total + ".000d");
         timeslotSelected = R.id.timeslot08;
+
+        startup();
+
         this.getSupportActionBar().hide();
     }
 
@@ -106,8 +109,8 @@ public class BookingCartActivity extends AppCompatActivity {
     }
 
     public void OnConfirmClick(View view) {
-        TextView btnConfirmServiceBooking = findViewById(R.id.btnConfirmServiceBooking);
-        btnConfirmServiceBooking.setVisibility(View.GONE);
+        textViewCommon = findViewById(R.id.btnConfirmServiceBooking);
+        textViewCommon.setVisibility(View.GONE);
         CalendarView datePicker = findViewById(R.id.calViewPicker);
         datePicker.setVisibility(View.GONE);
         HorizontalScrollView layoutTimeslot = findViewById(R.id.layoutTimeslot);
@@ -128,5 +131,24 @@ public class BookingCartActivity extends AppCompatActivity {
         linearLayoutCommon = findViewById(R.id.layoutFinalBookingConfirm);
         linearLayoutCommon.setVisibility(View.VISIBLE);
 
+    }
+
+    public void onBackFromConfirm(View view) {
+        startup();
+    }
+
+    private void startup() {
+        linearLayoutCommon = findViewById(R.id.layoutBookTime);
+        linearLayoutCommon.setVisibility(View.GONE);
+
+        linearLayoutCommon = findViewById(R.id.layoutFinalBookingConfirm);
+        linearLayoutCommon.setVisibility(View.GONE);
+
+        textViewCommon = findViewById(R.id.btnConfirmServiceBooking);
+        textViewCommon.setVisibility(View.VISIBLE);
+        CalendarView datePicker = findViewById(R.id.calViewPicker);
+        datePicker.setVisibility(View.VISIBLE);
+        HorizontalScrollView layoutTimeslot = findViewById(R.id.layoutTimeslot);
+        layoutTimeslot.setVisibility(View.VISIBLE);
     }
 }
