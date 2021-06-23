@@ -26,6 +26,7 @@ public class ProductFragment extends Fragment {
     private RecyclerView recViewCommon;
     private Spinner spinnerService;
     private ArrayList<String> dataSpinner;
+    private ArrayList<Product> productList;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -75,20 +76,28 @@ public class ProductFragment extends Fragment {
 
 
         recViewCommon = getView().findViewById(R.id.recViewProductRecommended);
-        ArrayList<Product> productList = new ArrayList<>();
-        productList.add(new Product("PERFECT CLEANSE\nShampoo", "LAKME", "570", "0", false, 0, R.drawable.img_product_shampoo_1));
+        productList = new ArrayList<>();
+        productList.add(new Product("SUBLIME FRUIT\nShampoo & Cream Combo", "Oyster", "1.113", "1.590", false, 30, R.drawable.img_product_combo_1));
+        productList.add(new Product("Recover Care\nShampoo, Conditioner & Cream Combo", "Alonzo", "1.225", "1.750", false, 30, R.drawable.img_product_combo_2));
+        productList.add(new Product("BRILLIANT CARE\nCONDITIONER", "Alonzo", "310", "620", false, 50, R.drawable.img_product_conditioner_1));
         productList.add(new Product("Hydra\nMoisturizing Shampoo", "Farmagan", "315", "420", false, 25, R.drawable.img_product_shampoo_2));
-        productList.add(new Product("Teknia\nShampoo", "LAKME", "570", "0", false, 0, R.drawable.img_product_shampoo_3));
-        productList.add(new Product("THAT'S IT Shampoo\nfor White & Grey Hair", "Alfaparf Milano", "420", "0", false, 0, R.drawable.img_product_shampoo_4));
-        productList.add(new Product("Precious Nature\nShampoo for Curly Hair", "Alfaparf Milano", "810", "1.040", false, 25, R.drawable.img_product_shampoo_5));
-        productList.add(new Product("FULL DEFENSE\nShampoo", "LAKME", "480", "600", false, 20, R.drawable.img_product_shampoo_6));
-        productList.add(new Product("Orzen\nAnti-Dandruff Shampoo", "Obsidian", "355", "0", false, 0, R.drawable.img_product_shampoo_7));
-        productList.add(new Product("Orzen\nHair Growth Shampoo", "Obsidian", "355", "0", false, 0, R.drawable.img_product_shampoo_8));
+        productList.add(new Product("K.Style\nHair Gel", "LAKME", "301", "430", false, 30, R.drawable.img_product_gel_1));
 
         RecViewProductAdapter productAdapter = new RecViewProductAdapter(getContext(), getActivity());
         productAdapter.setProductsList(productList);
         recViewCommon.setAdapter(productAdapter);
         recViewCommon.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL,false));
+
+//        productList.add(new Product("Style Stories\Wet Gel", "Alfaparf Milano", "650", "0", false, 0, R.drawable.img_product_gel_2));
+
+//        productList.add(new Product("Teknia\nShampoo", "LAKME", "570", "0", false, 0, R.drawable.img_product_shampoo_3));
+//        productList.add(new Product("PERFECT CLEANSE\nShampoo", "LAKME", "570", "0", false, 0, R.drawable.img_product_shampoo_1));
+
+//        productList.add(new Product("FULL DEFENSE\nShampoo", "LAKME", "480", "600", false, 20, R.drawable.img_product_shampoo_6));
+//        productList.add(new Product("THAT'S IT Shampoo\nfor White & Grey Hair", "Alfaparf Milano", "420", "0", false, 0, R.drawable.img_product_shampoo_4));
+//        productList.add(new Product("Orzen\nAnti-Dandruff Shampoo", "Obsidian", "355", "0", false, 0, R.drawable.img_product_shampoo_7));
+//        productList.add(new Product("Orzen\nHair Growth Shampoo", "Obsidian", "355", "0", false, 0, R.drawable.img_product_shampoo_8));
+//        productList.add(new Product("Precious Nature\nShampoo for Curly Hair", "Alfaparf Milano", "810", "1.040", false, 25, R.drawable.img_product_shampoo_5));
 
     }
 }

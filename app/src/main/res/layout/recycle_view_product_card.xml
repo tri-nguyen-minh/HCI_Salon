@@ -75,7 +75,7 @@
                 android:gravity="center"
                 android:textStyle="bold"
                 android:fontFamily="monospace"
-                tools:text="100.000d"
+                tools:text="1.100.000d"
                 android:textSize="12sp"
                 android:layout_marginRight="10dp"
                 android:textColor="@color/red"/>
@@ -86,7 +86,7 @@
                 android:gravity="center"
                 android:textStyle="bold"
                 android:fontFamily="monospace"
-                tools:text="100.000d"
+                tools:text="1.100.000d"
                 android:textSize="16sp"
                 android:textColor="@color/black"/>
 
