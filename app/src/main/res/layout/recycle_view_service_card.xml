@@ -32,6 +32,7 @@
             android:layout_below="@+id/txtCost"
             android:gravity="center"
             android:textStyle="bold"
+            android:fontFamily="monospace"
             tools:text="TIGI RK Groupie\nHard Hold" />
 
     </LinearLayout>

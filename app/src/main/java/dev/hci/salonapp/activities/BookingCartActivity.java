@@ -5,12 +5,17 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CalendarView;
+import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -29,7 +34,9 @@ public class BookingCartActivity extends AppCompatActivity {
                                         R.id.timeslot16, R.id.timeslot17,
                                         R.id.timeslot18, R.id.timeslot19};
     private TextView textViewCommon;
+    private LinearLayout linearLayoutCommon;
     private Intent intent;
+    private int timeslotSelected;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,7 +78,7 @@ public class BookingCartActivity extends AppCompatActivity {
             total += Integer.parseInt(serviceDetail.getPrice());
         }
         textViewCommon.setText(total + ".000d");
-
+        timeslotSelected = R.id.timeslot08;
         this.getSupportActionBar().hide();
     }
 
@@ -83,12 +90,43 @@ public class BookingCartActivity extends AppCompatActivity {
         resetTimeslot();
         textViewCommon = findViewById(view.getId());
         textViewCommon.setBackground(getResources().getDrawable(R.drawable.background_timeslot_selected));
+        for (Integer timeslotId : timeslotIdList) {
+            if (view.getId() == timeslotId) {
+                timeslotSelected = timeslotId;
+            }
+        }
     }
 
     private void resetTimeslot() {
         for (int slot : timeslotIdList) {
             textViewCommon = findViewById(slot);
+
             textViewCommon.setBackground(getResources().getDrawable(R.drawable.background_like));
         }
+    }
+
+    public void OnConfirmClick(View view) {
+        TextView btnConfirmServiceBooking = findViewById(R.id.btnConfirmServiceBooking);
+        btnConfirmServiceBooking.setVisibility(View.GONE);
+        CalendarView datePicker = findViewById(R.id.calViewPicker);
+        datePicker.setVisibility(View.GONE);
+        HorizontalScrollView layoutTimeslot = findViewById(R.id.layoutTimeslot);
+        layoutTimeslot.setVisibility(View.GONE);
+
+        Date date = new Date(datePicker.getDate());
+        DateFormat format = new SimpleDateFormat("EEE, MMMM dd yyyy");
+
+        textViewCommon = findViewById(R.id.txtSelectedDate);
+        textViewCommon.setText(format.format(date));
+
+        textViewCommon = findViewById(R.id.txtSelectedTimeslot);
+        textViewCommon.setText(((TextView)findViewById(timeslotSelected)).getText().toString());
+
+        linearLayoutCommon = findViewById(R.id.layoutBookTime);
+        linearLayoutCommon.setVisibility(View.VISIBLE);
+
+        linearLayoutCommon = findViewById(R.id.layoutFinalBookingConfirm);
+        linearLayoutCommon.setVisibility(View.VISIBLE);
+
     }
 }

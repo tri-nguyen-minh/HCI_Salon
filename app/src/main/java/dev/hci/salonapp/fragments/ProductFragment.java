@@ -15,7 +15,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 import dev.hci.salonapp.R;
+import dev.hci.salonapp.dtos.Product;
 import dev.hci.salonapp.dtos.Service;
+import dev.hci.salonapp.recycleviewadapter.RecViewProductAdapter;
 import dev.hci.salonapp.recycleviewadapter.RecViewServiceAdapter;
 
 public class ProductFragment extends Fragment {
@@ -57,10 +59,10 @@ public class ProductFragment extends Fragment {
             }
         });
 
-
         recViewCommon = getView().findViewById(R.id.recViewProductCategories);
         ArrayList<Service> servicesList = new ArrayList<>();
         servicesList.add(new Service("Discount", R.drawable.ic_service_discount));
+        servicesList.add(new Service("Combos", R.drawable.ic_product_combo));
         servicesList.add(new Service("Shampoo", R.drawable.ic_product_shampoo));
         servicesList.add(new Service("Conditioner", R.drawable.ic_product_conditioner));
         servicesList.add(new Service("Oils & Cream", R.drawable.ic_product_oil_cream));
@@ -69,6 +71,23 @@ public class ProductFragment extends Fragment {
         RecViewServiceAdapter serviceAdapter = new RecViewServiceAdapter(getContext(), getActivity());
         serviceAdapter.setServiceList(servicesList);
         recViewCommon.setAdapter(serviceAdapter);
+        recViewCommon.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL,false));
+
+
+        recViewCommon = getView().findViewById(R.id.recViewProductRecommended);
+        ArrayList<Product> productList = new ArrayList<>();
+        productList.add(new Product("PERFECT CLEANSE\nShampoo", "LAKME", "570", "0", false, 0, R.drawable.img_product_shampoo_1));
+        productList.add(new Product("Hydra\nMoisturizing Shampoo", "Farmagan", "315", "420", false, 25, R.drawable.img_product_shampoo_2));
+        productList.add(new Product("Teknia\nShampoo", "LAKME", "570", "0", false, 0, R.drawable.img_product_shampoo_3));
+        productList.add(new Product("THAT'S IT Shampoo\nfor White & Grey Hair", "Alfaparf Milano", "420", "0", false, 0, R.drawable.img_product_shampoo_4));
+        productList.add(new Product("Precious Nature\nShampoo for Curly Hair", "Alfaparf Milano", "810", "1.040", false, 25, R.drawable.img_product_shampoo_5));
+        productList.add(new Product("FULL DEFENSE\nShampoo", "LAKME", "480", "600", false, 20, R.drawable.img_product_shampoo_6));
+        productList.add(new Product("Orzen\nAnti-Dandruff Shampoo", "Obsidian", "355", "0", false, 0, R.drawable.img_product_shampoo_7));
+        productList.add(new Product("Orzen\nHair Growth Shampoo", "Obsidian", "355", "0", false, 0, R.drawable.img_product_shampoo_8));
+
+        RecViewProductAdapter productAdapter = new RecViewProductAdapter(getContext(), getActivity());
+        productAdapter.setProductsList(productList);
+        recViewCommon.setAdapter(productAdapter);
         recViewCommon.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL,false));
 
     }

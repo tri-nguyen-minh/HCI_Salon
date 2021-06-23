@@ -9,7 +9,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="530dp"
+        android:layout_height="550dp"
         android:orientation="vertical"
         android:gravity="left|center"
         android:background="@drawable/background_history_tab"
@@ -24,17 +24,16 @@
             android:layout_marginTop="35dp"
             android:gravity="center"
             android:orientation="horizontal"
-            android:paddingRight="15dp"
-            android:paddingLeft="10dp"
-            android:paddingVertical="15dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="30dp"
             android:background="@drawable/background_separator_bottom">
 
             <LinearLayout
                 android:id="@+id/profileBooking"
-                style="@style/stylist_layout">
+                style="@style/profile_history_layout">
 
                 <androidx.cardview.widget.CardView
-                    style="@style/stylist_card">
+                    style="@style/profile_history_card">
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -52,11 +51,11 @@
 
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
+                    android:layout_height="35dp"
                     android:layout_marginTop="5dp"
                     android:fontFamily="monospace"
                     android:gravity="center"
-                    android:textSize="15sp"
+                    android:textSize="13sp"
                     android:textColor="@color/black"
                     android:text="Booking History"/>
 
@@ -64,10 +63,10 @@
 
             <LinearLayout
             android:id="@+id/profileShopping"
-            style="@style/stylist_layout">
+            style="@style/profile_history_layout">
 
                 <androidx.cardview.widget.CardView
-                    style="@style/stylist_card">
+                    style="@style/profile_history_card">
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -85,11 +84,11 @@
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="35dp"
                 android:layout_marginTop="5dp"
                 android:fontFamily="monospace"
                 android:gravity="center"
-                android:textSize="15sp"
+                android:textSize="13sp"
                 android:textColor="@color/black"
                 android:text="Shopping History"/>
 
@@ -107,14 +106,22 @@
 
             <TextView
                 android:id="@+id/txtUserInfo"
-                android:layout_width="match_parent"
-                android:layout_height="42dp"
-                android:fontFamily="monospace"
-                android:gravity="left|center"
                 android:text="Account Information"
-                android:maxLines="1"
-                android:textColor="@color/black"
-                android:textSize="17sp"/>
+                style="@style/profile_text" />
+
+        </LinearLayout>
+
+        <LinearLayout style="@style/profile_tab">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="35dp"
+                android:layout_marginHorizontal="10dp"
+                android:src="@drawable/ic_location" />
+
+            <TextView
+                android:text="Delivery Addresses"
+                style="@style/profile_text"/>
 
         </LinearLayout>
 
@@ -127,14 +134,8 @@
                 android:src="@drawable/ic_dollar" />
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="42dp"
-                android:fontFamily="monospace"
-                android:gravity="left|center"
                 android:text="E-Wallet"
-                android:maxLines="1"
-                android:textColor="@color/black"
-                android:textSize="17sp"/>
+                style="@style/profile_text"/>
 
         </LinearLayout>
 
@@ -147,14 +148,8 @@
                 android:src="@drawable/ic_info" />
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="42dp"
-                android:fontFamily="monospace"
-                android:gravity="left|center"
                 android:text="Term of Services"
-                android:maxLines="1"
-                android:textColor="@color/black"
-                android:textSize="17sp"/>
+                style="@style/profile_text"/>
 
         </LinearLayout>
 
@@ -167,14 +162,8 @@
                 android:src="@drawable/ic_help" />
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="42dp"
-                android:fontFamily="monospace"
-                android:gravity="left|center"
                 android:text="Help &amp; Support"
-                android:maxLines="1"
-                android:textColor="@color/black"
-                android:textSize="17sp"/>
+                style="@style/profile_text"/>
 
         </LinearLayout>
 
@@ -189,14 +178,8 @@
                 android:src="@drawable/ic_return" />
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="42dp"
-                android:fontFamily="monospace"
-                android:gravity="left|center"
                 android:text="Sign out"
-                android:maxLines="1"
-                android:textColor="@color/black"
-                android:textSize="17sp"/>
+                style="@style/profile_text"/>
 
         </LinearLayout>
 
@@ -206,7 +189,6 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintRight_toRightOf="parent"
