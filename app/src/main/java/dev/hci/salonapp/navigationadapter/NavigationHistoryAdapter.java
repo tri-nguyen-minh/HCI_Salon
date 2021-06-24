@@ -7,8 +7,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import dev.hci.salonapp.fragments.history.BookingHistoryFragment;
-import dev.hci.salonapp.fragments.history.ShoppingHistoryFragment;
+import dev.hci.salonapp.fragments.history.UpcomingHistoryFragment;
+import dev.hci.salonapp.fragments.history.FinishedHistoryFragment;
 
 public class NavigationHistoryAdapter extends FragmentPagerAdapter {
     Context context;
@@ -27,10 +27,10 @@ public class NavigationHistoryAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                fragmentCommon = new BookingHistoryFragment();
+                fragmentCommon = new UpcomingHistoryFragment();
                 return fragmentCommon;
             case 1:
-                fragmentCommon = new ShoppingHistoryFragment();
+                fragmentCommon = new FinishedHistoryFragment();
                 return fragmentCommon;
             case 2:
             default:

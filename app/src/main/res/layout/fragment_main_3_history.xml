@@ -20,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="HISTORY"
+            android:text="BOOKING HISTORY"
             android:fontFamily="monospace"
             android:textStyle="bold"
             android:textSize="26sp"
@@ -34,11 +34,11 @@
             android:gravity="center">
 
             <TextView
-                android:id="@+id/txtBookingHistory"
+                android:id="@+id/txtUpcomingBooking"
                 android:layout_width="160dp"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="Booking"
+                android:text="Upcoming"
                 android:fontFamily="monospace"
                 android:textStyle="bold"
                 android:textSize="20sp"
@@ -48,11 +48,11 @@
                 android:background="@drawable/background_history_selected"/>
 
             <TextView
-                android:id="@+id/txtShoppingHistory"
+                android:id="@+id/txtFinishedBooking"
                 android:layout_width="160dp"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="Shopping"
+                android:text="Finished"
                 android:fontFamily="monospace"
                 android:textStyle="bold"
                 android:textSize="20sp"

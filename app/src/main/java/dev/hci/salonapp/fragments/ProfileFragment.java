@@ -57,7 +57,6 @@ public class ProfileFragment extends Fragment {
             imgDisplayPassword.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    System.out.println(passwordDisplayed);
                     if (passwordDisplayed) {
                         editPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
                         imgDisplayPassword.setImageResource(R.drawable.ic_eye);

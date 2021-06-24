@@ -26,6 +26,7 @@ public class RecViewServiceBookedAdapter extends RecyclerView.Adapter<RecViewSer
     private Context context;
     private Activity activity;
     private Intent intent;
+    private boolean confirmed;
 
     public void setServiceDetailsList(ArrayList<ServiceDetail> serviceDetailsList) {
         this.serviceDetailsList = serviceDetailsList;
@@ -34,6 +35,11 @@ public class RecViewServiceBookedAdapter extends RecyclerView.Adapter<RecViewSer
     public RecViewServiceBookedAdapter(Context context, Activity activity) {
         this.context = context;
         this.activity = activity;
+        this.confirmed = false;
+    }
+
+    public void setConfirmed(boolean confirmed) {
+        this.confirmed = confirmed;
     }
 
     @Override
@@ -48,28 +54,33 @@ public class RecViewServiceBookedAdapter extends RecyclerView.Adapter<RecViewSer
         holder.txtServiceName.setText(serviceDetailsList.get(position).getName());
         holder.txtDuration.setText(serviceDetailsList.get(position).getDuration());
         holder.txtPrice.setText(serviceDetailsList.get(position).getPrice() + ".000d");
-        holder.imgView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                serviceDetailsList.remove(position);
-                RecyclerView recViewService = activity.findViewById(R.id.recViewServiceBooked);
-                RecViewServiceBookedAdapter adapter = new RecViewServiceBookedAdapter(context, activity);
-                adapter.setServiceDetailsList(serviceDetailsList);
-                recViewService.setAdapter(adapter);
-                recViewService.setLayoutManager(new LinearLayoutManager(context, RecyclerView.VERTICAL,false));
-                if (serviceDetailsList.size() == 0) {
-                    recViewService.setVisibility(View.GONE);
-                    LinearLayout layoutNoService = activity.findViewById(R.id.layoutNoService);
-                    layoutNoService.setVisibility(View.VISIBLE);
+        if (!confirmed) {
+            holder.imgView.setVisibility(View.VISIBLE);
+            holder.imgView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    serviceDetailsList.remove(position);
+                    RecyclerView recViewService = activity.findViewById(R.id.recViewServiceBooked);
+                    RecViewServiceBookedAdapter adapter = new RecViewServiceBookedAdapter(context, activity);
+                    adapter.setServiceDetailsList(serviceDetailsList);
+                    recViewService.setAdapter(adapter);
+                    recViewService.setLayoutManager(new LinearLayoutManager(context, RecyclerView.VERTICAL, false));
+                    if (serviceDetailsList.size() == 0) {
+                        recViewService.setVisibility(View.GONE);
+                        LinearLayout layoutNoService = activity.findViewById(R.id.layoutNoService);
+                        layoutNoService.setVisibility(View.VISIBLE);
+                    }
+                    TextView txtTotal = activity.findViewById(R.id.txtServicePriceTotal);
+                    int total = 0;
+                    for (ServiceDetail serviceDetail : serviceDetailsList) {
+                        total += Integer.parseInt(serviceDetail.getPrice());
+                    }
+                    txtTotal.setText(total + ".000d");
                 }
-                TextView txtTotal = activity.findViewById(R.id.txtServicePriceTotal);
-                int total = 0;
-                for (ServiceDetail serviceDetail : serviceDetailsList) {
-                    total += Integer.parseInt(serviceDetail.getPrice());
-                }
-                txtTotal.setText(total + ".000d");
-            }
-        });
+            });
+        } else {
+            holder.imgView.setVisibility(View.GONE);
+        }
     }
 
     @Override

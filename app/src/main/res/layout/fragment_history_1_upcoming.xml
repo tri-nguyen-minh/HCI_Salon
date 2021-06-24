@@ -3,14 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.history.ShoppingHistoryFragment">
+    android:paddingTop="15dp"
+    android:paddingHorizontal="5dp"
+    tools:context=".fragments.history.UpcomingHistoryFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recViewBookingHistoryUpcoming"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Shopping History"
-        android:gravity="center"
-        android:textSize="24sp"/>
+        android:orientation="vertical"/>
+
 
 </FrameLayout>

@@ -97,6 +97,8 @@ public class MainActivity extends AppCompatActivity {
 //        }
         if (intent.getBooleanExtra("forced_logged", false)) {
             tabLayout.selectTab(tabLayout.getTabAt(3));
+        } if (intent.getBooleanExtra("confirm_booking", false)) {
+            tabLayout.selectTab(tabLayout.getTabAt(2));
         }
 
         tabLayout.getTabAt(tabLayout.getSelectedTabPosition()).getIcon().setColorFilter(getResources().getColor(R.color.gold), PorterDuff.Mode.SRC_IN);

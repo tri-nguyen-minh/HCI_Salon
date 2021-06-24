@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 
 import dev.hci.salonapp.R;
 
-public class ShoppingHistoryFragment extends Fragment {
+public class FinishedHistoryFragment extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -21,6 +21,6 @@ public class ShoppingHistoryFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_history_2_shopping, container, false);
+        return inflater.inflate(R.layout.fragment_history_2_finished, container, false);
     }
 }

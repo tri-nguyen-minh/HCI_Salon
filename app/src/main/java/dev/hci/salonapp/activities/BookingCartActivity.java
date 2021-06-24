@@ -1,5 +1,6 @@
 package dev.hci.salonapp.activities;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -21,6 +22,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 import dev.hci.salonapp.R;
+import dev.hci.salonapp.dtos.BookingHistory;
 import dev.hci.salonapp.dtos.Salon;
 import dev.hci.salonapp.dtos.ServiceDetail;
 import dev.hci.salonapp.recycleviewadapter.RecViewServiceBookedAdapter;
@@ -37,6 +39,9 @@ public class BookingCartActivity extends AppCompatActivity {
     private LinearLayout linearLayoutCommon;
     private Intent intent;
     private int timeslotSelected;
+    private boolean firstSlotSet;
+    private Calendar calendar;
+    private Salon salon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,11 +50,16 @@ public class BookingCartActivity extends AppCompatActivity {
 
         intent = BookingCartActivity.this.getIntent();
 
-        Salon salon = (Salon)intent.getSerializableExtra("salon");
+        salon = (Salon)intent.getSerializableExtra("salon");
+
+        textViewCommon = findViewById(R.id.txtSalonName);
+        textViewCommon.setText(salon.getName());
+        textViewCommon = findViewById(R.id.txtSalonAddress);
+        textViewCommon.setText(salon.getAddress());
 
         CalendarView calendarView = findViewById(R.id.calViewPicker);
 
-        Calendar calendar = Calendar.getInstance();
+        calendar = Calendar.getInstance();
 
         calendarView.setMinDate((new Date().getTime()));
         calendarView.setSelectedWeekBackgroundColor(getResources().getColor(R.color.gold));
@@ -78,11 +88,68 @@ public class BookingCartActivity extends AppCompatActivity {
             total += Integer.parseInt(serviceDetail.getPrice());
         }
         textViewCommon.setText(total + ".000d");
-        timeslotSelected = R.id.timeslot08;
-
         startup();
 
+        Date currentDate = calendar.getTime();
+
+        timeslotSelected = -1;
+        setupCurrentTimeSlot();
+
+        CalendarView datePicker = findViewById(R.id.calViewPicker);
+
+        datePicker.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+            @Override
+            public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
+                Date selectedDate = new Date((year - 1900), month, dayOfMonth);
+                timeslotSelected = -1;
+                if (!currentDate.before(selectedDate)) {
+                    setupCurrentTimeSlot();
+                } else {
+                    for (int i = 0; i < timeslotIdList.length; i++) {
+                        textViewCommon = findViewById(timeslotIdList[i]);
+                        textViewCommon.setVisibility(View.VISIBLE);
+                        textViewCommon.setBackground(getResources().getDrawable(R.drawable.background_like));
+                    }
+                    textViewCommon = findViewById(timeslotIdList[0]);
+                    textViewCommon.setBackground(getResources().getDrawable(R.drawable.background_timeslot_selected));
+                    timeslotSelected = timeslotIdList[0];
+                }
+                checkEmptyTimeslot();
+            }
+        });
+
+        checkEmptyTimeslot();
+
         this.getSupportActionBar().hide();
+    }
+
+    private void checkEmptyTimeslot() {
+        HorizontalScrollView layoutTimeslot = findViewById(R.id.layoutTimeslot);
+        textViewCommon = findViewById(R.id.txtNoAvailableTimeslot);
+        if (timeslotSelected == -1) {
+            layoutTimeslot.setVisibility(View.GONE);
+            textViewCommon.setVisibility(View.VISIBLE);
+        } else {
+            layoutTimeslot.setVisibility(View.VISIBLE);
+            textViewCommon.setVisibility(View.GONE);
+        }
+    }
+
+    private void setupCurrentTimeSlot() {
+        firstSlotSet = false;
+        for (int i = 0; i < timeslotIdList.length; i++) {
+            textViewCommon = findViewById(timeslotIdList[i]);
+            if ((i + 8) < calendar.get(Calendar.HOUR_OF_DAY) ) {
+                textViewCommon.setVisibility(View.GONE);
+            } else {
+                textViewCommon.setVisibility(View.VISIBLE);
+                if (!firstSlotSet) {
+                    textViewCommon.setBackground(getResources().getDrawable(R.drawable.background_timeslot_selected));
+                    timeslotSelected = timeslotIdList[i];
+                    firstSlotSet = true;
+                }
+            }
+        }
     }
 
     public void onBackBooking(View view) {
@@ -109,27 +176,32 @@ public class BookingCartActivity extends AppCompatActivity {
     }
 
     public void OnConfirmClick(View view) {
-        textViewCommon = findViewById(R.id.btnConfirmServiceBooking);
-        textViewCommon.setVisibility(View.GONE);
-        CalendarView datePicker = findViewById(R.id.calViewPicker);
-        datePicker.setVisibility(View.GONE);
-        HorizontalScrollView layoutTimeslot = findViewById(R.id.layoutTimeslot);
-        layoutTimeslot.setVisibility(View.GONE);
+        if (timeslotSelected != -1) {
+            textViewCommon = findViewById(R.id.btnConfirmServiceBooking);
+            textViewCommon.setVisibility(View.GONE);
+            CalendarView datePicker = findViewById(R.id.calViewPicker);
+            datePicker.setVisibility(View.GONE);
+            HorizontalScrollView layoutTimeslot = findViewById(R.id.layoutTimeslot);
+            layoutTimeslot.setVisibility(View.GONE);
 
-        Date date = new Date(datePicker.getDate());
-        DateFormat format = new SimpleDateFormat("EEE, MMMM dd yyyy");
+            Date date = new Date(datePicker.getDate());
+            DateFormat format = new SimpleDateFormat("EEE, MMMM dd, yyyy");
 
-        textViewCommon = findViewById(R.id.txtSelectedDate);
-        textViewCommon.setText(format.format(date));
+            textViewCommon = findViewById(R.id.txtSelectedDate);
+            textViewCommon.setText(format.format(date));
 
-        textViewCommon = findViewById(R.id.txtSelectedTimeslot);
-        textViewCommon.setText(((TextView)findViewById(timeslotSelected)).getText().toString());
+            textViewCommon = findViewById(R.id.txtSelectedTimeslot);
+            textViewCommon.setText(((TextView)findViewById(timeslotSelected)).getText().toString());
 
-        linearLayoutCommon = findViewById(R.id.layoutBookTime);
-        linearLayoutCommon.setVisibility(View.VISIBLE);
+            linearLayoutCommon = findViewById(R.id.layoutBookTime);
+            linearLayoutCommon.setVisibility(View.VISIBLE);
 
-        linearLayoutCommon = findViewById(R.id.layoutFinalBookingConfirm);
-        linearLayoutCommon.setVisibility(View.VISIBLE);
+            linearLayoutCommon = findViewById(R.id.layoutFinalBookingConfirm);
+            linearLayoutCommon.setVisibility(View.VISIBLE);
+
+            linearLayoutCommon = findViewById(R.id.layoutBookingPaymentMethod);
+            linearLayoutCommon.setVisibility(View.VISIBLE);
+        }
 
     }
 
@@ -144,11 +216,37 @@ public class BookingCartActivity extends AppCompatActivity {
         linearLayoutCommon = findViewById(R.id.layoutFinalBookingConfirm);
         linearLayoutCommon.setVisibility(View.GONE);
 
+        linearLayoutCommon = findViewById(R.id.layoutBookingPaymentMethod);
+        linearLayoutCommon.setVisibility(View.GONE);
+
         textViewCommon = findViewById(R.id.btnConfirmServiceBooking);
         textViewCommon.setVisibility(View.VISIBLE);
         CalendarView datePicker = findViewById(R.id.calViewPicker);
         datePicker.setVisibility(View.VISIBLE);
         HorizontalScrollView layoutTimeslot = findViewById(R.id.layoutTimeslot);
         layoutTimeslot.setVisibility(View.VISIBLE);
+    }
+
+
+    public void OnFinalConfirmClick(View view) {
+
+        BookingHistory bookingHistory = new BookingHistory();
+        bookingHistory.setSalonName(salon.getName());
+        bookingHistory.setSalonAddress(salon.getAddress());
+        ArrayList<ServiceDetail> serviceDetailsList = new ArrayList<>();
+        serviceDetailsList.add(new ServiceDetail("Male Haircut", "30 - 40 minutes", "30", "60", 60));
+        serviceDetailsList.add(new ServiceDetail("Hair Keratin Treatment", "30 - 60 minutes", "450", "600", 25));
+        serviceDetailsList.add(new ServiceDetail("Hair Styling", "30 minutes", "70", "0", 0));
+        bookingHistory.setServiceList(serviceDetailsList);
+        textViewCommon = findViewById(R.id.txtSelectedDate);
+        bookingHistory.setDate(textViewCommon.getText().toString());
+        textViewCommon = findViewById(R.id.txtSelectedTimeslot);
+        bookingHistory.setTime(textViewCommon.getText().toString());
+        intent = new Intent(BookingCartActivity.this, MainActivity.class);
+        intent.putExtra("logged", true);
+        intent.putExtra("booking", bookingHistory);
+        intent.putExtra("confirm_booking", true);
+        startActivity(intent);
+
     }
 }
