@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -40,15 +41,10 @@ public class UpcomingHistoryFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        bookingHistory = (BookingHistory)intent.getSerializableExtra("booking");
-
         RecyclerView recViewBookingHistoryUpcoming = getView().findViewById(R.id.recViewBookingHistoryUpcoming);
 
         ArrayList<BookingHistory> bookingHistoryList = new ArrayList<>();
 
-        if (bookingHistory != null) {
-            bookingHistoryList.add(0, bookingHistory);
-        }
         bookingHistory = new BookingHistory();
         bookingHistory.setSalonName("Phuong Tokyo Salon");
         bookingHistory.setSalonAddress("686 Cách Mạng Tháng 8, Phường 05, Quận Tân Bình, Thành phố Hồ Chí Minh");
@@ -59,7 +55,16 @@ public class UpcomingHistoryFragment extends Fragment {
         bookingHistory.setDate("Sat, July 10, 2021");
         bookingHistory.setTime("10:00");
         bookingHistoryList.add(bookingHistory);
+
+        System.out.println("int upcoming");
+        bookingHistory = (BookingHistory)intent.getSerializableExtra("booking");
+        if (bookingHistory != null) {
+            bookingHistoryList.add(0, bookingHistory);
+        }
+
         RecViewBookingHistoryAdapter historyAdapter = new RecViewBookingHistoryAdapter(getContext(), getActivity());
+        historyAdapter.setEmptyTextId(R.id.txtNoHistoryUpcoming);
+        historyAdapter.setRecViewId(R.id.recViewBookingHistoryUpcoming);
         historyAdapter.setBookingHistoryList(bookingHistoryList);
         recViewBookingHistoryUpcoming.setAdapter(historyAdapter);
         recViewBookingHistoryUpcoming.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL,false));

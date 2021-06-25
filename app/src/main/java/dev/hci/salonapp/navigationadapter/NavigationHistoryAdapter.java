@@ -26,15 +26,12 @@ public class NavigationHistoryAdapter extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position) {
         switch (position) {
-            case 0:
-                fragmentCommon = new UpcomingHistoryFragment();
-                return fragmentCommon;
             case 1:
                 fragmentCommon = new FinishedHistoryFragment();
                 return fragmentCommon;
-            case 2:
             default:
-                return null;
+                fragmentCommon = new UpcomingHistoryFragment();
+                return fragmentCommon;
         }
     }
 

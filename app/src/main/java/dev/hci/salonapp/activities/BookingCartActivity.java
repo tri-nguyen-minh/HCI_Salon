@@ -42,6 +42,7 @@ public class BookingCartActivity extends AppCompatActivity {
     private boolean firstSlotSet;
     private Calendar calendar;
     private Salon salon;
+    private BookingHistory bookingHistory;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -139,7 +140,7 @@ public class BookingCartActivity extends AppCompatActivity {
         firstSlotSet = false;
         for (int i = 0; i < timeslotIdList.length; i++) {
             textViewCommon = findViewById(timeslotIdList[i]);
-            if ((i + 8) < calendar.get(Calendar.HOUR_OF_DAY) ) {
+            if ((i + 6) < calendar.get(Calendar.HOUR_OF_DAY) ) {
                 textViewCommon.setVisibility(View.GONE);
             } else {
                 textViewCommon.setVisibility(View.VISIBLE);

@@ -15,6 +15,10 @@ public class Salon implements Serializable {
     private int imageId;
     private ArrayList<ServiceDetail> serviceDetailsList;
 
+    public Salon() {
+        imageId = 0;
+    }
+
     public Salon(String name, String address, double distance, float rating, int reviewCount, int imageId) {
         this.name = name;
         this.address = address;

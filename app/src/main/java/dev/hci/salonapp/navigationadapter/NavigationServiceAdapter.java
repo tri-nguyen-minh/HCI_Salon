@@ -32,9 +32,6 @@ public class NavigationServiceAdapter extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position) {
         switch (position) {
-            case 0:
-                fragmentCommon = new DiscountFragment();
-                return fragmentCommon;
             case 1:
                 fragmentCommon = new HaircutFragment();
                 return fragmentCommon;
@@ -57,7 +54,8 @@ public class NavigationServiceAdapter extends FragmentPagerAdapter {
                 fragmentCommon = new StylingFragment();
                 return fragmentCommon;
             default:
-                return null;
+                fragmentCommon = new DiscountFragment();
+                return fragmentCommon;
         }
     }
 

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class BookingHistory implements Serializable {
     private String salonName, salonAddress, date, time;
     private ArrayList<ServiceDetail> serviceList;
-    private boolean passed, serviceViewed;
+    private boolean passed, serviceViewed, cancelled;
 
     public BookingHistory(String salonName, String salonAddress, String date, String time, ArrayList<ServiceDetail> serviceList) {
         this.salonName = salonName;
@@ -16,6 +16,7 @@ public class BookingHistory implements Serializable {
         this.serviceList = serviceList;
         this.passed = false;
         this.serviceViewed = false;
+        this.cancelled = false;
     }
 
     public BookingHistory() {
@@ -61,7 +62,7 @@ public class BookingHistory implements Serializable {
         this.serviceList = serviceList;
     }
 
-    public boolean hasPassed() {
+    public boolean isPassed() {
         return passed;
     }
 
@@ -75,5 +76,13 @@ public class BookingHistory implements Serializable {
 
     public void setServiceViewed(boolean serviceViewed) {
         this.serviceViewed = serviceViewed;
+    }
+
+    public boolean isCancelled() {
+        return cancelled;
+    }
+
+    public void setCancelled(boolean cancelled) {
+        this.cancelled = cancelled;
     }
 }

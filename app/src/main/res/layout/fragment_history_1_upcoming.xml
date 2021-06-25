@@ -7,12 +7,21 @@
     android:paddingHorizontal="5dp"
     tools:context=".fragments.history.UpcomingHistoryFragment">
 
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recViewBookingHistoryUpcoming"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"/>
 
+    <TextView
+        android:id="@+id/txtNoHistoryUpcoming"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="You do not have any\nupcoming Appointment"
+        android:fontFamily="monospace"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"/>
 
 </FrameLayout>

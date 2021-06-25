@@ -21,6 +21,7 @@ public class HistoryFragment extends Fragment {
     private ViewPager viewPager;
     private Intent intent;
     private TextView txtUpcoming, txtFinished, txtLogin;
+    private NavigationHistoryAdapter adapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -35,6 +36,7 @@ public class HistoryFragment extends Fragment {
             return inflater.inflate(R.layout.fragment_main_6_history_unknown, container, false);
         }
         return inflater.inflate(R.layout.fragment_main_3_history, container, false);
+
     }
 
     @Override
@@ -42,7 +44,6 @@ public class HistoryFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         if (!intent.getBooleanExtra("logged", false)) {
-            System.out.println("in logg false");
             txtLogin = getView().findViewById(R.id.txtToLogin);
             txtLogin.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -53,7 +54,10 @@ public class HistoryFragment extends Fragment {
             });
         } else {
 
-            System.out.println("in logg true");
+            System.out.println("int history");
+            txtUpcoming = getView().findViewById(R.id.txtUpcomingBooking);
+            txtFinished = getView().findViewById(R.id.txtFinishedBooking);
+
             tabLayout = getView().findViewById(R.id.tabLayoutHistory);
             viewPager = getView().findViewById(R.id.viewPagerHistory);
 
@@ -61,16 +65,19 @@ public class HistoryFragment extends Fragment {
             tabLayout.addTab(tabLayout.newTab().setText("Finished"));
             tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
-            NavigationHistoryAdapter adapter = new NavigationHistoryAdapter(getActivity().getSupportFragmentManager(), getContext(),
+            adapter = new NavigationHistoryAdapter(getActivity().getSupportFragmentManager(), getContext(),
                     getActivity(), tabLayout.getTabCount());
+
             viewPager.setAdapter(adapter);
+
+            tabLayout.selectTab(tabLayout.getTabAt(0));
+
             viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
             tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
                 @Override
                 public void onTabSelected(TabLayout.Tab tab) {
                     viewPager.setCurrentItem(tab.getPosition());
                 }
-
                 @Override
                 public void onTabUnselected(TabLayout.Tab tab) {
                 }
@@ -80,6 +87,7 @@ public class HistoryFragment extends Fragment {
                 }
             });
             tabLayout.setVisibility(View.GONE);
+
 
             viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
                 @Override
@@ -110,8 +118,6 @@ public class HistoryFragment extends Fragment {
                 }
             });
 
-            txtUpcoming = getView().findViewById(R.id.txtUpcomingBooking);
-            txtFinished = getView().findViewById(R.id.txtFinishedBooking);
 
             txtUpcoming.setOnClickListener(new View.OnClickListener() {
                 @Override
