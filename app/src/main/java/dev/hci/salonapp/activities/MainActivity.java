@@ -42,11 +42,11 @@ public class MainActivity extends AppCompatActivity {
         tabCommon.getIcon().setColorFilter(getResources().getColor(R.color.white), PorterDuff.Mode.SRC_IN);
         tabLayout.addTab(tabCommon);
 
-        tabCommon = tabLayout.newTab();
-        tabCommon.setIcon(R.drawable.ic_nav_shopping);
-        tabCommon.setText("Shopping");
-        tabCommon.getIcon().setColorFilter(getResources().getColor(R.color.white), PorterDuff.Mode.SRC_IN);
-        tabLayout.addTab(tabCommon);
+//        tabCommon = tabLayout.newTab();
+//        tabCommon.setIcon(R.drawable.ic_nav_shopping);
+//        tabCommon.setText("Shopping");
+//        tabCommon.getIcon().setColorFilter(getResources().getColor(R.color.white), PorterDuff.Mode.SRC_IN);
+//        tabLayout.addTab(tabCommon);
 
         tabCommon = tabLayout.newTab();
         tabCommon.setIcon(R.drawable.ic_nav_history);
@@ -96,9 +96,9 @@ public class MainActivity extends AppCompatActivity {
 //            txtUser.setText("User Name");
 //        }
         if (intent.getBooleanExtra("forced_logged", false)) {
-            tabLayout.selectTab(tabLayout.getTabAt(3));
-        } if (intent.getBooleanExtra("confirm_booking", false)) {
             tabLayout.selectTab(tabLayout.getTabAt(2));
+        } if (intent.getBooleanExtra("confirm_booking", false)) {
+            tabLayout.selectTab(tabLayout.getTabAt(1));
         }
 
         tabLayout.getTabAt(tabLayout.getSelectedTabPosition()).getIcon().setColorFilter(getResources().getColor(R.color.gold), PorterDuff.Mode.SRC_IN);

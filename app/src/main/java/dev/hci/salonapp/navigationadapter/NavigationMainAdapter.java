@@ -28,16 +28,27 @@ public class NavigationMainAdapter extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position) {
         switch (position) {
+//            case 0:
+//                fragmentCommon = new BookingFragment();
+//                return fragmentCommon;
+//            case 1:
+//                fragmentCommon = new ProductFragment();
+//                return fragmentCommon;
+//            case 2:
+//                fragmentCommon = new HistoryFragment();
+//                return fragmentCommon;
+//            case 3:
+//                fragmentCommon = new ProfileFragment();
+//                return fragmentCommon;
+//            default:
+//                return null;
             case 0:
                 fragmentCommon = new BookingFragment();
                 return fragmentCommon;
             case 1:
-                fragmentCommon = new ProductFragment();
-                return fragmentCommon;
-            case 2:
                 fragmentCommon = new HistoryFragment();
                 return fragmentCommon;
-            case 3:
+            case 2:
                 fragmentCommon = new ProfileFragment();
                 return fragmentCommon;
             default:

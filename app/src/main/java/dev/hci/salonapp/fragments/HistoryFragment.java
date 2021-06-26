@@ -49,7 +49,7 @@ public class HistoryFragment extends Fragment {
                 @Override
                 public void onClick(View v) {
                     tabLayout = getActivity().findViewById(R.id.tabLayout);
-                    tabLayout.selectTab(tabLayout.getTabAt(3));
+                    tabLayout.selectTab(tabLayout.getTabAt(2));
                 }
             });
         } else {

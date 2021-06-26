@@ -107,12 +107,30 @@ public class RecViewBookingHistoryAdapter extends RecyclerView.Adapter<RecViewBo
             holder.txtReschedule.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Salon salon = new Salon();
-                    salon.setName(bookingHistoryList.get(position).getSalonName());
-                    salon.setAddress(bookingHistoryList.get(position).getSalonAddress());
-                    Intent newIntent = new Intent(context, BookingCartActivity.class);
-                    newIntent.putExtra("salon", salon);
-                    activity.startActivity(newIntent);
+
+                    AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                    builder.setCancelable(true);
+                    builder.setTitle("Reschedule the Appointment?");
+                    builder.setMessage("Are you sure you want to reschedule this appointment?");
+                    builder.setPositiveButton("Reschedule",
+                            new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    Salon salon = new Salon();
+                                    salon.setName(bookingHistoryList.get(position).getSalonName());
+                                    salon.setAddress(bookingHistoryList.get(position).getSalonAddress());
+                                    Intent newIntent = new Intent(context, BookingCartActivity.class);
+                                    newIntent.putExtra("salon", salon);
+                                    activity.startActivity(newIntent);
+                                }
+                            });
+                    builder.setNegativeButton("Close", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                        }
+                    });
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
                 }
             });
             holder.txtCancel.setVisibility(View.VISIBLE);
