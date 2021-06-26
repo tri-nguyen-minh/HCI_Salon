@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.HCI_Salon_Manager">
-        <activity android:name=".LoginActivity">
+        <activity android:name="dev.hci.manager.activities.NotificationActivity"></activity>
+        <activity android:name="dev.hci.hci_salon_manager.activities.MainActivity" />
+        <activity android:name="dev.hci.hci_salon_manager.activities.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

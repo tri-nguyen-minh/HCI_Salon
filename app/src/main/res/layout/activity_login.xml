@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/lighter_gray"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".LoginActivity">
+    tools:context="dev.hci.manager.activities.LoginActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -30,7 +30,7 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="40dp"
             app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="10dp">
 
@@ -39,19 +39,9 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:gravity="center"
-                android:paddingVertical="15dp"
+                android:paddingTop="30dp"
+                android:paddingBottom="10dp"
                 android:paddingHorizontal="10dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="monospace"
-                    android:gravity="center"
-                    android:text="LOGIN"
-                    android:textColor="@color/black"
-                    android:textSize="22sp"
-                    android:textStyle="bold"
-                    android:layout_marginVertical="10dp"/>
 
 
                 <LinearLayout
@@ -61,6 +51,7 @@
                     android:orientation="horizontal"
                     android:paddingRight="15dp"
                     android:paddingLeft="10dp"
+                    android:paddingVertical="5dp"
                     android:layout_marginVertical="5dp">
 
 
@@ -86,11 +77,12 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginVertical="15dp"
                     android:gravity="left|center"
                     android:orientation="horizontal"
                     android:paddingRight="15dp"
-                    android:paddingLeft="10dp">
+                    android:paddingLeft="10dp"
+                    android:paddingVertical="5dp">
 
                     <EditText
                         android:id="@+id/editPassword"
@@ -110,8 +102,8 @@
 
                     <ImageView
                         android:id="@+id/imgDisplayPassword"
-                        android:layout_width="40dp"
-                        android:layout_height="35dp"
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
                         android:layout_marginLeft="10dp"
                         android:src="@drawable/ic_eye"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -124,7 +116,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="10dp"
-                    android:layout_marginTop="10dp"
                     android:fontFamily="monospace"
                     android:gravity="right"
                     android:text="Forget your Password?"
@@ -135,12 +126,14 @@
                 <TextView
                     android:id="@+id/btnLogin"
                     style="@style/button_login"
-                    android:layout_marginVertical="15dp"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginBottom="15dp"
                     android:background="@drawable/background_login_button"
                     android:gravity="center"
                     android:paddingHorizontal="50dp"
-                    android:paddingVertical="5dp"
-                    android:text="LOGIN" />
+                    android:paddingVertical="10dp"
+                    android:text="LOGIN"
+                    android:onClick="onLoginClick"/>
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>

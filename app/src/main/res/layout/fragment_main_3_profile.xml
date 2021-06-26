@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="dev.hci.manager.fragments.ProfileFragment"
+    android:orientation="vertical">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="205dp"
+        app:cardCornerRadius="40dp">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/salon_mervyn" />
+
+    </androidx.cardview.widget.CardView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="left|center"
+        android:background="@color/white"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_gravity="bottom|center">
+
+        <LinearLayout style="@style/profile_tab">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="35dp"
+                android:layout_marginHorizontal="10dp"
+                android:src="@drawable/ic_person" />
+
+            <TextView
+                android:id="@+id/txtUserInfo"
+                android:text="Account Information"
+                style="@style/profile_text" />
+
+        </LinearLayout>
+
+        <LinearLayout style="@style/profile_tab">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="35dp"
+                android:layout_marginHorizontal="10dp"
+                android:src="@drawable/ic_location" />
+
+            <TextView
+                android:text="Delivery Addresses"
+                style="@style/profile_text"/>
+
+        </LinearLayout>
+
+        <LinearLayout style="@style/profile_tab">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="35dp"
+                android:layout_marginHorizontal="10dp"
+                android:src="@drawable/ic_dollar" />
+
+            <TextView
+                android:text="E-Wallet"
+                style="@style/profile_text"/>
+
+        </LinearLayout>
+
+        <LinearLayout style="@style/profile_tab">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="35dp"
+                android:layout_marginHorizontal="10dp"
+                android:src="@drawable/ic_info" />
+
+            <TextView
+                android:text="Term of Services"
+                style="@style/profile_text"/>
+
+        </LinearLayout>
+
+        <LinearLayout style="@style/profile_tab">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="35dp"
+                android:layout_marginHorizontal="10dp"
+                android:src="@drawable/ic_help" />
+
+            <TextView
+                android:text="Help &amp; Support"
+                style="@style/profile_text"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/btnLogout"
+            style="@style/profile_tab">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="35dp"
+                android:layout_marginHorizontal="10dp"
+                android:src="@drawable/ic_return" />
+
+            <TextView
+                android:text="Sign out"
+                style="@style/profile_text"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,4 +1,4 @@
-package com.example.hci_salon_manager;
+package dev.hci.manager;
 
 import org.junit.Test;
 
