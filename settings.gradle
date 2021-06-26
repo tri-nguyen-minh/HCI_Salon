@@ -1,2 +1,2 @@
-rootProject.name = "SalonApp"
+rootProject.name = "HCI_Salon_Manager"
 include ':app'
