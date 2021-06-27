@@ -34,6 +34,8 @@ public class GeneralScheduleFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         EditText txtTimeFromHour = getView().findViewById(R.id.txtTimeFromHour);
         EditText txtTimeFromMinute = getView().findViewById(R.id.txtTimeFromMinute);
+        EditText txtTimeToHour = getView().findViewById(R.id.txtTimeToHour);
+        EditText txtTimeToMinute = getView().findViewById(R.id.txtTimeToMinute);
         txtTimeFromHour.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {

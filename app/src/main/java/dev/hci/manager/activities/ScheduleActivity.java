@@ -7,7 +7,9 @@ import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.example.hci_salon_manager.R;
 import com.google.android.material.tabs.TabLayout;
@@ -21,6 +23,7 @@ public class ScheduleActivity extends AppCompatActivity {
     private TabLayout.Tab tabCommon;
     private Intent intent;
     private LinearLayout linearLayoutCommon;
+    private TextView txtCommon;
     private int selectedDate;
     private int[] weekDayList = {R.id.btnMonday, R.id.btnTuesday,
                                  R.id.btnWednesday, R.id.btnThursday,
@@ -86,5 +89,22 @@ public class ScheduleActivity extends AppCompatActivity {
         }
         linearLayoutCommon = findViewById(view.getId());
         linearLayoutCommon.setBackground(getResources().getDrawable(R.drawable.background_date_selected));
+        for (int i = 0; i < weekDayList.length; i++) {
+            if (weekDayList[i] == view.getId()) {
+                selectedDate = i;
+            }
+        }
+
+        txtCommon = findViewById(weekDayTimeList[selectedDate]);
+        String workHour = txtCommon.getText().toString();
+        String fromTime = workHour.substring(0, workHour.indexOf(" - "));
+        String toTime = workHour.substring(workHour.indexOf(" - ") + 4);
+        System.out.println(fromTime);
+        System.out.println(toTime);
+
+        EditText txtTimeFromHour = findViewById(R.id.txtTimeFromHour);
+        EditText txtTimeFromMinute = findViewById(R.id.txtTimeFromMinute);
+        EditText txtTimeToHour = findViewById(R.id.txtTimeToHour);
+        EditText txtTimeToMinute = findViewById(R.id.txtTimeToMinute);
     }
 }
