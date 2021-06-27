@@ -1,4 +1,4 @@
-package dev.hci.manager.fragments;
+package dev.hci.manager.fragments.home;
 
 import android.os.Bundle;
 

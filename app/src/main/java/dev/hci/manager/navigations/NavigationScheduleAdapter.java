@@ -7,17 +7,20 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
+import dev.hci.manager.activities.ScheduleActivity;
 import dev.hci.manager.fragments.home.HomeFragment;
 import dev.hci.manager.fragments.home.ProfileFragment;
 import dev.hci.manager.fragments.home.RatingFragment;
+import dev.hci.manager.fragments.schedule.DailyScheduleFragment;
+import dev.hci.manager.fragments.schedule.GeneralScheduleFragment;
 
-public class NavigationMainAdapter extends FragmentPagerAdapter {
+public class NavigationScheduleAdapter extends FragmentPagerAdapter {
     Context context;
     int totalTabs;
     Activity activity;
     Fragment fragmentCommon;
 
-    public NavigationMainAdapter(FragmentManager fm, Context context, Activity activity, int totalTabs) {
+    public NavigationScheduleAdapter(FragmentManager fm, Context context, Activity activity, int totalTabs) {
         super(fm);
         this.context = context;
         this.activity = activity;
@@ -28,13 +31,10 @@ public class NavigationMainAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                fragmentCommon = new HomeFragment();
+                fragmentCommon = new GeneralScheduleFragment();
                 return fragmentCommon;
             case 1:
-                fragmentCommon = new RatingFragment();
-                return fragmentCommon;
-            case 2:
-                fragmentCommon = new ProfileFragment();
+                fragmentCommon = new DailyScheduleFragment();
                 return fragmentCommon;
             default:
                 return null;

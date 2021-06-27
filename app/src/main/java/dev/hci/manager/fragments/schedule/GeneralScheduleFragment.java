@@ -1,4 +1,4 @@
-package dev.hci.manager.fragments;
+package dev.hci.manager.fragments.schedule;
 
 import android.os.Bundle;
 
@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 
 import com.example.hci_salon_manager.R;
 
-public class HomeFragment extends Fragment {
+public class GeneralScheduleFragment extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -21,6 +21,6 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_main_1_home, container, false);
+        return inflater.inflate(R.layout.fragment_schedule_1_general, container, false);
     }
 }
