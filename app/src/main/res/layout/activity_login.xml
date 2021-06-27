@@ -102,8 +102,8 @@
 
                     <ImageView
                         android:id="@+id/imgDisplayPassword"
-                        android:layout_width="45dp"
-                        android:layout_height="45dp"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
                         android:layout_marginLeft="10dp"
                         android:src="@drawable/ic_eye"
                         app:layout_constraintBottom_toBottomOf="parent"

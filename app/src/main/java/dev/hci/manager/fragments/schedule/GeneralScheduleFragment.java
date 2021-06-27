@@ -1,6 +1,8 @@
 package dev.hci.manager.fragments.schedule;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,7 +32,27 @@ public class GeneralScheduleFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-//        EditText txtTimeFrom = getView().findViewById(R.id.txtTimeFrom);
-//        txtTimeFrom.setOnEditorActionListener();
+        EditText txtTimeFromHour = getView().findViewById(R.id.txtTimeFromHour);
+        EditText txtTimeFromMinute = getView().findViewById(R.id.txtTimeFromMinute);
+        txtTimeFromHour.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                System.out.println(txtTimeFromHour.getText().toString());
+                String hour = txtTimeFromHour.getText().toString();
+                if (hour.length() == 2) {
+                    txtTimeFromMinute.requestFocus();
+                }
+            }
+        });
     }
 }
