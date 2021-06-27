@@ -316,189 +316,6 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:cardCornerRadius="15dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center"
-                        android:background="@color/white"
-                        android:paddingVertical="10dp">
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:background="@drawable/background_separator_right">
-
-                            <LinearLayout
-                                android:id="@+id/btn07General"
-                                android:onClick="onTimeslotGeneralClick"
-                                style="@style/timeslot_tab">
-
-                                <ImageView
-                                    android:layout_width="30dp"
-                                    android:layout_height="30dp"
-                                    android:src="@drawable/ic_check_unchecked"/>
-                                <TextView
-                                    android:text="07:00"
-                                    style="@style/timeslot_text" />
-
-                            </LinearLayout>
-                            <LinearLayout
-                                android:id="@+id/btn08General"
-                                android:onClick="onTimeslotGeneralClick"
-                                style="@style/timeslot_tab">
-
-                                <ImageView
-                                    android:layout_width="30dp"
-                                    android:layout_height="30dp"
-                                    android:src="@drawable/ic_check_checked"/>
-                                <TextView
-                                    android:text="08:00"
-                                    style="@style/timeslot_text" />
-
-                            </LinearLayout>
-                            <LinearLayout
-                                android:id="@+id/btn09General"
-                                android:onClick="onTimeslotGeneralClick"
-                                style="@style/timeslot_tab">
-
-                                <TextView
-                                    android:text="09:00"
-                                    style="@style/timeslot_text" />
-
-                            </LinearLayout>
-                            <LinearLayout
-                                android:id="@+id/btn10General"
-                                android:onClick="onTimeslotGeneralClick"
-                                style="@style/timeslot_tab">
-
-                                <TextView
-                                    android:text="10:00"
-                                    style="@style/timeslot_text" />
-
-                            </LinearLayout>
-                            <LinearLayout
-                                android:id="@+id/btn11General"
-                                android:onClick="onTimeslotGeneralClick"
-                                style="@style/timeslot_tab">
-
-                                <TextView
-                                    android:text="11:00"
-                                    style="@style/timeslot_text" />
-
-                            </LinearLayout>
-                            <LinearLayout
-                                android:id="@+id/btn12General"
-                                android:onClick="onTimeslotGeneralClick"
-                                style="@style/timeslot_tab">
-
-                                <TextView
-                                    android:text="12:00"
-                                    style="@style/timeslot_text" />
-
-                            </LinearLayout>
-                            <LinearLayout
-                                android:id="@+id/btn13General"
-                                android:onClick="onTimeslotGeneralClick"
-                                style="@style/timeslot_tab">
-
-                                <TextView
-                                    android:text="13:00"
-                                    style="@style/timeslot_text" />
-
-                            </LinearLayout>
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:background="@drawable/background_separator_left">
-
-                            <LinearLayout
-                                android:id="@+id/btn14General"
-                                android:onClick="onTimeslotGeneralClick"
-                                style="@style/timeslot_tab">
-
-                                <TextView
-                                    android:text="14:00"
-                                    style="@style/timeslot_text" />
-
-                            </LinearLayout>
-                            <LinearLayout
-                                android:id="@+id/btn15General"
-                                android:onClick="onTimeslotGeneralClick"
-                                style="@style/timeslot_tab">
-
-                                <TextView
-                                    android:text="15:00"
-                                    style="@style/timeslot_text" />
-
-                            </LinearLayout>
-                            <LinearLayout
-                                android:id="@+id/btn16General"
-                                android:onClick="onTimeslotGeneralClick"
-                                style="@style/timeslot_tab">
-
-                                <TextView
-                                    android:text="16:00"
-                                    style="@style/timeslot_text" />
-
-                            </LinearLayout>
-                            <LinearLayout
-                                android:id="@+id/btn17General"
-                                android:onClick="onTimeslotGeneralClick"
-                                style="@style/timeslot_tab">
-
-                                <TextView
-                                    android:text="17:00"
-                                    style="@style/timeslot_text" />
-
-                            </LinearLayout>
-                            <LinearLayout
-                                android:id="@+id/btn18General"
-                                android:onClick="onTimeslotGeneralClick"
-                                style="@style/timeslot_tab">
-
-                                <TextView
-                                    android:text="18:00"
-                                    style="@style/timeslot_text" />
-
-                            </LinearLayout>
-                            <LinearLayout
-                                android:id="@+id/btn19General"
-                                android:onClick="onTimeslotGeneralClick"
-                                style="@style/timeslot_tab">
-
-                                <TextView
-                                    android:text="19:00"
-                                    style="@style/timeslot_text" />
-
-                            </LinearLayout>
-                            <LinearLayout
-                                android:id="@+id/btn20General"
-                                android:onClick="onTimeslotGeneralClick"
-                                style="@style/timeslot_tab">
-
-                                <TextView
-                                    android:text="20:00"
-                                    style="@style/timeslot_text" />
-
-                            </LinearLayout>
-
-                        </LinearLayout>
-
-                    </LinearLayout>
-
-                </androidx.cardview.widget.CardView>
-
                 <TextView
                     android:text="Work Hours"
                     style="@style/general_text_tab_header"
@@ -611,11 +428,560 @@
                 </androidx.cardview.widget.CardView>
 
                 <TextView
-                    android:text="Booking Slot"
+                    android:text="Booking Slots"
                     style="@style/general_text_tab_header"
                     android:layout_marginTop="15dp"
                     android:layout_marginBottom="10dp"/>
 
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="15dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center"
+                        android:background="@color/white"
+                        android:paddingVertical="10dp">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:background="@drawable/background_separator_right">
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+
+                                android:id="@+id/btn00General"
+                                android:onClick="onTimeslotGeneralClick"
+                                style="@style/timeslot_tab">
+
+                                <ImageView
+                                    android:id="@+id/imgTime00General"
+                                    android:src="@drawable/ic_check_unchecked"
+                                    app:layout_constraintLeft_toLeftOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    style="@style/image_check_time" />
+
+                                <TextView
+                                    android:text="00:00"
+                                    style="@style/timeslot_text"
+                                    app:layout_constraintRight_toRightOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintBottom_toBottomOf="parent" />
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/btn01General"
+                                android:onClick="onTimeslotGeneralClick"
+                                style="@style/timeslot_tab">
+
+                                <ImageView
+                                    android:id="@+id/imgTime01General"
+                                    android:src="@drawable/ic_check_unchecked"
+                                    app:layout_constraintLeft_toLeftOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    style="@style/image_check_time" />
+
+                                <TextView
+                                    android:text="01:00"
+                                    style="@style/timeslot_text"
+                                    app:layout_constraintRight_toRightOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintBottom_toBottomOf="parent" />
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/btn02General"
+                                android:onClick="onTimeslotGeneralClick"
+                                style="@style/timeslot_tab">
+
+                                <ImageView
+                                    android:id="@+id/imgTime02General"
+                                    android:src="@drawable/ic_check_unchecked"
+                                    app:layout_constraintLeft_toLeftOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    style="@style/image_check_time" />
+
+                                <TextView
+                                    android:text="02:00"
+                                    style="@style/timeslot_text"
+                                    app:layout_constraintRight_toRightOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintBottom_toBottomOf="parent" />
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/btn03General"
+                                android:onClick="onTimeslotGeneralClick"
+                                style="@style/timeslot_tab">
+
+                                <ImageView
+                                    android:id="@+id/imgTime03General"
+                                    android:src="@drawable/ic_check_unchecked"
+                                    app:layout_constraintLeft_toLeftOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    style="@style/image_check_time" />
+
+                                <TextView
+                                    android:text="03:00"
+                                    style="@style/timeslot_text"
+                                    app:layout_constraintRight_toRightOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintBottom_toBottomOf="parent" />
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/btn04General"
+                                android:onClick="onTimeslotGeneralClick"
+                                style="@style/timeslot_tab">
+
+                                <ImageView
+                                    android:id="@+id/imgTime04General"
+                                    android:src="@drawable/ic_check_unchecked"
+                                    app:layout_constraintLeft_toLeftOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    style="@style/image_check_time" />
+
+                                <TextView
+                                    android:text="04:00"
+                                    style="@style/timeslot_text"
+                                    app:layout_constraintRight_toRightOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintBottom_toBottomOf="parent" />
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/btn05General"
+                                android:onClick="onTimeslotGeneralClick"
+                                style="@style/timeslot_tab">
+
+                                <ImageView
+                                    android:id="@+id/imgTime05General"
+                                    android:src="@drawable/ic_check_unchecked"
+                                    app:layout_constraintLeft_toLeftOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    style="@style/image_check_time" />
+
+                                <TextView
+                                    android:text="05:00"
+                                    style="@style/timeslot_text"
+                                    app:layout_constraintRight_toRightOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintBottom_toBottomOf="parent" />
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/btn06General"
+                                android:onClick="onTimeslotGeneralClick"
+                                style="@style/timeslot_tab">
+
+                                <ImageView
+                                    android:id="@+id/imgTime06General"
+                                    android:src="@drawable/ic_check_unchecked"
+                                    app:layout_constraintLeft_toLeftOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    style="@style/image_check_time" />
+
+                                <TextView
+                                    android:text="06:00"
+                                    style="@style/timeslot_text"
+                                    app:layout_constraintRight_toRightOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintBottom_toBottomOf="parent" />
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+                            <androidx.constraintlayout.widget.ConstraintLayout
+
+                                android:id="@+id/btn07General"
+                                android:onClick="onTimeslotGeneralClick"
+                                style="@style/timeslot_tab">
+
+                                <ImageView
+                                    android:id="@+id/imgTime07General"
+                                    android:src="@drawable/ic_check_unchecked"
+                                    app:layout_constraintLeft_toLeftOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    style="@style/image_check_time" />
+
+                                <TextView
+                                    android:text="07:00"
+                                    style="@style/timeslot_text"
+                                    app:layout_constraintRight_toRightOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintBottom_toBottomOf="parent" />
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:background="@drawable/background_separator_right">
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/btn08General"
+                                android:onClick="onTimeslotGeneralClick"
+                                style="@style/timeslot_tab">
+
+                                <ImageView
+                                    android:id="@+id/imgTime08General"
+                                    android:src="@drawable/ic_check_unchecked"
+                                    app:layout_constraintLeft_toLeftOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    style="@style/image_check_time" />
+
+                                <TextView
+                                    android:text="08:00"
+                                    style="@style/timeslot_text"
+                                    app:layout_constraintRight_toRightOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintBottom_toBottomOf="parent" />
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/btn09General"
+                                android:onClick="onTimeslotGeneralClick"
+                                style="@style/timeslot_tab">
+
+                                <ImageView
+                                    android:id="@+id/imgTime09General"
+                                    android:src="@drawable/ic_check_unchecked"
+                                    app:layout_constraintLeft_toLeftOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    style="@style/image_check_time" />
+
+                                <TextView
+                                    android:text="09:00"
+                                    style="@style/timeslot_text"
+                                    app:layout_constraintRight_toRightOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintBottom_toBottomOf="parent" />
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/btn10General"
+                                android:onClick="onTimeslotGeneralClick"
+                                style="@style/timeslot_tab">
+
+                                <ImageView
+                                    android:id="@+id/imgTime10General"
+                                    android:src="@drawable/ic_check_unchecked"
+                                    app:layout_constraintLeft_toLeftOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    style="@style/image_check_time" />
+
+                                <TextView
+                                    android:text="10:00"
+                                    style="@style/timeslot_text"
+                                    app:layout_constraintRight_toRightOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintBottom_toBottomOf="parent" />
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/btn11General"
+                                android:onClick="onTimeslotGeneralClick"
+                                style="@style/timeslot_tab">
+
+                                <ImageView
+                                    android:id="@+id/imgTime11General"
+                                    android:src="@drawable/ic_check_unchecked"
+                                    app:layout_constraintLeft_toLeftOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    style="@style/image_check_time" />
+
+                                <TextView
+                                    android:text="11:00"
+                                    style="@style/timeslot_text"
+                                    app:layout_constraintRight_toRightOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintBottom_toBottomOf="parent" />
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/btn12General"
+                                android:onClick="onTimeslotGeneralClick"
+                                style="@style/timeslot_tab">
+
+                                <ImageView
+                                    android:id="@+id/imgTime12General"
+                                    android:src="@drawable/ic_check_unchecked"
+                                    app:layout_constraintLeft_toLeftOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    style="@style/image_check_time" />
+
+                                <TextView
+                                    android:text="12:00"
+                                    style="@style/timeslot_text"
+                                    app:layout_constraintRight_toRightOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintBottom_toBottomOf="parent" />
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/btn13General"
+                                android:onClick="onTimeslotGeneralClick"
+                                style="@style/timeslot_tab">
+
+                                <ImageView
+                                    android:id="@+id/imgTime13General"
+                                    android:src="@drawable/ic_check_unchecked"
+                                    app:layout_constraintLeft_toLeftOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    style="@style/image_check_time" />
+
+                                <TextView
+                                    android:text="13:00"
+                                    style="@style/timeslot_text"
+                                    app:layout_constraintRight_toRightOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintBottom_toBottomOf="parent" />
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/btn14General"
+                                android:onClick="onTimeslotGeneralClick"
+                                style="@style/timeslot_tab">
+
+                                <ImageView
+                                    android:id="@+id/imgTime14General"
+                                    android:src="@drawable/ic_check_unchecked"
+                                    app:layout_constraintLeft_toLeftOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    style="@style/image_check_time" />
+
+                                <TextView
+                                    android:text="14:00"
+                                    style="@style/timeslot_text"
+                                    app:layout_constraintRight_toRightOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintBottom_toBottomOf="parent" />
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/btn15General"
+                                android:onClick="onTimeslotGeneralClick"
+                                style="@style/timeslot_tab">
+
+                                <ImageView
+                                    android:id="@+id/imgTime15General"
+                                    android:src="@drawable/ic_check_unchecked"
+                                    app:layout_constraintLeft_toLeftOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    style="@style/image_check_time" />
+
+                                <TextView
+                                    android:text="15:00"
+                                    style="@style/timeslot_text"
+                                    app:layout_constraintRight_toRightOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintBottom_toBottomOf="parent" />
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:background="@drawable/background_separator_left">
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/btn16General"
+                                android:onClick="onTimeslotGeneralClick"
+                                style="@style/timeslot_tab">
+
+                                <ImageView
+                                    android:id="@+id/imgTime16General"
+                                    android:src="@drawable/ic_check_unchecked"
+                                    app:layout_constraintLeft_toLeftOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    style="@style/image_check_time" />
+
+                                <TextView
+                                    android:text="16:00"
+                                    style="@style/timeslot_text"
+                                    app:layout_constraintRight_toRightOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintBottom_toBottomOf="parent" />
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/btn17General"
+                                android:onClick="onTimeslotGeneralClick"
+                                style="@style/timeslot_tab">
+
+                                <ImageView
+                                    android:id="@+id/imgTime17General"
+                                    android:src="@drawable/ic_check_unchecked"
+                                    app:layout_constraintLeft_toLeftOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    style="@style/image_check_time" />
+
+                                <TextView
+                                    android:text="17:00"
+                                    style="@style/timeslot_text"
+                                    app:layout_constraintRight_toRightOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintBottom_toBottomOf="parent" />
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/btn18General"
+                                android:onClick="onTimeslotGeneralClick"
+                                style="@style/timeslot_tab">
+
+                                <ImageView
+                                    android:id="@+id/imgTime18General"
+                                    android:src="@drawable/ic_check_unchecked"
+                                    app:layout_constraintLeft_toLeftOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    style="@style/image_check_time" />
+
+                                <TextView
+                                    android:text="18:00"
+                                    style="@style/timeslot_text"
+                                    app:layout_constraintRight_toRightOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintBottom_toBottomOf="parent" />
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/btn19General"
+                                android:onClick="onTimeslotGeneralClick"
+                                style="@style/timeslot_tab">
+
+                                <ImageView
+                                    android:id="@+id/imgTime19General"
+                                    android:src="@drawable/ic_check_unchecked"
+                                    app:layout_constraintLeft_toLeftOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    style="@style/image_check_time" />
+
+                                <TextView
+                                    android:text="19:00"
+                                    style="@style/timeslot_text"
+                                    app:layout_constraintRight_toRightOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintBottom_toBottomOf="parent" />
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/btn20General"
+                                android:onClick="onTimeslotGeneralClick"
+                                style="@style/timeslot_tab">
+
+                                <ImageView
+                                    android:id="@+id/imgTime20General"
+                                    android:src="@drawable/ic_check_unchecked"
+                                    app:layout_constraintLeft_toLeftOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    style="@style/image_check_time" />
+
+                                <TextView
+                                    android:text="20:00"
+                                    style="@style/timeslot_text"
+                                    app:layout_constraintRight_toRightOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/btn21General"
+                                android:onClick="onTimeslotGeneralClick"
+                                style="@style/timeslot_tab">
+
+                                <ImageView
+                                    android:id="@+id/imgTime21General"
+                                    android:src="@drawable/ic_check_unchecked"
+                                    app:layout_constraintLeft_toLeftOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    style="@style/image_check_time" />
+
+                                <TextView
+                                    android:text="21:00"
+                                    style="@style/timeslot_text"
+                                    app:layout_constraintRight_toRightOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/btn22General"
+                                android:onClick="onTimeslotGeneralClick"
+                                style="@style/timeslot_tab">
+
+                                <ImageView
+                                    android:id="@+id/imgTime22General"
+                                    android:src="@drawable/ic_check_unchecked"
+                                    app:layout_constraintLeft_toLeftOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    style="@style/image_check_time" />
+
+                                <TextView
+                                    android:text="22:00"
+                                    style="@style/timeslot_text"
+                                    app:layout_constraintRight_toRightOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/btn23General"
+                                android:onClick="onTimeslotGeneralClick"
+                                style="@style/timeslot_tab">
+
+                                <ImageView
+                                    android:id="@+id/imgTime23General"
+                                    android:src="@drawable/ic_check_unchecked"
+                                    app:layout_constraintLeft_toLeftOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    style="@style/image_check_time" />
+
+                                <TextView
+                                    android:text="23:00"
+                                    style="@style/timeslot_text"
+                                    app:layout_constraintRight_toRightOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
 
             </LinearLayout>
 

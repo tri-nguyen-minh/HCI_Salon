@@ -1,6 +1,7 @@
 package dev.hci.manager.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
@@ -8,11 +9,14 @@ import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.hci_salon_manager.R;
 import com.google.android.material.tabs.TabLayout;
+
+import java.util.ArrayList;
 
 import dev.hci.manager.navigations.NavigationScheduleAdapter;
 
@@ -23,24 +27,44 @@ public class ScheduleActivity extends AppCompatActivity {
     private TabLayout.Tab tabCommon;
     private Intent intent;
     private LinearLayout linearLayoutCommon;
+    private ConstraintLayout constraintLayoutCommon;
     private TextView txtCommon;
+    private ImageView imgCommon;
+    private int fromHour, fromMinute, toHour, toMinute;
     private int selectedDate;
     private int[] weekDayList = {R.id.btnMonday, R.id.btnTuesday,
                                  R.id.btnWednesday, R.id.btnThursday,
                                  R.id.btnFriday, R.id.btnSaturday,
                                  R.id.btnSunday, R.id.btnWeek};
-    private int[] weekDayTimeList = {R.id.txtTimeMonday, R.id.txtTimeTuesday,
-                                     R.id.txtTimeWednesday, R.id.txtTimeThursday,
-                                     R.id.txtTimeFriday, R.id.txtTimeSaturday,
-                                     R.id.txtTimeSunday, R.id.txtTimeWeek};
-    private int[] timeslotList = {R.id.btn07General, R.id.btn08General,
-                                  R.id.btn09General, R.id.btn10General,
-                                  R.id.btn11General, R.id.btn12General,
-                                  R.id.btn13General, R.id.btn14General,
-                                  R.id.btn15General, R.id.btn16General,
-                                  R.id.btn17General, R.id.btn18General,
-                                  R.id.btn19General, R.id.btn20General};
-
+    private int[] weekDayTimeIdList = {R.id.txtTimeMonday, R.id.txtTimeTuesday,
+                                       R.id.txtTimeWednesday, R.id.txtTimeThursday,
+                                       R.id.txtTimeFriday, R.id.txtTimeSaturday,
+                                       R.id.txtTimeSunday, R.id.txtTimeWeek};
+    private int[] timeslotIdList = {R.id.btn00General, R.id.btn01General,
+                                    R.id.btn02General, R.id.btn03General,
+                                    R.id.btn04General, R.id.btn05General,
+                                    R.id.btn06General, R.id.btn07General,
+                                    R.id.btn08General, R.id.btn09General,
+                                    R.id.btn10General, R.id.btn11General,
+                                    R.id.btn12General, R.id.btn13General,
+                                    R.id.btn14General, R.id.btn15General,
+                                    R.id.btn16General, R.id.btn17General,
+                                    R.id.btn18General, R.id.btn19General,
+                                    R.id.btn20General, R.id.btn21General,
+                                    R.id.btn22General, R.id.btn23General};
+    private int[] timeslotCheckIdList = {R.id.imgTime00General, R.id.imgTime01General,
+                                         R.id.imgTime02General, R.id.imgTime03General,
+                                         R.id.imgTime04General, R.id.imgTime05General,
+                                         R.id.imgTime06General, R.id.imgTime07General,
+                                         R.id.imgTime08General, R.id.imgTime09General,
+                                         R.id.imgTime10General, R.id.imgTime11General,
+                                         R.id.imgTime12General, R.id.imgTime13General,
+                                         R.id.imgTime14General, R.id.imgTime15General,
+                                         R.id.imgTime16General, R.id.imgTime17General,
+                                         R.id.imgTime18General, R.id.imgTime19General,
+                                         R.id.imgTime20General, R.id.imgTime21General,
+                                         R.id.imgTime22General, R.id.imgTime23General};
+    private ArrayList<Boolean> timeslotCheckList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,7 +126,7 @@ public class ScheduleActivity extends AppCompatActivity {
             }
         }
 
-        txtCommon = findViewById(weekDayTimeList[selectedDate]);
+        txtCommon = findViewById(weekDayTimeIdList[selectedDate]);
 
         linearLayoutCommon = findViewById(R.id.layoutWorkHourGeneral);
         linearLayoutCommon.setVisibility(View.VISIBLE);
@@ -113,17 +137,76 @@ public class ScheduleActivity extends AppCompatActivity {
         EditText txtTimeToHour = findViewById(R.id.txtTimeToHour);
         EditText txtTimeToMinute = findViewById(R.id.txtTimeToMinute);
         if (!workHour.equals("Custom")) {
+            timeslotCheckList = new ArrayList<>();
             String fromTime = workHour.substring(0, workHour.indexOf(" - "));
             String toTime = workHour.substring(workHour.indexOf(" - ") + 3);
-            txtTimeFromHour.setText(fromTime.substring(0, fromTime.indexOf(":")));
-            txtTimeFromMinute.setText(fromTime.substring(fromTime.indexOf(":") + 1));
-            txtTimeToHour.setText(toTime.substring(0, toTime.indexOf(":")));
-            txtTimeToMinute.setText(toTime.substring(toTime.indexOf(":") + 1));
+            fromHour = Integer.parseInt(fromTime.substring(0, fromTime.indexOf(":")));
+            fromMinute = Integer.parseInt(fromTime.substring(fromTime.indexOf(":") + 1));
+            toHour = Integer.parseInt(toTime.substring(0, toTime.indexOf(":")));
+            toMinute = Integer.parseInt(toTime.substring(toTime.indexOf(":") + 1));
+            txtTimeFromHour.setText(fromHour + "");
+            txtTimeFromMinute.setText(fromMinute + "");
+            txtTimeToHour.setText(toHour + "");
+            txtTimeToMinute.setText(toMinute + "");
+
+            for (int i = 0; i < timeslotCheckIdList.length; i++) {
+                imgCommon = findViewById(timeslotCheckIdList[i]);
+                if (fromMinute == 0) {
+                    if (((i + 7) >= fromHour) && ((toHour - 3) > i)) {
+                        imgCommon.setImageResource(R.drawable.ic_check_checked);
+                        timeslotCheckList.add(true);
+                        constraintLayoutCommon = findViewById(timeslotIdList[i]);
+                        constraintLayoutCommon.setBackground(getResources().getDrawable(R.drawable.background_date_selected));
+                    } else {
+                        imgCommon.setImageResource(R.drawable.ic_check_unchecked);
+                        timeslotCheckList.add(false);
+                        constraintLayoutCommon = findViewById(timeslotIdList[i]);
+                        constraintLayoutCommon.setBackground(getResources().getDrawable(R.drawable.background_date_default));
+                    }
+                } else if (((i + 8) >= fromHour) && ((toHour - 3) > i)) {
+                    imgCommon.setImageResource(R.drawable.ic_check_checked);
+                    timeslotCheckList.add(true);
+                    constraintLayoutCommon = findViewById(timeslotIdList[i]);
+                    constraintLayoutCommon.setBackground(getResources().getDrawable(R.drawable.background_date_selected));
+                } else {
+                    imgCommon.setImageResource(R.drawable.ic_check_unchecked);
+                    timeslotCheckList.add(false);
+                    constraintLayoutCommon = findViewById(timeslotIdList[i]);
+                    constraintLayoutCommon.setBackground(getResources().getDrawable(R.drawable.background_date_default));
+                }
+            }
         } else {
             txtTimeFromHour.setText("");
             txtTimeFromMinute.setText("");
             txtTimeToHour.setText("");
             txtTimeToMinute.setText("");
+            for (int i = 0; i < timeslotCheckIdList.length; i++) {
+                timeslotCheckList.add(false);
+                imgCommon = findViewById(timeslotCheckIdList[i]);
+                imgCommon.setImageResource(R.drawable.ic_check_unchecked);
+                constraintLayoutCommon = findViewById(timeslotIdList[i]);
+                constraintLayoutCommon.setBackground(getResources().getDrawable(R.drawable.background_date_default));
+            }
         }
+    }
+
+    public void onTimeslotGeneralClick(View view) {
+        constraintLayoutCommon = findViewById(view.getId());
+        for (int i = 0; i < timeslotIdList.length; i++) {
+            if (timeslotIdList[i] == view.getId()) {
+                imgCommon = findViewById(timeslotCheckIdList[i]);
+                if (timeslotCheckList.get(i)) {
+                    imgCommon.setImageResource(R.drawable.ic_check_unchecked);
+                    timeslotCheckList.add(false);
+                    constraintLayoutCommon.setBackground(getResources().getDrawable(R.drawable.background_date_default));
+                } else {
+                    imgCommon.setImageResource(R.drawable.ic_check_checked);
+                    timeslotCheckList.add(true);
+                    constraintLayoutCommon.setBackground(getResources().getDrawable(R.drawable.background_date_selected));
+                }
+            }
+        }
+        txtCommon = findViewById(R.id.txtSaveGeneral);
+        txtCommon.setVisibility(View.VISIBLE);
     }
 }

@@ -18,6 +18,7 @@ public class GeneralScheduleFragment extends Fragment {
 
     private TextView txtCommon;
     private LinearLayout linearLayoutCommon;
+    private
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -45,10 +46,12 @@ public class GeneralScheduleFragment extends Fragment {
         EditText txtTimeFromMinute = getView().findViewById(R.id.txtTimeFromMinute);
         EditText txtTimeToHour = getView().findViewById(R.id.txtTimeToHour);
         EditText txtTimeToMinute = getView().findViewById(R.id.txtTimeToMinute);
+//beforeFromMinute = 0, beforeToHour = 0, beforeToMinute = 0
         txtTimeFromHour.addTextChangedListener(new TextWatcher() {
+            int beforeFromHour = 0;
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
+                beforeFromHour = count;
             }
 
             @Override
@@ -58,6 +61,7 @@ public class GeneralScheduleFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable s) {
+                System.out.println(beforeFromHour);
 //                System.out.println(txtTimeFromHour.getText().toString());
 //                String hour = txtTimeFromHour.getText().toString();
 //                if (hour.length() == 2) {
