@@ -30,7 +30,7 @@ public class GeneralScheduleFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        EditText txtTimeFrom = getView().findViewById(R.id.txtTimeFrom);
-        txtTimeFrom.setOnEditorActionListener();
+//        EditText txtTimeFrom = getView().findViewById(R.id.txtTimeFrom);
+//        txtTimeFrom.setOnEditorActionListener();
     }
 }

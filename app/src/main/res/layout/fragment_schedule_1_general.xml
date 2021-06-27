@@ -268,10 +268,9 @@
             android:background="@color/white"
             android:paddingVertical="10dp">
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="190dp"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:layout_height="40dp"
                 android:padding="10dp"
                 android:gravity="center"
                 android:background="@drawable/background_separator_right">
@@ -316,57 +315,62 @@
                     android:gravity="center"
                     android:background="@null"/>
 
-            </LinearLayout>
+            </RelativeLayout>
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="190dp"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:layout_height="40dp"
                 android:padding="10dp"
                 android:gravity="center"
                 android:background="@drawable/background_separator_left">
 
-                <TextView
-                    android:layout_width="70dp"
-                    android:layout_height="match_parent"
-                    android:text="To:"
-                    android:gravity="center"
-                    android:fontFamily="monospace"
-                    android:textSize="17sp"/>
+                <LinearLayout
+                    android:onClick="onWeekdayClick"
+                    style="@style/weekday_tab">
 
-                <EditText
-                    android:id="@+id/txtTimeToHour"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:hint="00"
-                    android:fontFamily="monospace"
-                    android:textSize="17sp"
-                    android:inputType="time"
-                    android:maxLength="2"
-                    android:gravity="center"
-                    android:background="@null"/>
+                    <TextView
+                        android:layout_width="70dp"
+                        android:layout_height="match_parent"
+                        android:text="To:"
+                        android:gravity="center"
+                        android:fontFamily="monospace"
+                        android:textSize="17sp"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text=":"
-                    android:gravity="center"
-                    android:fontFamily="monospace"
-                    android:textSize="17sp"/>
+                    <EditText
+                        android:id="@+id/txtTimeToHour"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:hint="00"
+                        android:fontFamily="monospace"
+                        android:textSize="17sp"
+                        android:inputType="time"
+                        android:maxLength="2"
+                        android:gravity="center"
+                        android:background="@null"/>
 
-                <EditText
-                    android:id="@+id/txtTimeToMinute"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:hint="00"
-                    android:fontFamily="monospace"
-                    android:textSize="17sp"
-                    android:inputType="time"
-                    android:maxLength="2"
-                    android:gravity="center"
-                    android:background="@null"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text=":"
+                        android:gravity="center"
+                        android:fontFamily="monospace"
+                        android:textSize="17sp"/>
 
-            </LinearLayout>
+                    <EditText
+                        android:id="@+id/txtTimeToMinute"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:hint="00"
+                        android:fontFamily="monospace"
+                        android:textSize="17sp"
+                        android:inputType="time"
+                        android:maxLength="2"
+                        android:gravity="center"
+                        android:background="@null"/>
+
+                </LinearLayout>
+
+            </RelativeLayout>
 
         </LinearLayout>
 
