@@ -16,7 +16,7 @@ import com.example.hci_salon_manager.R;
 
 public class GeneralScheduleFragment extends Fragment {
 
-    private TextView textViewCommon;
+    private TextView txtCommon;
     private LinearLayout linearLayoutCommon;
 
     @Override
@@ -34,6 +34,10 @@ public class GeneralScheduleFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        txtCommon = getView().findViewById(R.id.txtSaveGeneral);
+        txtCommon.setVisibility(View.GONE);
+
         linearLayoutCommon = getView().findViewById(R.id.layoutWorkHourGeneral);
         linearLayoutCommon.setVisibility(View.GONE);
 
@@ -54,11 +58,11 @@ public class GeneralScheduleFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable s) {
-                System.out.println(txtTimeFromHour.getText().toString());
-                String hour = txtTimeFromHour.getText().toString();
-                if (hour.length() == 2) {
-                    txtTimeFromMinute.requestFocus();
-                }
+//                System.out.println(txtTimeFromHour.getText().toString());
+//                String hour = txtTimeFromHour.getText().toString();
+//                if (hour.length() == 2) {
+//                    txtTimeFromMinute.requestFocus();
+//                }
             }
         });
     }

@@ -33,6 +33,13 @@ public class ScheduleActivity extends AppCompatActivity {
                                      R.id.txtTimeWednesday, R.id.txtTimeThursday,
                                      R.id.txtTimeFriday, R.id.txtTimeSaturday,
                                      R.id.txtTimeSunday, R.id.txtTimeWeek};
+    private int[] timeslotList = {R.id.btn07General, R.id.btn08General,
+                                  R.id.btn09General, R.id.btn10General,
+                                  R.id.btn11General, R.id.btn12General,
+                                  R.id.btn13General, R.id.btn14General,
+                                  R.id.btn15General, R.id.btn16General,
+                                  R.id.btn17General, R.id.btn18General,
+                                  R.id.btn19General, R.id.btn20General};
 
 
     @Override
@@ -112,6 +119,11 @@ public class ScheduleActivity extends AppCompatActivity {
             txtTimeFromMinute.setText(fromTime.substring(fromTime.indexOf(":") + 1));
             txtTimeToHour.setText(toTime.substring(0, toTime.indexOf(":")));
             txtTimeToMinute.setText(toTime.substring(toTime.indexOf(":") + 1));
+        } else {
+            txtTimeFromHour.setText("");
+            txtTimeFromMinute.setText("");
+            txtTimeToHour.setText("");
+            txtTimeToMinute.setText("");
         }
     }
 }
