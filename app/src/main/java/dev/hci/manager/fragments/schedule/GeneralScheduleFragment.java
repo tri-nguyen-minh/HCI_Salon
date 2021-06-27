@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
@@ -16,6 +17,7 @@ import com.example.hci_salon_manager.R;
 public class GeneralScheduleFragment extends Fragment {
 
     private TextView textViewCommon;
+    private LinearLayout linearLayoutCommon;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -32,6 +34,9 @@ public class GeneralScheduleFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        linearLayoutCommon = getView().findViewById(R.id.layoutWorkHourGeneral);
+        linearLayoutCommon.setVisibility(View.GONE);
+
         EditText txtTimeFromHour = getView().findViewById(R.id.txtTimeFromHour);
         EditText txtTimeFromMinute = getView().findViewById(R.id.txtTimeFromMinute);
         EditText txtTimeToHour = getView().findViewById(R.id.txtTimeToHour);

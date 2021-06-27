@@ -96,15 +96,22 @@ public class ScheduleActivity extends AppCompatActivity {
         }
 
         txtCommon = findViewById(weekDayTimeList[selectedDate]);
-        String workHour = txtCommon.getText().toString();
-        String fromTime = workHour.substring(0, workHour.indexOf(" - "));
-        String toTime = workHour.substring(workHour.indexOf(" - ") + 4);
-        System.out.println(fromTime);
-        System.out.println(toTime);
 
+        linearLayoutCommon = findViewById(R.id.layoutWorkHourGeneral);
+        linearLayoutCommon.setVisibility(View.VISIBLE);
+
+        String workHour = txtCommon.getText().toString();
         EditText txtTimeFromHour = findViewById(R.id.txtTimeFromHour);
         EditText txtTimeFromMinute = findViewById(R.id.txtTimeFromMinute);
         EditText txtTimeToHour = findViewById(R.id.txtTimeToHour);
         EditText txtTimeToMinute = findViewById(R.id.txtTimeToMinute);
+        if (!workHour.equals("Custom")) {
+            String fromTime = workHour.substring(0, workHour.indexOf(" - "));
+            String toTime = workHour.substring(workHour.indexOf(" - ") + 3);
+            txtTimeFromHour.setText(fromTime.substring(0, fromTime.indexOf(":")));
+            txtTimeFromMinute.setText(fromTime.substring(fromTime.indexOf(":") + 1));
+            txtTimeToHour.setText(toTime.substring(0, toTime.indexOf(":")));
+            txtTimeToMinute.setText(toTime.substring(toTime.indexOf(":") + 1));
+        }
     }
 }
