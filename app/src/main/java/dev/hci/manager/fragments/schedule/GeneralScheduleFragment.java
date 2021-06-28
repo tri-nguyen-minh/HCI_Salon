@@ -16,9 +16,8 @@ import com.example.hci_salon_manager.R;
 
 public class GeneralScheduleFragment extends Fragment {
 
-    private TextView txtCommon;
+    private TextView txtCommon, txtSave;
     private LinearLayout linearLayoutCommon;
-    private
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -36,8 +35,8 @@ public class GeneralScheduleFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        txtCommon = getView().findViewById(R.id.txtSaveGeneral);
-        txtCommon.setVisibility(View.GONE);
+        txtSave = getView().findViewById(R.id.txtSaveGeneral);
+        txtSave.setVisibility(View.GONE);
 
         linearLayoutCommon = getView().findViewById(R.id.layoutWorkHourGeneral);
         linearLayoutCommon.setVisibility(View.GONE);
@@ -46,12 +45,11 @@ public class GeneralScheduleFragment extends Fragment {
         EditText txtTimeFromMinute = getView().findViewById(R.id.txtTimeFromMinute);
         EditText txtTimeToHour = getView().findViewById(R.id.txtTimeToHour);
         EditText txtTimeToMinute = getView().findViewById(R.id.txtTimeToMinute);
-//beforeFromMinute = 0, beforeToHour = 0, beforeToMinute = 0
         txtTimeFromHour.addTextChangedListener(new TextWatcher() {
-            int beforeFromHour = 0;
+            int beforeCount = 0;
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                beforeFromHour = count;
+                beforeCount = count;
             }
 
             @Override
@@ -61,12 +59,70 @@ public class GeneralScheduleFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable s) {
-                System.out.println(beforeFromHour);
-//                System.out.println(txtTimeFromHour.getText().toString());
-//                String hour = txtTimeFromHour.getText().toString();
-//                if (hour.length() == 2) {
-//                    txtTimeFromMinute.requestFocus();
-//                }
+                String hour = txtTimeFromHour.getText().toString();
+                if (hour.length() == 1) {
+                    txtSave.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+        txtTimeFromMinute.addTextChangedListener(new TextWatcher() {
+            int beforeCount = 0;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                beforeCount = count;
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                String minute = txtTimeFromMinute.getText().toString();
+                if (minute.length() == 1) {
+                    txtSave.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+        txtTimeToHour.addTextChangedListener(new TextWatcher() {
+            int beforeCount = 0;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                beforeCount = count;
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                String hour = txtTimeToHour.getText().toString();
+                if (hour.length() == 1) {
+                    txtSave.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+        txtTimeToMinute.addTextChangedListener(new TextWatcher() {
+            int beforeCount = 0;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                beforeCount = count;
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                String minute = txtTimeToMinute.getText().toString();
+                if (minute.length() == 1) {
+                    txtSave.setVisibility(View.VISIBLE);
+                }
             }
         });
     }

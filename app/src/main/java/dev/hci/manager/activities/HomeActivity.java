@@ -25,6 +25,7 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        intent = getIntent();
 
         tabLayout = findViewById(R.id.tabLayout);
         viewPager = findViewById(R.id.viewPager);
@@ -72,6 +73,10 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+        int selectedTab = intent.getIntExtra("BACK_HOME", -1);
+        if (selectedTab > -1) {
+            tabLayout.selectTab(tabLayout.getTabAt(selectedTab));
+        }
         tabLayout.getTabAt(tabLayout.getSelectedTabPosition()).getIcon().setColorFilter(getResources().getColor(R.color.gold), PorterDuff.Mode.SRC_IN);
 
         this.getSupportActionBar().hide();
