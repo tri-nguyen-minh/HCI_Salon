@@ -45,7 +45,6 @@ public class RecViewServiceAdapter extends RecyclerView.Adapter<RecViewServiceAd
     public void onBindViewHolder(RecViewServiceAdapter.ViewHolder holder, int position) {
         holder.txtServiceName.setText(serviceDetailsList.get(position).getName());
         holder.txtDuration.setText(serviceDetailsList.get(position).getDuration());
-        holder.txtPrice.setText(serviceDetailsList.get(position).getPrice());
         holder.txtPrice.setText(serviceDetailsList.get(position).getPrice() + ".000d");
         holder.txtPrice.setTextColor(context.getResources().getColor(R.color.black));
         holder.txtOrgPrice.setTextColor(context.getResources().getColor(R.color.black));
@@ -58,6 +57,7 @@ public class RecViewServiceAdapter extends RecyclerView.Adapter<RecViewServiceAd
             holder.txtOrgPrice.setText(serviceDetailsList.get(position).getOrgPrice() + ".000d");
             holder.txtDiscount.setText("-" + serviceDetailsList.get(position).getDiscount() + "%");
         }
+        holder.txtBookCount.setText(serviceDetailsList.get(position).getBookCount() + "");
         holder.txtEditService.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
