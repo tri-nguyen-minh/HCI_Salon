@@ -202,7 +202,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Popular Salons"
+                        android:text="Highest Rated Salons"
                         android:fontFamily="monospace"
                         android:textStyle="bold"
                         android:textSize="20sp"

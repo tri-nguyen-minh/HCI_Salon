@@ -41,7 +41,6 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintBottom_toBottomOf="parent" />
 
-
         <ImageView
             android:layout_width="45dp"
             android:layout_height="45dp"
@@ -56,7 +55,7 @@
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewPagerSalon"
         android:layout_width="match_parent"
-        android:layout_height="570dp"
+        android:layout_height="625dp"
         android:layout_below="@id/tabLayout"
         android:layout_centerInParent="true"
         />

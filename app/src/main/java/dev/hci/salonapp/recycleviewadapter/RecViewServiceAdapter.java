@@ -18,7 +18,7 @@ import dev.hci.salonapp.R;
 import dev.hci.salonapp.activities.SearchSalonActivity;
 import dev.hci.salonapp.dtos.Service;
 
-public class RecViewServiceAdapter  extends RecyclerView.Adapter<RecViewServiceAdapter.ViewHolder> {
+public class RecViewServiceAdapter extends RecyclerView.Adapter<RecViewServiceAdapter.ViewHolder> {
 
     private ArrayList<Service> serviceList;
     private Context context;
