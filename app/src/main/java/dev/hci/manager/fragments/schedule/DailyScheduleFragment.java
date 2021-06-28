@@ -1,29 +1,24 @@
 package dev.hci.manager.fragments.schedule;
 
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CalendarView;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.fragment.app.Fragment;
+
 import com.example.hci_salon_manager.R;
 
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 
 public class DailyScheduleFragment extends Fragment {
 
-    private TextView txtCommon, txtSave;
+    private TextView txtSave;
     private LinearLayout linearLayoutCommon;
     private int[] timeslotIdList = {R.id.btn00Daily, R.id.btn01Daily,
                                     R.id.btn02Daily, R.id.btn03Daily,

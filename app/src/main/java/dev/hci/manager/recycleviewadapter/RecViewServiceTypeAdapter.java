@@ -60,6 +60,7 @@ public class RecViewServiceTypeAdapter extends RecyclerView.Adapter<RecViewServi
             public void onClick(View v) {
                 intent = new Intent(context, ServiceActivity.class);
                 intent.putExtra("SERVICE", servicesList.get(position));
+                activity.startActivity(intent);
             }
         });
     }

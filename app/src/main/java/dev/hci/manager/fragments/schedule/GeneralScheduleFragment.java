@@ -16,7 +16,7 @@ import com.example.hci_salon_manager.R;
 
 public class GeneralScheduleFragment extends Fragment {
 
-    private TextView txtCommon, txtSave;
+    private TextView txtSave;
     private LinearLayout linearLayoutCommon;
 
     @Override
