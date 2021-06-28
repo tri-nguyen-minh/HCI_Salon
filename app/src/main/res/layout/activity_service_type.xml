@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="dev.hci.manager.activities.ServiceActivity">
+    tools:context="dev.hci.manager.activities.ServiceTypeActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layoutHeader"
@@ -52,7 +52,7 @@
         android:paddingBottom="10dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/btnAddService"
+            android:id="@+id/btnAddServiceType"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingHorizontal="20dp"
@@ -62,18 +62,18 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Add new Service"
+                android:text="Add new Service Type"
                 android:fontFamily="monospace"
                 android:textStyle="bold"
                 android:textColor="@color/dark_gray"
                 android:textSize="18dp"
                 android:layout_marginLeft="15dp"
-                app:layout_constraintLeft_toRightOf="@+id/imgAddService"
+                app:layout_constraintLeft_toRightOf="@+id/imgAddServiceType"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"/>
 
             <ImageView
-                android:id="@+id/imgAddService"
+                android:id="@+id/imgAddServiceType"
                 android:layout_width="45dp"
                 android:layout_height="45dp"
                 android:src="@drawable/ic_add"
@@ -97,7 +97,7 @@
             android:layout_marginBottom="10dp"/>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recViewService"
+            android:id="@+id/recViewServiceType"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"/>

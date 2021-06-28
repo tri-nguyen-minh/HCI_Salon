@@ -2,6 +2,7 @@ package dev.hci.manager.recycleviewadapter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import com.example.hci_salon_manager.R;
 
 import java.util.ArrayList;
 
+import dev.hci.manager.activities.ServiceActivity;
 import dev.hci.manager.dtos.Salon;
 import dev.hci.manager.dtos.Service;
 
@@ -23,6 +25,7 @@ public class RecViewServiceTypeAdapter extends RecyclerView.Adapter<RecViewServi
     private ArrayList<Service> servicesList;
     private Context context;
     private Activity activity;
+    private Intent intent;
 
     public RecViewServiceTypeAdapter(Context context, Activity activity) {
         this.context = context;
@@ -52,6 +55,13 @@ public class RecViewServiceTypeAdapter extends RecyclerView.Adapter<RecViewServi
             holder.txtCount.setText(serviceCount + " available services");
         }
         holder.image.setImageResource(servicesList.get(position).getImageId());
+        holder.parent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent = new Intent(context, ServiceActivity.class);
+                intent.putExtra("SERVICE", servicesList.get(position));
+            }
+        });
     }
 
     @Override
