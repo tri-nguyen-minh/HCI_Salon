@@ -12,8 +12,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.hci_salon_manager.R;
+import dev.hci.manager.R;
 
+import dev.hci.manager.activities.DiscountActivity;
 import dev.hci.manager.activities.LoginActivity;
 import dev.hci.manager.activities.ScheduleActivity;
 import dev.hci.manager.activities.ServiceTypeActivity;
@@ -79,6 +80,14 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 newIntent = new Intent(getContext(), ServiceTypeActivity.class);
+                startActivity(newIntent);
+            }
+        });
+        ConstraintLayout btnChangeDiscount = getView().findViewById(R.id.btnChangeDiscount);
+        btnChangeDiscount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                newIntent = new Intent(getContext(), DiscountActivity.class);
                 startActivity(newIntent);
             }
         });

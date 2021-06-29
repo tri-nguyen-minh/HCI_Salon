@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.hci_salon_manager.R;
+import dev.hci.manager.R;
 
 public class LoginActivity extends AppCompatActivity {
 

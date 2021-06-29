@@ -8,7 +8,7 @@ import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.hci_salon_manager.R;
+import dev.hci.manager.R;
 import com.google.android.material.tabs.TabLayout;
 
 import dev.hci.manager.navigations.NavigationMainAdapter;

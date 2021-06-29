@@ -9,10 +9,9 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.hci_salon_manager.R;
+import dev.hci.manager.R;
 
 import java.util.ArrayList;
 
@@ -70,6 +69,18 @@ public class RecViewServiceAdapter extends RecyclerView.Adapter<RecViewServiceAd
                 System.out.println("Delete");
             }
         });
+//        holder.imgEditService.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                System.out.println("Edit");
+//            }
+//        });
+//        holder.imgDeleteService.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                System.out.println("Delete");
+//            }
+//        });
     }
 
     @Override
@@ -81,8 +92,8 @@ public class RecViewServiceAdapter extends RecyclerView.Adapter<RecViewServiceAd
     public class ViewHolder extends RecyclerView.ViewHolder {
         private TextView txtServiceName, txtDuration, txtPrice, txtOrgPrice, txtDiscount, txtBookCount;
         private TextView txtEditService, txtDeleteService;
-        private CardView parent;
-        private LinearLayout layoutDiscount;
+        private LinearLayout parent, layoutDiscount;
+//        private ImageView imgEditService, imgDeleteService;
 
         public ViewHolder(View view) {
             super(view);
@@ -94,6 +105,8 @@ public class RecViewServiceAdapter extends RecyclerView.Adapter<RecViewServiceAd
             txtBookCount = view.findViewById(R.id.txtServiceBookCount);
             txtEditService = view.findViewById(R.id.txtEditService);
             txtDeleteService = view.findViewById(R.id.txtDeleteService);
+//            imgEditService = view.findViewById(R.id.imgEditService);
+//            imgDeleteService = view.findViewById(R.id.imgDeleteService);
             parent = view.findViewById(R.id.serviceDetailCard);
             layoutDiscount = view.findViewById(R.id.layoutDiscount);
         }

@@ -8,7 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.hci_salon_manager.R;
+import dev.hci.manager.R;
 
 import java.util.ArrayList;
 
@@ -32,7 +32,7 @@ public class ServiceTypeActivity extends AppCompatActivity {
         service = new Service("Haircut", R.drawable.ic_service_cut);
         serviceDetailsList = new ArrayList<>();
         serviceDetailsList.add(new ServiceDetail("Male Haircut", "30 - 40 minutes", "50", "0",35,0));
-        serviceDetailsList.add(new ServiceDetail("Female Haircut", "30 - 45 minutes", "60", "100",61,40));
+        serviceDetailsList.add(new ServiceDetail("Female Haircut", "30 - 45 minutes", "100", "0",61,0));
         service.setServiceDetailsList(serviceDetailsList);
         servicesList.add(service);
         service = new Service("Hair Styling", R.drawable.ic_service_style);
@@ -50,7 +50,7 @@ public class ServiceTypeActivity extends AppCompatActivity {
         service = new Service("Hair Wash", R.drawable.ic_service_wash);
         serviceDetailsList = new ArrayList<>();
         serviceDetailsList.add(new ServiceDetail("Hair Wash", "15 minutes", "30", "0",91,0));
-        serviceDetailsList.add(new ServiceDetail("Wash + Massage", "60 minutes", "70", "0",75,0));
+        serviceDetailsList.add(new ServiceDetail("Wash + Massage", "60 minutes", "42", "70",75,40));
         service.setServiceDetailsList(serviceDetailsList);
         servicesList.add(service);
         service = new Service("Coloring", R.drawable.ic_service_color);

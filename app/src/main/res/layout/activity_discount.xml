@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="dev.hci.manager.activities.ServiceActivity">
+    tools:context="dev.hci.manager.activities.DiscountActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layoutHeader"
@@ -21,7 +21,7 @@
         <ImageView
             android:layout_width="45dp"
             android:layout_height="45dp"
-            android:onClick="onBackService"
+            android:onClick="onBackDiscount"
             android:src="@drawable/ic_arrow_back"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -30,7 +30,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="SALON SERVICES"
+            android:text="SERVICE DISCOUNTS"
             android:textColor="@color/white"
             android:fontFamily="monospace"
             android:textSize="18sp"
@@ -52,62 +52,18 @@
         android:paddingBottom="10dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingHorizontal="20dp"
-            android:paddingVertical="10dp"
-            android:layout_marginTop="2dp"
-            android:background="@color/white"
-            android:id="@+id/layoutServiceType">
-
-            <ImageView
-                android:id="@+id/imgServiceType"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:src="@drawable/ic_service_cut"
-                android:layout_marginLeft="5dp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginLeft="15dp"
-                app:layout_constraintLeft_toRightOf="@+id/imgServiceType"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent">
-
-                <TextView
-                    android:id="@+id/txtServiceType"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Add new Service Type"
-                    android:fontFamily="monospace"
-                    android:textStyle="bold"
-                    android:textColor="@color/dark_gray"
-                    android:textSize="20dp"/>
-
-            </LinearLayout>
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/btnAddService"
+            android:id="@+id/btnAddDiscount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingHorizontal="20dp"
             android:paddingVertical="5dp"
             android:background="@color/white"
-            android:layout_marginVertical="20dp">
+            android:layout_marginBottom="20dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Add new Service"
+                android:text="Add Discount"
                 android:fontFamily="monospace"
                 android:textStyle="bold"
                 android:textColor="@color/dark_gray"
@@ -130,7 +86,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
-            android:id="@+id/txtServiceLabel"
+            android:id="@+id/txtDiscountLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -143,7 +99,7 @@
             android:layout_marginBottom="10dp"/>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recViewService"
+            android:id="@+id/recViewDiscount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"

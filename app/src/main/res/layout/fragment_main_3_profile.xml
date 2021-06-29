@@ -12,13 +12,13 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:gravity="top|center"
-        android:background="@color/white"
+        android:background="@color/lighter_gray"
         android:layout_gravity="bottom|center">
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="195dp"
-            app:cardCornerRadius="5dp">
+            android:layout_height="177dp"
+            app:cardCornerRadius="10dp">
 
             <ImageView
                 android:layout_width="match_parent"
@@ -89,8 +89,7 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/btnChangeServices"
-                style="@style/profile_tab"
-                android:layout_marginBottom="1dp">
+                style="@style/profile_tab">
 
                 <TextView
                     android:text="Salon Services"
@@ -109,6 +108,27 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/btnChangeDiscount"
+                style="@style/profile_tab"
+                android:layout_marginBottom="1dp">
+
+                <TextView
+                    android:text="Manage Discounts"
+                    style="@style/profile_text"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_key_right"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
             <RelativeLayout style="@style/profile_tab_header">
 
                 <TextView
@@ -160,7 +180,8 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/btnLogout"
-                style="@style/profile_tab">
+                style="@style/profile_tab"
+                android:layout_marginBottom="1dp">
 
                 <TextView
                     android:text="Sign out"
@@ -188,7 +209,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="bottom|left"
-        android:layout_marginTop="145dp"
+        android:layout_marginTop="130dp"
         android:layout_marginLeft="20dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent">

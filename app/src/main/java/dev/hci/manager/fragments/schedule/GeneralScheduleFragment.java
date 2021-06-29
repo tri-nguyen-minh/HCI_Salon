@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
-import com.example.hci_salon_manager.R;
+import dev.hci.manager.R;
 
 public class GeneralScheduleFragment extends Fragment {
 

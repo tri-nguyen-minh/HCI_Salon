@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.hci_salon_manager.R;
+import dev.hci.manager.R;
 
 public class HomeFragment extends Fragment {
 

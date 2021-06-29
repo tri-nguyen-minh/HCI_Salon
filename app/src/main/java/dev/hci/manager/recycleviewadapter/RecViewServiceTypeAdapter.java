@@ -12,12 +12,11 @@ import android.widget.TextView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.hci_salon_manager.R;
+import dev.hci.manager.R;
 
 import java.util.ArrayList;
 
 import dev.hci.manager.activities.ServiceActivity;
-import dev.hci.manager.dtos.Salon;
 import dev.hci.manager.dtos.Service;
 
 public class RecViewServiceTypeAdapter extends RecyclerView.Adapter<RecViewServiceTypeAdapter.ViewHolder> {

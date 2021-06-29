@@ -15,7 +15,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.hci_salon_manager.R;
+import dev.hci.manager.R;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
