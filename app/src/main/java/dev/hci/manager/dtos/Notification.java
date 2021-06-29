@@ -3,15 +3,17 @@ package dev.hci.manager.dtos;
 import java.io.Serializable;
 
 public class Notification implements Serializable {
-    private String user, appointmentCode, time;
-    private int actionCode;
+    private String user, time, appointmentTime;
+    private int appointmentCode;
+    private int contentTypeCode;
     private boolean read;
 
-    public Notification(String user, String appointmentCode, String time, int actionCode, boolean read) {
+    public Notification(String user, int appointmentCode, String appointmentTime, String time, int contentTypeCode, boolean read) {
         this.user = user;
         this.appointmentCode = appointmentCode;
+        this.appointmentTime = appointmentTime;
         this.time = time;
-        this.actionCode = actionCode;
+        this.contentTypeCode = contentTypeCode;
         this.read = read;
     }
 
@@ -19,7 +21,7 @@ public class Notification implements Serializable {
         return user;
     }
 
-    public String getAppointmentCode() {
+    public int getAppointmentCode() {
         return appointmentCode;
     }
 
@@ -27,8 +29,12 @@ public class Notification implements Serializable {
         return time;
     }
 
-    public int getActionCode() {
-        return actionCode;
+    public int getContentTypeCode() {
+        return contentTypeCode;
+    }
+
+    public String getAppointmentTime() {
+        return appointmentTime;
     }
 
     public boolean isRead() {
