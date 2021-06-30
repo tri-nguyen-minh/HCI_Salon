@@ -14,5 +14,7 @@
     <color name="white">#FFFFFF</color>
     <color name="gold">#FFE438</color>
     <color name="dark_gold">#B3A134</color>
+    <color name="lightest_gold">#ffed73</color>
     <color name="red">#FF0000</color>
+    <color name="light_blue">#21A1A6</color>
 </resources>

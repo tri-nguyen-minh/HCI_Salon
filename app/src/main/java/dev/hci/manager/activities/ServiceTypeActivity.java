@@ -56,7 +56,7 @@ public class ServiceTypeActivity extends AppCompatActivity {
         service = new Service("Coloring", R.drawable.ic_service_color);
         serviceDetailsList = new ArrayList<>();
         serviceDetailsList.add(new ServiceDetail("Coloring (Short)", "60 - 90 minutes", "550", "0",24,0));
-        serviceDetailsList.add(new ServiceDetail("Coloring (Long)", "60 - 90 minutes", "800", "0",45,0));
+        serviceDetailsList.add(new ServiceDetail("Coloring (Long)", "60 - 90 minutes", "700", "0",45,0));
         service.setServiceDetailsList(serviceDetailsList);
         servicesList.add(service);
         service = new Service("Curling", R.drawable.ic_service_curling);

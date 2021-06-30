@@ -10,16 +10,21 @@ import android.widget.TextView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 import dev.hci.manager.R;
-import dev.hci.manager.dtos.Notification;
+import dev.hci.manager.dtos.Booking;
 
 public class RecViewNotificationAdapter extends RecyclerView.Adapter<RecViewNotificationAdapter.ViewHolder>{
 
-    private ArrayList<Notification> notificationsList;
+    private ArrayList<Booking> notificationsList;
     private final String[] contentTypeList = {"booked a new Appointment",
                                             "rescheduled the Appointment",
+                                            "cancelled the Appointment",
                                             "wrote a review from the Appointment"};
     private Context context;
     private Activity activity;
@@ -29,7 +34,7 @@ public class RecViewNotificationAdapter extends RecyclerView.Adapter<RecViewNoti
         this.activity = activity;
     }
 
-    public void setNotificationsList(ArrayList<Notification> notificationsList) {
+    public void setNotificationsList(ArrayList<Booking> notificationsList) {
         this.notificationsList = notificationsList;
     }
 
@@ -48,12 +53,17 @@ public class RecViewNotificationAdapter extends RecyclerView.Adapter<RecViewNoti
         String user = notificationsList.get(position).getUser();
         int appointment = notificationsList.get(position).getAppointmentCode();
         String appointmentTime = notificationsList.get(position).getAppointmentTime();
+        String appointmentDate = notificationsList.get(position).getAppointmentDate();
         String content = user + " " + contentTypeList[contentType] + " (" + appointment + ")";
         switch (contentType) {
-            case 0:
-                content += " on " + appointmentTime;
-            case 1:
-                content += " to " + appointmentTime;
+            case 1: {
+                content += " to " + appointmentTime + " on " + appointmentDate;
+                break;
+            }
+            default: {
+                content += " at " + appointmentTime + " on " + appointmentDate;
+                break;
+            }
         }
         holder.txtContent.setText(content);
         holder.parent.setOnClickListener(new View.OnClickListener() {
@@ -61,17 +71,28 @@ public class RecViewNotificationAdapter extends RecyclerView.Adapter<RecViewNoti
             public void onClick(View view) {
                 switch (contentType) {
                     case 0: {
-                        System.out.printf("0");
+                        System.out.println("0");
+                        break;
                     }
                     case 1: {
-                        System.out.printf("1");
+                        System.out.println("1");
+                        break;
                     }
                     case 2: {
                         System.out.println(2);
+                        break;
+                    }
+                    case 3: {
+                        System.out.println(3);
+                        break;
                     }
                 }
             }
         });
+        holder.parent.setBackground(activity.getDrawable(R.drawable.background_separator_bottom));
+        if (notificationsList.get(position).isRead()) {
+            holder.parent.setBackground(activity.getDrawable(R.drawable.background_separator_bottom_gray));
+        }
     }
 
     @Override

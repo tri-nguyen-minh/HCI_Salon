@@ -21,6 +21,6 @@ public class RatingFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_main_2_rating, container, false);
+        return inflater.inflate(R.layout.fragment_main_3_rating, container, false);
     }
 }

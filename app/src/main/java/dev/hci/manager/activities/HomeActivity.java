@@ -38,6 +38,12 @@ public class HomeActivity extends AppCompatActivity {
         tabLayout.addTab(tabCommon);
 
         tabCommon = tabLayout.newTab();
+        tabCommon.setIcon(R.drawable.ic_nav_booking);
+        tabCommon.setText("Booking");
+        tabCommon.getIcon().setColorFilter(getResources().getColor(R.color.white), PorterDuff.Mode.SRC_IN);
+        tabLayout.addTab(tabCommon);
+
+        tabCommon = tabLayout.newTab();
         tabCommon.setIcon(R.drawable.ic_nav_rating);
         tabCommon.setText("Rating");
         tabCommon.getIcon().setColorFilter(getResources().getColor(R.color.white), PorterDuff.Mode.SRC_IN);
