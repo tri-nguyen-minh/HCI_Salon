@@ -1,4 +1,4 @@
-package dev.hci.salonapp.activities;
+    package dev.hci.salonapp.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;

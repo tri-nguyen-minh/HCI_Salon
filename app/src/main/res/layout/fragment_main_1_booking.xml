@@ -77,21 +77,21 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingHorizontal="15dp"
-            android:layout_marginTop="10dp"
             android:layout_marginBottom="60dp"
             android:scrollbars="none">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingHorizontal="15dp">
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="242dp"
                     app:cardCornerRadius="10dp"
-                    android:layout_marginVertical="10dp">
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="10dp">
 
                     <ViewFlipper
                         android:id="@+id/bannerFlipper"

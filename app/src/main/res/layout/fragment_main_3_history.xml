@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.HistoryFragment"
-    android:background="@color/gold">
+    android:background="@drawable/background_main">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -68,7 +68,7 @@
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewPagerHistory"
         android:layout_width="match_parent"
-        android:layout_height="500dp"
+        android:layout_height="550dp"
         android:layout_centerInParent="true"
         android:background="@drawable/background_history_tab"
         app:layout_constraintLeft_toLeftOf="parent"
