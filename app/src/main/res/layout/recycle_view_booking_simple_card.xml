@@ -7,16 +7,14 @@
     android:id="@+id/bookingCardLinear"
     android:layout_margin="5dp"
     android:orientation="vertical"
-    android:paddingVertical="15dp"
-    android:paddingHorizontal="10dp"
+    android:paddingVertical="10dp"
     android:gravity="center"
     android:background="@drawable/background_separator_bottom">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingHorizontal="5dp"
-        android:paddingBottom="10dp">
+        android:paddingHorizontal="5dp">
 
 
         <TextView
@@ -26,12 +24,11 @@
             android:ellipsize="end"
             android:fontFamily="monospace"
             android:layout_alignParentLeft="true"
-            android:paddingVertical="5dp"
             android:text="Appointment"
             android:textColor="@color/red"
             android:textSize="14sp"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintBottom_toTopOf="@+id/layoutDate"/>
 
         <TextView
             android:id="@+id/txtAppointmentCode"
@@ -41,21 +38,22 @@
             android:ellipsize="end"
             android:fontFamily="monospace"
             android:layout_alignParentLeft="true"
-            android:paddingVertical="5dp"
             android:text="124"
             android:textColor="@color/red"
             android:textSize="14sp"
             android:textStyle="bold"
             app:layout_constraintLeft_toRightOf="@+id/txtAppointmentLabel"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintBottom_toTopOf="@+id/layoutDate"/>
 
         <LinearLayout
             android:id="@+id/layoutDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintTop_toBottomOf="@+id/txtAppointmentLabel"
-            app:layout_constraintLeft_toLeftOf="parent">
+            android:paddingVertical="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <TextView
                 android:id="@+id/txtBookingDate"
@@ -63,7 +61,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="left|center"
                 android:text="Wed, June 06 2021"
-                android:textSize="15sp"
+                android:textSize="14sp"
                 android:fontFamily="monospace"
                 android:textColor="@color/dark"/>
 
@@ -73,7 +71,7 @@
                 android:layout_marginHorizontal="5dp"
                 android:gravity="left|center"
                 android:text="at"
-                android:textSize="14sp"
+                android:textSize="13sp"
                 android:fontFamily="monospace"
                 android:textColor="@color/dark_gray"/>
 
@@ -83,7 +81,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="08:00"
-                android:textSize="15sp"
+                android:textSize="14sp"
                 android:textColor="@color/dark"
                 android:fontFamily="monospace"/>
 
@@ -96,27 +94,26 @@
             android:layout_height="wrap_content"
             android:fontFamily="monospace"
             android:layout_alignParentLeft="true"
-            android:paddingVertical="5dp"
             android:text="Finished"
             android:textColor="@color/red"
-            android:textSize="11sp"
+            android:textSize="12sp"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/layoutDate"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintTop_toBottomOf="@+id/layoutDate"/>
 
         <TextView
             android:id="@+id/txtBookingTotalPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
             android:gravity="center"
             android:text="100.000d"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:textStyle="bold"
             android:textColor="@color/dark_gold"
             android:fontFamily="monospace"
-            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/imgBookingDetail"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/txtBookingCount"/>
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
         <TextView
             android:id="@+id/txtBookingCount"
@@ -124,12 +121,21 @@
             android:layout_height="wrap_content"
             android:text="3 Services"
             android:fontFamily="monospace"
-            android:textSize="16sp"
+            android:textSize="13sp"
             android:textColor="@color/dark_gray"
             android:gravity="left|center"
             android:layout_marginLeft="5dp"
+            app:layout_constraintRight_toLeftOf="@+id/imgBookingDetail"
+            app:layout_constraintTop_toBottomOf="@+id/txtBookingTotalPrice"/>
+
+
+        <ImageView
+            android:id="@+id/imgBookingDetail"
+            android:layout_width="40dp"
+            android:layout_height="70dp"
+            android:src="@drawable/ic_key_right"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtBookingTotalPrice"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

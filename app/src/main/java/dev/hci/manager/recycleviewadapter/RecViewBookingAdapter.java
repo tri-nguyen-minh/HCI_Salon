@@ -250,6 +250,18 @@ public class RecViewBookingAdapter  extends RecyclerView.Adapter<RecViewBookingA
                     holder.txtBookingStatus.setText("Upcoming");
                 }
             }
+            holder.bookingCardLinear.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    intent = new Intent(context, BookingViewActivity.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("LIST",(Serializable) bookingList);
+                    intent.putExtra("BUNDLE", bundle);
+                    intent.putExtra("POSITION", position);
+                    intent.putExtra("PAGE_IDENTIFIER", pageIdentifier);
+                    activity.startActivity(intent);
+                }
+            });
         }
     }
 
