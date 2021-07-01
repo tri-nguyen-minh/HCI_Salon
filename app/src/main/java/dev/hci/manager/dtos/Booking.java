@@ -14,8 +14,8 @@ public class Booking implements Serializable {
     private int contentTypeCode, actionCode;
     private boolean read;
     private ArrayList<ServiceDetail> serviceDetailsList;
-        private transient Date date;
-        private final transient DateFormat format = new SimpleDateFormat("EEE, MMMM dd, yyyy");
+        private Date date;
+        private final DateFormat format = new SimpleDateFormat("EEE, MMMM dd, yyyy");
 
     public Booking(String user, int appointmentCode, String appointmentDate, String appointmentTime, String time, int contentTypeCode, boolean read) {
         this.user = user;
@@ -88,8 +88,8 @@ public class Booking implements Serializable {
         return read;
     }
 
-    public void setRead(boolean read) {
-        this.read = read;
+    public Date getDate() {
+        return date;
     }
 
     public int getActionCode() {
@@ -109,9 +109,7 @@ public class Booking implements Serializable {
     }
 
     public boolean isFinished() {
-        Date currentDate = Calendar.getInstance().getTime();
-
-        return date.before(currentDate);
+        return date.before(Calendar.getInstance().getTime());
     }
 
 }

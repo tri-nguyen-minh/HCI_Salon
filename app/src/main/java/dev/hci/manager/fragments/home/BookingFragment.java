@@ -47,8 +47,9 @@ public class BookingFragment extends Fragment {
         tabLayout = getView().findViewById(R.id.tabLayoutAppointment);
         viewPager = getView().findViewById(R.id.viewPagerAppointment);
 
-        tabLayout.addTab(tabLayout.newTab().setText("Upcoming (19)"));
-        tabLayout.addTab(tabLayout.newTab().setText("Completed (156)"));
+        tabLayout.addTab(tabLayout.newTab().setText("Upcoming\n(19)"));
+        tabLayout.addTab(tabLayout.newTab().setText("Completed\n(166)"));
+        tabLayout.addTab(tabLayout.newTab().setText("Cancelled\n(28)"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         tabLayout.setTabTextColors(getResources().getColor(R.color.white), getResources().getColor(R.color.gold));
@@ -80,8 +81,10 @@ public class BookingFragment extends Fragment {
         if (pageIdentifier != null) {
             if (pageIdentifier.equals("BOOKING_UPCOMING")) {
                 tabLayout.selectTab(tabLayout.getTabAt(0));
-            } else {
+            } else if (pageIdentifier.equals("BOOKING_COMPLETED")) {
                 tabLayout.selectTab(tabLayout.getTabAt(1));
+            } else {
+                tabLayout.selectTab(tabLayout.getTabAt(2));
             }
         } else {
             tabLayout.selectTab(tabLayout.getTabAt(0));

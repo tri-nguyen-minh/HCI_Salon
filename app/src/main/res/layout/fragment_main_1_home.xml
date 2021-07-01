@@ -97,6 +97,7 @@
                             app:layout_constraintRight_toRightOf="parent"/>
 
                         <ImageView
+                            android:id="@+id/imgToStatistics"
                             android:layout_width="70dp"
                             android:layout_height="70dp"
                             android:src="@drawable/ic_key_right"

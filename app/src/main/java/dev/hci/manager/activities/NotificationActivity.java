@@ -85,7 +85,6 @@ public class NotificationActivity extends AppCompatActivity {
                             tempNotificationsList.add(notification);
                         }
                     }
-                    System.out.println("size "+tempNotificationsList.size());
                     setupRecycleView(tempNotificationsList);
                 }
             }

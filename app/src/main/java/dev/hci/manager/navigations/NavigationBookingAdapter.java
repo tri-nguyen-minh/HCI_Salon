@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
+import dev.hci.manager.fragments.booking.CancelledBookingFragment;
 import dev.hci.manager.fragments.booking.CompletedBookingFragment;
 import dev.hci.manager.fragments.booking.UpcomingBookingFragment;
 
@@ -26,12 +27,17 @@ public class NavigationBookingAdapter extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position) {
         switch (position) {
+            case 0:
+                fragmentCommon = new UpcomingBookingFragment();
+                return fragmentCommon;
             case 1:
                 fragmentCommon = new CompletedBookingFragment();
                 return fragmentCommon;
-            default:
-                fragmentCommon = new UpcomingBookingFragment();
+            case 2:
+                fragmentCommon = new CancelledBookingFragment();
                 return fragmentCommon;
+            default:
+                return null;
         }
     }
 

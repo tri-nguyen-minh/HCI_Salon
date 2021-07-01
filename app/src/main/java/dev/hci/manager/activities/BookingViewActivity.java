@@ -18,10 +18,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.io.Serializable;
 import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import dev.hci.manager.R;
 import dev.hci.manager.dtos.Booking;
 import dev.hci.manager.dtos.ServiceDetail;
+import dev.hci.manager.recycleviewadapter.RecViewBookingAdapter;
 import dev.hci.manager.recycleviewadapter.RecViewServiceAdapter;
 
 public class BookingViewActivity extends AppCompatActivity {
@@ -41,8 +43,9 @@ public class BookingViewActivity extends AppCompatActivity {
             txtBookingCount, txtBookingTotalPrice, txtBookingStatus, txtBookingStatusNote;
     private CardView cardBookingNotFinished, cardBookingFinished, cardBookingCancel, cardConfirmAction;
     private String[] STATUS_NOTE_LIST = {"Appointment cancelled because Customer did not arrive",
-                                            "Appointment completion confirmed",
-                                            "Appointment cancelled by Staff"};
+                                        "Appointment completion confirmed",
+                                        "Appointment cancelled by Staff",
+                                        "Appointment cancelled by Customer"};
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,15 +65,6 @@ public class BookingViewActivity extends AppCompatActivity {
         pageIdentifier = intent.getStringExtra("PAGE_IDENTIFIER");
 
         serviceDetailsList = booking.getServiceDetailsList();
-
-//        booking = new Booking("Thao Van","097612823","16:00", "07/07/2021", 153,
-//                0, 0);
-//        serviceDetailsList = new ArrayList<>();
-//        serviceDetailsList.add(new ServiceDetail("Female Haircut", "30 - 45 minutes", "100", "0",61,0));
-//        serviceDetailsList.add(new ServiceDetail("Wash + Massage", "60 minutes", "42", "70",75,40));
-//        serviceDetailsList.add(new ServiceDetail("Hair Keratin Treatment", "30 - 60 minutes", "350", "500",29,30));
-//        serviceDetailsList.add(new ServiceDetail("Hair Straightening", "60 - 120 minutes", "450", "0",23,0));
-//        booking.setServiceDetailsList(serviceDetailsList);
 
         txtUserName = findViewById(R.id.txtUserName);
         txtPhone = findViewById(R.id.txtUserPhone);
@@ -120,7 +114,8 @@ public class BookingViewActivity extends AppCompatActivity {
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-
+                                actionCode = 2;
+                                setupBasedOnAction();
                             }
                         });
                 builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
@@ -184,7 +179,6 @@ public class BookingViewActivity extends AppCompatActivity {
         cardConfirmAction.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                System.out.println("click "+pageIdentifier);
                 AlertDialog.Builder builder = new AlertDialog.Builder(BookingViewActivity.this);
                 builder.setCancelable(true);
                 builder.setTitle("Confirm Appointment Status");
@@ -232,9 +226,8 @@ public class BookingViewActivity extends AppCompatActivity {
         if (booking.getActionCode() == 0) {
             if (actionCode != 0) {
                 if (actionCode == 1) {
-                    editNote.setText("Customer did not arrive for the Appointment");
                     txtBookingStatusNote.setVisibility(View.VISIBLE);
-                    layoutNote.setVisibility(View.VISIBLE);
+                    layoutNote.setVisibility(View.GONE);
                     txtBookingStatusNote.setText(STATUS_NOTE_LIST[actionCode - 1]);
                     cardBookingNotFinished.setVisibility(View.GONE);
                     cardBookingFinished.setVisibility(View.GONE);

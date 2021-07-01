@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import dev.hci.manager.R;
 import dev.hci.manager.activities.BookingViewActivity;
@@ -37,7 +38,8 @@ public class RecViewBookingAdapter  extends RecyclerView.Adapter<RecViewBookingA
 
     private String[] STATUS_NOTE_LIST = {"Appointment cancelled because Customer did not arrive",
                                         "Appointment completion confirmed",
-                                        "Appointment cancelled by Staff"};
+                                        "Appointment cancelled by Staff",
+                                        "Appointment cancelled by Customer"};
 
     public RecViewBookingAdapter(Context context, Activity activity) {
         this.context = context;
@@ -156,14 +158,13 @@ public class RecViewBookingAdapter  extends RecyclerView.Adapter<RecViewBookingA
                             new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
-                                    intent = new Intent(context, BookingViewActivity.class);
-                                    intent.putExtra("ACTION", 1);
-                                    Bundle bundle = new Bundle();
-                                    bundle.putSerializable("LIST",(Serializable) bookingList);
-                                    intent.putExtra("BUNDLE", bundle);
-                                    intent.putExtra("POSITION", position);
-                                    intent.putExtra("PAGE_IDENTIFIER", pageIdentifier);
-                                    activity.startActivity(intent);
+                                    bookingList.get(position).setActionCode(1);
+                                    recViewCommon = activity.findViewById(recViewId);
+                                    RecViewBookingAdapter adapter = new RecViewBookingAdapter(context, activity);
+                                    adapter.setBookingList(bookingList);
+                                    adapter.setRecViewId(recViewId);
+                                    adapter.setLayoutId(layoutId);
+                                    recViewCommon.setLayoutManager(new LinearLayoutManager(context, orientationId,false));
                                 }
                             });
                     builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
@@ -238,12 +239,14 @@ public class RecViewBookingAdapter  extends RecyclerView.Adapter<RecViewBookingA
             holder.txtBookingTotalPrice.setText(total + ((remain == 0) ? "" : ("." + remain)) + ".000d");
             holder.txtBookingStatus.setVisibility(View.VISIBLE);
             if (bookingList.get(position).getActionCode() == 1) {
-                holder.txtBookingStatus.setText("Cancelled because of Customer's absence");
+                holder.txtBookingStatus.setText("Customer's absence");
             } else if (bookingList.get(position).getActionCode() == 2) {
                 holder.txtBookingStatus.setText("Appointment Completion Confirmed");
             } else if (bookingList.get(position).getActionCode() == 3) {
                 holder.txtBookingStatus.setText("Cancelled by staff");
-            } else {
+            } else if (bookingList.get(position).getActionCode() == 4) {
+                holder.txtBookingStatus.setText("Cancelled by Customer");
+            }  else {
                 if (bookingList.get(position).isFinished()) {
                     holder.txtBookingStatus.setText("Awaiting Confirmation");
                 } else {

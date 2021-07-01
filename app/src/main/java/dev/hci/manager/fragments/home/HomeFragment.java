@@ -61,11 +61,6 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        System.out.println("bundle : " + (intent.getBundleExtra("BUNDLE") == null));
-        if (intent.getBundleExtra("BUNDLE") != null) {
-            System.out.println("list " + (intent.getBundleExtra("BUNDLE").getSerializable("LIST") == null));
-        }
-
         pageIdentifier = intent.getStringExtra("PAGE_IDENTIFIER");
         if (pageIdentifier != null) {
             bundle = intent.getBundleExtra("BUNDLE");
@@ -147,6 +142,7 @@ public class HomeFragment extends Fragment {
         serviceDetailsList.add(new ServiceDetail("Hair Wash", "15 minutes", "30", "0",91,0));
         booking.setServiceDetailsList(serviceDetailsList);
         bookingListToday.add(booking);
+
         booking = new Booking("Thao Van","097612823","16:00", bookingDate, 153,
                 0, 0);
         serviceDetailsList = new ArrayList<>();
@@ -156,6 +152,7 @@ public class HomeFragment extends Fragment {
         serviceDetailsList.add(new ServiceDetail("Hair Straightening", "60 - 120 minutes", "450", "0",23,0));
         booking.setServiceDetailsList(serviceDetailsList);
         bookingListToday.add(booking);
+
         booking = new Booking("Thang Loi","0213497632","19:00", bookingDate, 180,
                 0, 3);
         serviceDetailsList = new ArrayList<>();
