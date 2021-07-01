@@ -1,5 +1,6 @@
 package dev.hci.manager.fragments.booking;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -26,6 +27,9 @@ public class UpcomingBookingFragment extends Fragment {
 
     private ArrayList<Booking> bookingList;
     private Booking booking;
+    private Intent intent;
+    private Bundle bundle;
+    private String pageIdentifier;
     private ArrayList<ServiceDetail> serviceDetailsList;
     private RecyclerView recViewCommon;
     private RecViewBookingAdapter adapter;
@@ -56,6 +60,32 @@ public class UpcomingBookingFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         recViewCommon = getView().findViewById(R.id.recViewAppointmentUpcoming);
+
+        intent = getActivity().getIntent();
+        pageIdentifier = intent.getStringExtra("PAGE_IDENTIFIER");
+        if (pageIdentifier != null) {
+            if (pageIdentifier.equals("BOOKING_UPCOMING")) {
+                bundle = intent.getBundleExtra("BUNDLE");
+                bookingList = (ArrayList<Booking>) bundle.getSerializable("LIST");
+            } else {
+                setupList();
+            }
+        } else {
+            setupList();
+        }
+
+        adapter = new RecViewBookingAdapter(getContext(), getActivity());
+        adapter.setBookingList(bookingList);
+        adapter.setRecViewId(R.id.recViewAppointmentUpcoming);
+        adapter.setOrientationId(RecyclerView.VERTICAL);
+        adapter.setPageIdentifier("BOOKING_UPCOMING");
+        adapter.setLayoutId(R.layout.recycle_view_booking_simple_card);
+        recViewCommon.setAdapter(adapter);
+
+        recViewCommon.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL,false));
+    }
+
+    private void setupList() {
         bookingList = new ArrayList<>();
 
         booking = new Booking("Thao Van","097612823","16:00", bookingDate, 153,
@@ -146,11 +176,5 @@ public class UpcomingBookingFragment extends Fragment {
         serviceDetailsList.add(new ServiceDetail("Male Haircut", "30 - 40 minutes", "50", "0",35,0));
         booking.setServiceDetailsList(serviceDetailsList);
         bookingList.add(booking);
-
-        adapter = new RecViewBookingAdapter(getContext(), getActivity());
-        adapter.setBookingList(bookingList);
-        recViewCommon.setAdapter(adapter);
-
-        recViewCommon.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL,false));
     }
 }

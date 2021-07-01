@@ -19,6 +19,7 @@ public class HomeActivity extends AppCompatActivity {
     private ViewPager viewPager;
     private TabLayout.Tab tabCommon;
     private Intent intent;
+    private String pageIdentifier;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,9 +80,15 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+        pageIdentifier = intent.getStringExtra("PAGE_IDENTIFIER");
         int selectedTab = intent.getIntExtra("BACK_HOME", -1);
         if (selectedTab > -1) {
             tabLayout.selectTab(tabLayout.getTabAt(selectedTab));
+        }
+        if (pageIdentifier != null) {
+            if (pageIdentifier.contains("BOOKING")) {
+                tabLayout.selectTab(tabLayout.getTabAt(1));
+            }
         }
         tabLayout.getTabAt(tabLayout.getSelectedTabPosition()).getIcon().setColorFilter(getResources().getColor(R.color.gold), PorterDuff.Mode.SRC_IN);
 

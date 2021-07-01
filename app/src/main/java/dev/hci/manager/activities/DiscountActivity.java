@@ -36,7 +36,7 @@ public class DiscountActivity extends AppCompatActivity {
         txtCommon = findViewById(R.id.txtDiscountLabel);
         setupServiceCount(serviceDetailsList.size(), recViewService);
 
-        RecViewServiceAdapter adapter = new RecViewServiceAdapter(DiscountActivity.this, DiscountActivity.this);
+        RecViewServiceAdapter adapter = new RecViewServiceAdapter(DiscountActivity.this, DiscountActivity.this,0);
         adapter.setServiceDetailsList(serviceDetailsList);
         recViewService.setAdapter(adapter);
         recViewService.setLayoutManager(new LinearLayoutManager(DiscountActivity.this, RecyclerView.VERTICAL,false));
@@ -59,7 +59,7 @@ public class DiscountActivity extends AppCompatActivity {
 
     public void onBackDiscount(View view) {
         Intent newIntent = new Intent(DiscountActivity.this, HomeActivity.class);
-        newIntent.putExtra("BACK_HOME", 2);
+        newIntent.putExtra("BACK_HOME", 3);
         startActivity(newIntent);
     }
 }

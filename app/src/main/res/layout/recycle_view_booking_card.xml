@@ -125,6 +125,7 @@
                 android:gravity="left|center"
                 android:text="Wed, June 06 2021"
                 android:textSize="20sp"
+                android:fontFamily="monospace"
                 android:textColor="@color/dark_gray"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -270,7 +271,7 @@
                     android:background="@color/gray">
 
                     <TextView
-                        android:text="Not Completed"
+                        android:text="No Customer"
                         style="@style/button_handle_booking" />
 
                 </RelativeLayout>

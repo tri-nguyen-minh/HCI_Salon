@@ -43,7 +43,7 @@ public class ServiceActivity extends AppCompatActivity {
         RecyclerView recViewService = findViewById(R.id.recViewService);
         setupServiceCount(service.getServiceCount(), recViewService);
 
-        RecViewServiceAdapter adapter = new RecViewServiceAdapter(ServiceActivity.this, ServiceActivity.this);
+        RecViewServiceAdapter adapter = new RecViewServiceAdapter(ServiceActivity.this, ServiceActivity.this,0);
         adapter.setServiceDetailsList(serviceDetailsList);
         recViewService.setAdapter(adapter);
         recViewService.setLayoutManager(new LinearLayoutManager(ServiceActivity.this, RecyclerView.VERTICAL,false));

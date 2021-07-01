@@ -9,13 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.HCI_Salon_Manager">
-        <activity android:name="dev.hci.manager.activities.DiscountActivity"></activity>
-        <activity android:name="dev.hci.manager.activities.ServiceActivity" />
-        <activity android:name="dev.hci.manager.activities.ScheduleActivity" />
-        <activity android:name="dev.hci.manager.activities.ServiceTypeActivity" />
-        <activity android:name="dev.hci.manager.activities.NotificationActivity" />
-        <activity android:name="dev.hci.manager.activities.HomeActivity" />
-        <activity android:name="dev.hci.manager.activities.LoginActivity">
+        <activity android:name=".activities.BookingViewActivity"></activity>
+        <activity android:name=".activities.DiscountActivity" />
+        <activity android:name=".activities.ServiceActivity" />
+        <activity android:name=".activities.ScheduleActivity" />
+        <activity android:name=".activities.ServiceTypeActivity" />
+        <activity android:name=".activities.NotificationActivity" />
+        <activity android:name=".activities.HomeActivity" />
+        <activity android:name=".activities.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

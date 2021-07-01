@@ -22,19 +22,22 @@ public class RecViewServiceAdapter extends RecyclerView.Adapter<RecViewServiceAd
     private ArrayList<ServiceDetail> serviceDetailsList;
     private Context context;
     private Activity activity;
+    private int cardId;
+    private int[] LAYOUT_LIST = {R.layout.recycle_view_service_card, R.layout.recycle_view_service_booked_card};
 
     public void setServiceDetailsList(ArrayList<ServiceDetail> serviceDetailsList) {
         this.serviceDetailsList = serviceDetailsList;
     }
 
-    public RecViewServiceAdapter(Context context, Activity activity) {
+    public RecViewServiceAdapter(Context context, Activity activity, int cardId) {
         this.context = context;
         this.activity = activity;
+        this.cardId = cardId;
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycle_view_service_card, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(LAYOUT_LIST[cardId], parent, false);
         ViewHolder holder = new ViewHolder(view);
         return holder;
     }
@@ -42,45 +45,50 @@ public class RecViewServiceAdapter extends RecyclerView.Adapter<RecViewServiceAd
 
     @Override
     public void onBindViewHolder(RecViewServiceAdapter.ViewHolder holder, int position) {
-        holder.txtServiceName.setText(serviceDetailsList.get(position).getName());
-        holder.txtDuration.setText(serviceDetailsList.get(position).getDuration());
-        holder.txtPrice.setText(serviceDetailsList.get(position).getPrice() + ".000d");
-        holder.txtPrice.setTextColor(context.getResources().getColor(R.color.black));
-        holder.txtOrgPrice.setTextColor(context.getResources().getColor(R.color.black));
-        if(serviceDetailsList.get(position).getDiscount() == 0) {
-            holder.layoutDiscount.setVisibility(View.GONE);
+        if (cardId == 0) {
+            holder.txtServiceName.setText(serviceDetailsList.get(position).getName());
+            holder.txtDuration.setText(serviceDetailsList.get(position).getDuration());
+            holder.txtPrice.setText(serviceDetailsList.get(position).getPrice() + ".000d");
+            holder.txtPrice.setTextColor(context.getResources().getColor(R.color.black));
+            holder.txtOrgPrice.setTextColor(context.getResources().getColor(R.color.black));
+            if(serviceDetailsList.get(position).getDiscount() == 0) {
+                holder.layoutDiscount.setVisibility(View.GONE);
+            } else {
+                holder.txtPrice.setTextColor(context.getResources().getColor(R.color.red));
+                holder.layoutDiscount.setVisibility(View.VISIBLE);
+                holder.txtOrgPrice.setPaintFlags(Paint.STRIKE_THRU_TEXT_FLAG);
+                holder.txtOrgPrice.setText(serviceDetailsList.get(position).getOrgPrice() + ".000d");
+                holder.txtDiscount.setText("-" + serviceDetailsList.get(position).getDiscount() + "%");
+            }
+            holder.txtBookCount.setText(serviceDetailsList.get(position).getBookCount() + "");
+            holder.txtEditService.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    System.out.println("Edit");
+                }
+            });
+            holder.txtDeleteService.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    System.out.println("Delete");
+                }
+            });
         } else {
-            holder.txtPrice.setTextColor(context.getResources().getColor(R.color.red));
-            holder.layoutDiscount.setVisibility(View.VISIBLE);
-            holder.txtOrgPrice.setPaintFlags(Paint.STRIKE_THRU_TEXT_FLAG);
-            holder.txtOrgPrice.setText(serviceDetailsList.get(position).getOrgPrice() + ".000d");
-            holder.txtDiscount.setText("-" + serviceDetailsList.get(position).getDiscount() + "%");
+            holder.txtServiceName.setText(serviceDetailsList.get(position).getName());
+            holder.txtDuration.setText(serviceDetailsList.get(position).getDuration());
+            holder.txtPrice.setText(serviceDetailsList.get(position).getPrice() + ".000d");
+            holder.txtPrice.setTextColor(context.getResources().getColor(R.color.black));
+            holder.txtOrgPrice.setTextColor(context.getResources().getColor(R.color.black));
+            if(serviceDetailsList.get(position).getDiscount() == 0) {
+                holder.layoutDiscount.setVisibility(View.GONE);
+            } else {
+                holder.txtPrice.setTextColor(context.getResources().getColor(R.color.red));
+                holder.layoutDiscount.setVisibility(View.VISIBLE);
+                holder.txtOrgPrice.setPaintFlags(Paint.STRIKE_THRU_TEXT_FLAG);
+                holder.txtOrgPrice.setText(serviceDetailsList.get(position).getOrgPrice() + ".000d");
+                holder.txtDiscount.setText("-" + serviceDetailsList.get(position).getDiscount() + "%");
+            }
         }
-        holder.txtBookCount.setText(serviceDetailsList.get(position).getBookCount() + "");
-        holder.txtEditService.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                System.out.println("Edit");
-            }
-        });
-        holder.txtDeleteService.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                System.out.println("Delete");
-            }
-        });
-//        holder.imgEditService.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                System.out.println("Edit");
-//            }
-//        });
-//        holder.imgDeleteService.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                System.out.println("Delete");
-//            }
-//        });
     }
 
     @Override

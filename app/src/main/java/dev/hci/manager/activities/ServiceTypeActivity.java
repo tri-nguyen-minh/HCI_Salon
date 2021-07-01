@@ -80,7 +80,7 @@ public class ServiceTypeActivity extends AppCompatActivity {
 
     public void onBackService(View view) {
         Intent newIntent = new Intent(ServiceTypeActivity.this, HomeActivity.class);
-        newIntent.putExtra("BACK_HOME", 2);
+        newIntent.putExtra("BACK_HOME", 3);
         startActivity(newIntent);
     }
 }

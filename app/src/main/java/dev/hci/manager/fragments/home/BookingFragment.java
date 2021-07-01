@@ -22,7 +22,7 @@ public class BookingFragment extends Fragment {
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private Intent intent;
-    private TextView txtUpcoming, txtFinished, txtLogin;
+    private String pageIdentifier;
     private NavigationBookingAdapter adapter;
 
     @Override
@@ -33,7 +33,9 @@ public class BookingFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         intent = getActivity().getIntent();
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_main_2_booking, container, false);
     }
@@ -55,8 +57,6 @@ public class BookingFragment extends Fragment {
 
         viewPager.setAdapter(adapter);
 
-        tabLayout.selectTab(tabLayout.getTabAt(0));
-
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
@@ -76,35 +76,16 @@ public class BookingFragment extends Fragment {
             }
         });
 
-
-//        viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-//            @Override
-//            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-//            }
-//
-//            @Override
-//            public void onPageSelected(int position) {
-//                if (position == 0) {
-//                    txtUpcoming.setTextColor(getResources().getColor(R.color.white));
-//                    txtUpcoming.setBackground(getResources().getDrawable(R.drawable.background_history_selected));
-//
-//                    txtFinished.setTextColor(getResources().getColor(R.color.black));
-//                    txtFinished.setBackground(getResources().getDrawable(R.drawable.background_edit_text_general));
-//                } else {
-//                    txtFinished.setTextColor(getResources().getColor(R.color.white));
-//                    txtFinished.setBackground(getResources().getDrawable(R.drawable.background_history_selected));
-//
-//                    txtUpcoming.setTextColor(getResources().getColor(R.color.black));
-//                    txtUpcoming.setBackground(getResources().getDrawable(R.drawable.background_edit_text_general));
-//                }
-//
-//            }
-//
-//            @Override
-//            public void onPageScrollStateChanged(int state) {
-//
-//            }
-//        });
+        pageIdentifier = intent.getStringExtra("PAGE_IDENTIFIER");
+        if (pageIdentifier != null) {
+            if (pageIdentifier.equals("BOOKING_UPCOMING")) {
+                tabLayout.selectTab(tabLayout.getTabAt(0));
+            } else {
+                tabLayout.selectTab(tabLayout.getTabAt(1));
+            }
+        } else {
+            tabLayout.selectTab(tabLayout.getTabAt(0));
+        }
 
     }
 }
