@@ -142,11 +142,11 @@ public class CancelledBookingFragment extends Fragment {
         booking.setServiceDetailsList(serviceDetailsList);
         bookingList.add(booking);
 
-        booking = new Booking("Le Xuan","0933921237","10:00", bookingDate, 178,
+        booking = new Booking("Van Kien","0913921731","08:00", bookingDate, 172,
                 0, 1);
         serviceDetailsList = new ArrayList<>();
-        serviceDetailsList.add(new ServiceDetail("Hair Loss Treatment", "60 - 120 minutes", "800", "1.200",6,30));
-        serviceDetailsList.add(new ServiceDetail("Coloring (Short)", "60 - 90 minutes", "550", "0",24,0));
+        serviceDetailsList.add(new ServiceDetail("Male Haircut", "30 - 40 minutes", "50", "0",35,0));
+        serviceDetailsList.add(new ServiceDetail("Hair Styling", "30 minutes", "70", "0",87,0));
         booking.setServiceDetailsList(serviceDetailsList);
         bookingList.add(booking);
 

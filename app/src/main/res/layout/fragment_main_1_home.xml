@@ -18,97 +18,67 @@
             android:orientation="vertical">
 
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left|center"
+                android:text="Mervyn Art Salon"
+                android:fontFamily="monospace"
+                android:textStyle="bold"
+                android:textSize="28sp"
+                android:textColor="@color/black"
+                android:paddingLeft="10dp"
+                android:layout_marginVertical="15dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"/>
+
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:cardCornerRadius="20dp"
                 android:layout_marginHorizontal="5dp"
-                android:layout_marginVertical="20dp">
+                android:layout_marginBottom="20dp">
 
-                <LinearLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
                     android:padding="10dp">
 
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="left|center"
-                        android:text="Mervyn Art Salon"
-                        android:fontFamily="monospace"
-                        android:textStyle="bold"
-                        android:textSize="24sp"
-                        android:textColor="@color/black"
-                        android:paddingLeft="10dp"
-                        android:layout_marginVertical="5dp"
-                        app:layout_constraintTop_toTopOf="parent"
+                    <androidx.viewpager.widget.ViewPager
+                        android:id="@+id/viewPagerStatistics"
+                        android:layout_width="300dp"
+                        android:layout_height="110dp"
+                        android:orientation="vertical"
                         app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintRight_toRightOf="parent"/>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="left|center"
-                        android:text="WEEKLY REVENUE"
-                        android:fontFamily="monospace"
-                        android:textStyle="bold"
-                        android:textSize="18sp"
-                        android:textColor="@color/gray"
-                        android:layout_marginTop="5dp"
-                        android:paddingLeft="10dp"
                         app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent">
+
+
+                        </androidx.viewpager.widget.ViewPager>
+
+
+                    <ImageView
+                        android:id="@+id/imgStatisticsLeft"
+                        android:layout_width="40dp"
+                        android:layout_height="60dp"
+                        android:src="@drawable/ic_key_left"
                         app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintRight_toRightOf="parent"/>
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
 
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                    <ImageView
+                        android:id="@+id/imgStatisticsRight"
+                        android:layout_width="40dp"
+                        android:layout_height="60dp"
+                        android:src="@drawable/ic_key_right"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
 
-
-                        <TextView
-                            android:id="@+id/txtWeeklyIncome"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="left|center"
-                            android:text="28.900.000d"
-                            android:fontFamily="monospace"
-                            android:textStyle="bold"
-                            android:textSize="34sp"
-                            android:textColor="@color/dark_gold"
-                            android:paddingLeft="10dp"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintLeft_toLeftOf="parent"
-                            app:layout_constraintRight_toRightOf="parent"/>
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="left|center"
-                            android:text="From 32 Completed Appointments"
-                            android:fontFamily="monospace"
-                            android:textStyle="bold"
-                            android:textSize="14sp"
-                            android:textColor="@color/gray"
-                            android:paddingLeft="10dp"
-                            app:layout_constraintTop_toBottomOf="@+id/txtWeeklyIncome"
-                            app:layout_constraintLeft_toLeftOf="parent"
-                            app:layout_constraintRight_toRightOf="parent"/>
-
-                        <ImageView
-                            android:id="@+id/imgToStatistics"
-                            android:layout_width="70dp"
-                            android:layout_height="70dp"
-                            android:src="@drawable/ic_key_right"
-                            app:layout_constraintRight_toRightOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintBottom_toBottomOf="parent"/>
-
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-                </LinearLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
             </androidx.cardview.widget.CardView>
 

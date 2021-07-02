@@ -6,10 +6,12 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.material.tabs.TabLayout;
@@ -23,6 +25,7 @@ import dev.hci.manager.R;
 import dev.hci.manager.activities.ServiceTypeActivity;
 import dev.hci.manager.dtos.Booking;
 import dev.hci.manager.dtos.ServiceDetail;
+import dev.hci.manager.navigations.NavigationStatisticsAdapter;
 import dev.hci.manager.recycleviewadapter.RecViewBookingAdapter;
 
 public class HomeFragment extends Fragment {
@@ -37,6 +40,9 @@ public class HomeFragment extends Fragment {
     private RecViewBookingAdapter adapter;
     private String bookingDate, laterBookingDate, evenLaterBookingDate;
     private Calendar calendar;
+    private ViewPager viewPagerStatistics;
+    private int statisticCount;
+    private ImageView imgCommon;
     private final DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
 
     @Override
@@ -74,6 +80,34 @@ public class HomeFragment extends Fragment {
         } else {
             setupList();
         }
+
+        viewPagerStatistics = getView().findViewById(R.id.viewPagerStatistics);
+        NavigationStatisticsAdapter statisticsAdapter = new NavigationStatisticsAdapter(getActivity().getSupportFragmentManager(), getContext(), getActivity(), 3);
+        viewPagerStatistics.setAdapter(statisticsAdapter);
+        statisticCount = 0;
+        viewPagerStatistics.setCurrentItem(statisticCount);
+        System.out.println(statisticCount);
+
+        imgCommon = getView().findViewById(R.id.imgStatisticsLeft);
+        imgCommon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                statisticCount--;
+                statisticCount = (statisticCount < 0) ? 2 : statisticCount;
+                viewPagerStatistics.setCurrentItem(statisticCount);
+                System.out.println(statisticCount);
+            }
+        });
+        imgCommon = getView().findViewById(R.id.imgStatisticsRight);
+        imgCommon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                statisticCount++;
+                statisticCount = (statisticCount > 2) ? 0 : statisticCount;
+                viewPagerStatistics.setCurrentItem(statisticCount);
+                System.out.println(statisticCount);
+            }
+        });
 
         recViewCommon = getView().findViewById(R.id.recViewBookingToday);
 
@@ -114,14 +148,14 @@ public class HomeFragment extends Fragment {
     private void setupList() {
         bookingListToday = new ArrayList<>();
         booking = new Booking("Van Kien","0913921731","08:00", bookingDate, 172,
-                0, 2);
+                0, 1);
         serviceDetailsList = new ArrayList<>();
         serviceDetailsList.add(new ServiceDetail("Male Haircut", "30 - 40 minutes", "50", "0",35,0));
         serviceDetailsList.add(new ServiceDetail("Hair Styling", "30 minutes", "70", "0",87,0));
         booking.setServiceDetailsList(serviceDetailsList);
         bookingListToday.add(booking);
         booking = new Booking("Le Xuan","0933921237","10:00", bookingDate, 178,
-                0, 1);
+                0, 2);
         serviceDetailsList = new ArrayList<>();
         serviceDetailsList.add(new ServiceDetail("Hair Loss Treatment", "60 - 120 minutes", "800", "1.200",6,30));
         serviceDetailsList.add(new ServiceDetail("Coloring (Short)", "60 - 90 minutes", "550", "0",24,0));

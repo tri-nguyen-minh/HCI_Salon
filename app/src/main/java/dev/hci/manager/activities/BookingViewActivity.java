@@ -270,9 +270,9 @@ public class BookingViewActivity extends AppCompatActivity {
                 if (booking.getActionCode() == 3) {
                     editNote.setText("Changed in Schedule");
                     editNote.setEnabled(false);
-                } else if (booking.getActionCode() == 1) {
-                    editNote.setText("Customer did not arrive for the Appointment");
-                    editNote.setEnabled(false);
+//                } else if (booking.getActionCode() == 1) {
+//                    editNote.setText("Customer did not arrive for the Appointment");
+//                    editNote.setEnabled(false);
                 } else {
                     layoutNote.setVisibility(View.GONE);
                 }
