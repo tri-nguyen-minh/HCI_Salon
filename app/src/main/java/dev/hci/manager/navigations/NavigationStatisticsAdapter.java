@@ -29,17 +29,16 @@ public class NavigationStatisticsAdapter extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position) {
         switch (position) {
-            case 0:
-                fragmentCommon = new TodayStatisticFragment();
-                return fragmentCommon;
             case 1:
                 fragmentCommon = new WeeklyStatisticsFragment();
                 return fragmentCommon;
             case 2:
                 fragmentCommon = new TotalStatisticFragment();
                 return fragmentCommon;
+            default:
+                fragmentCommon = new TodayStatisticFragment();
+                return fragmentCommon;
         }
-        return null;
     }
 
     @Override

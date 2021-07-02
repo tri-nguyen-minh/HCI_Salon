@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
+
 import dev.hci.manager.R;
 
 public class TodayStatisticFragment extends Fragment {
