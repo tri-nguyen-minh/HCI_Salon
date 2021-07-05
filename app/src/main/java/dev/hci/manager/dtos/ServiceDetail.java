@@ -7,7 +7,7 @@ public class ServiceDetail implements Serializable {
     private String name, duration, price, orgPrice;
     private int bookCount, discount;
     private ArrayList<ServiceDetail> list;
-    private boolean isDiscount;
+    private boolean discounted;
 
     public ServiceDetail(String name, String duration, String price, String orgPrice, int bookCount, int discount) {
         this.name = name;
@@ -16,11 +16,11 @@ public class ServiceDetail implements Serializable {
         this.orgPrice = orgPrice;
         this.bookCount = bookCount;
         this.discount = discount;
-        isDiscount = false;
+        this.discounted = false;
     }
 
     public ServiceDetail() {
-        isDiscount = false;
+        this.discounted = false;
     }
 
     public String getName() {
@@ -79,11 +79,11 @@ public class ServiceDetail implements Serializable {
         this.discount = discount;
     }
 
-    public boolean isDiscount() {
-        return isDiscount;
+    public boolean isDiscounted() {
+        return discounted;
     }
 
-    public void setIsDiscount(boolean discount) {
-        isDiscount = discount;
+    public void setDiscounted(boolean discounted) {
+        this.discounted = discounted;
     }
 }

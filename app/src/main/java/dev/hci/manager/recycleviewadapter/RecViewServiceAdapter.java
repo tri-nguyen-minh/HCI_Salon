@@ -33,9 +33,11 @@ public class RecViewServiceAdapter extends RecyclerView.Adapter<RecViewServiceAd
     private Intent intent;
     private Context context;
     private Activity activity;
+    private ServiceDetail serviceDetail;
     private int cardId;
     private int[] LAYOUT_LIST = {R.layout.recycle_view_service_card, R.layout.recycle_view_service_booked_card,
-                            R.layout.recycle_view_discount_card, R.layout.recycle_view_discount_service_card};
+                            R.layout.recycle_view_discount_card, R.layout.recycle_view_discount_service_card,
+                            R.layout.recycle_view_add_discount_service_card};
 
     public void setServiceDetailsList(ArrayList<ServiceDetail> serviceDetailsList) {
         this.serviceDetailsList = serviceDetailsList;
@@ -173,7 +175,7 @@ public class RecViewServiceAdapter extends RecyclerView.Adapter<RecViewServiceAd
                     dialog.show();
                 }
             });
-        } else {
+        }  else {
             holder.txtServiceName.setText(serviceDetailsList.get(position).getName());
             holder.txtDuration.setText(serviceDetailsList.get(position).getDuration());
             holder.txtPrice.setText(serviceDetailsList.get(position).getPrice() + ",000d");
@@ -182,35 +184,66 @@ public class RecViewServiceAdapter extends RecyclerView.Adapter<RecViewServiceAd
             holder.txtPrice.setTextColor(context.getResources().getColor(R.color.red));
             holder.txtOrgPrice.setPaintFlags(Paint.STRIKE_THRU_TEXT_FLAG);
             holder.txtOrgPrice.setText(serviceDetailsList.get(position).getOrgPrice() + ",000d");
-            holder.imgDeleteDiscountService.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                    builder.setCancelable(true);
-                    builder.setTitle("Remove Service");
-                    builder.setMessage("Do you want to remove this service?");
-                    builder.setPositiveButton("Confirm",
-                            new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    serviceDetailsList.remove(position);
-                                    RecyclerView recViewService = activity.findViewById(R.id.recViewDiscountService);
-                                    RecViewServiceAdapter adapter = new RecViewServiceAdapter(context, activity,3);
-                                    adapter.setServiceDetailsList(serviceDetailsList);
-                                    recViewService.setAdapter(adapter);
-                                    recViewService.setLayoutManager(new LinearLayoutManager(context, RecyclerView.VERTICAL,false));
-
-                                }
-                            });
-                    builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                        }
-                    });
-                    AlertDialog dialog = builder.create();
-                    dialog.show();
+            if (cardId == 4) {
+                holder.txtPrice.setText(serviceDetailsList.get(position).getPrice() + ",000d");
+                holder.txtPrice.setTextColor(context.getResources().getColor(R.color.black));
+                holder.txtOrgPrice.setTextColor(context.getResources().getColor(R.color.black));
+                if(serviceDetailsList.get(position).getDiscount() == 0) {
+                    holder.layoutDiscount.setVisibility(View.GONE);
+                } else {
+                    holder.txtPrice.setTextColor(context.getResources().getColor(R.color.red));
+                    holder.layoutDiscount.setVisibility(View.VISIBLE);
+                    holder.txtOrgPrice.setPaintFlags(Paint.STRIKE_THRU_TEXT_FLAG);
+                    holder.txtOrgPrice.setText(serviceDetailsList.get(position).getOrgPrice() + ",000d");
+                    holder.txtDiscount.setText("-" + serviceDetailsList.get(position).getDiscount() + "%");
                 }
-            });
+                holder.imgStatusDiscountService.setImageResource(R.drawable.ic_check_unchecked);
+                if (serviceDetailsList.get(position).isDiscounted()) {
+                    holder.imgStatusDiscountService.setImageResource(R.drawable.ic_check_checked);
+                }
+                holder.imgStatusDiscountService.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (!serviceDetailsList.get(position).isDiscounted()) {
+                            holder.imgStatusDiscountService.setImageResource(R.drawable.ic_check_checked);
+                            serviceDetailsList.get(position).setDiscounted(true);
+                            serviceDetail = (ServiceDetail)intent.getSerializableExtra("DISCOUNT");
+                            serviceDetail.getList().add(serviceDetailsList.get(position));
+                            intent.putExtra("DISCOUNT", serviceDetail);
+                            activity.setIntent(intent);
+                        }
+                    }
+                });
+            } else {
+                holder.imgDeleteDiscountService.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                        builder.setCancelable(true);
+                        builder.setTitle("Remove Service");
+                        builder.setMessage("Do you want to remove this service?");
+                        builder.setPositiveButton("Confirm",
+                                new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        serviceDetailsList.remove(position);
+                                        RecyclerView recViewService = activity.findViewById(R.id.recViewDiscountService);
+                                        RecViewServiceAdapter adapter = new RecViewServiceAdapter(context, activity,3);
+                                        adapter.setServiceDetailsList(serviceDetailsList);
+                                        recViewService.setAdapter(adapter);
+                                        recViewService.setLayoutManager(new LinearLayoutManager(context, RecyclerView.VERTICAL,false));
+                                    }
+                                });
+                        builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                            }
+                        });
+                        AlertDialog dialog = builder.create();
+                        dialog.show();
+                    }
+                });
+            }
         }
     }
 
@@ -224,7 +257,7 @@ public class RecViewServiceAdapter extends RecyclerView.Adapter<RecViewServiceAd
         private TextView txtServiceName, txtDuration, txtPrice, txtOrgPrice, txtDiscount, txtBookCount;
         private TextView txtEditService, txtDeleteService;
         private LinearLayout parent, layoutDiscount;
-        private ImageView imgDeleteDiscountService;
+        private ImageView imgDeleteDiscountService, imgStatusDiscountService;
 
         public ViewHolder(View view) {
             super(view);
@@ -237,7 +270,7 @@ public class RecViewServiceAdapter extends RecyclerView.Adapter<RecViewServiceAd
             txtEditService = view.findViewById(R.id.txtEditService);
             txtDeleteService = view.findViewById(R.id.txtDeleteService);
             imgDeleteDiscountService = view.findViewById(R.id.imgDeleteDiscountService);
-//            imgDeleteService = view.findViewById(R.id.imgDeleteService);
+            imgStatusDiscountService = view.findViewById(R.id.imgStatusDiscountService);
             parent = view.findViewById(R.id.serviceDetailCard);
             layoutDiscount = view.findViewById(R.id.layoutDiscount);
         }

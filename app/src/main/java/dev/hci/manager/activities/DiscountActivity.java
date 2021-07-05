@@ -40,17 +40,15 @@ public class DiscountActivity extends AppCompatActivity {
         serviceDetailsList.add(new ServiceDetail("Hair Collagen Treatment", "30 - 60 minutes", "270", "450",32,40));
         serviceDetailsList.add(new ServiceDetail("Wash + Massage", "60 minutes", "42", "70",75,40));
         serviceDetail.setList(serviceDetailsList);
-        serviceDetail.setIsDiscount(true);
         discountList.add(serviceDetail);
 
         serviceDetail = new ServiceDetail("General Discount","","0","0", 0 ,30);
 
         serviceDetailsList = new ArrayList<>();
-        serviceDetailsList.add(new ServiceDetail("Hair Loss Treatment", "60 - 120 minutes", "800", "1.200",6,30));
+        serviceDetailsList.add(new ServiceDetail("Hair Loss Treatment", "60 - 120 minutes", "800", "1,200",6,30));
         serviceDetailsList.add(new ServiceDetail("Hair Keratin Treatment", "30 - 60 minutes", "350", "500",29,30));
         serviceDetailsList.add(new ServiceDetail("Coloring (Long)", "60 - 90 minutes", "490", "700",45,30));
         serviceDetail.setList(serviceDetailsList);
-        serviceDetail.setIsDiscount(true);
         discountList.add(serviceDetail);
 
         txtCommon = findViewById(R.id.txtDiscountLabel);
@@ -93,5 +91,10 @@ public class DiscountActivity extends AppCompatActivity {
         Intent newIntent = new Intent(getApplicationContext(), HomeActivity.class);
         newIntent.putExtra("BACK_HOME", 3);
         startActivity(newIntent);
+    }
+
+    public void onAddDiscountClick(View view) {
+        intent = new Intent(getApplicationContext(), EditDiscountActivity.class);
+        startActivity(intent);
     }
 }

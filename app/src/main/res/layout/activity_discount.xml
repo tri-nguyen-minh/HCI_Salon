@@ -52,13 +52,13 @@
         android:paddingBottom="10dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/btnAddDiscount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingHorizontal="20dp"
             android:paddingVertical="5dp"
             android:background="@color/white"
-            android:layout_marginBottom="20dp">
+            android:layout_marginBottom="20dp"
+            android:onClick="onAddDiscountClick">
 
             <TextView
                 android:layout_width="wrap_content"

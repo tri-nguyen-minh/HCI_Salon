@@ -154,7 +154,7 @@ public class HomeFragment extends Fragment {
         booking = new Booking("Le Xuan","0933921237","10:00", bookingDate, 178,
                 0, 2);
         serviceDetailsList = new ArrayList<>();
-        serviceDetailsList.add(new ServiceDetail("Hair Loss Treatment", "60 - 120 minutes", "800", "1.200",6,30));
+        serviceDetailsList.add(new ServiceDetail("Hair Loss Treatment", "60 - 120 minutes", "800", "1,200",6,30));
         serviceDetailsList.add(new ServiceDetail("Coloring (Short)", "60 - 90 minutes", "550", "0",24,0));
         booking.setServiceDetailsList(serviceDetailsList);
         bookingListToday.add(booking);
@@ -227,7 +227,7 @@ public class HomeFragment extends Fragment {
         serviceDetailsList.add(new ServiceDetail("Female Haircut", "30 - 45 minutes", "100", "0",61,0));
         serviceDetailsList.add(new ServiceDetail("Wash + Massage", "60 minutes", "42", "70",75,40));
         serviceDetailsList.add(new ServiceDetail("Hair Straightening", "60 - 120 minutes", "450", "0",23,0));
-        serviceDetailsList.add(new ServiceDetail("Hair Loss Treatment", "60 - 120 minutes", "800", "1.200",6,30));
+        serviceDetailsList.add(new ServiceDetail("Hair Loss Treatment", "60 - 120 minutes", "800", "1,200",6,30));
         booking.setServiceDetailsList(serviceDetailsList);
         bookingListUpcoming.add(booking);
 
@@ -245,7 +245,7 @@ public class HomeFragment extends Fragment {
         serviceDetailsList.add(new ServiceDetail("Female Haircut", "30 - 45 minutes", "100", "0",61,0));
         serviceDetailsList.add(new ServiceDetail("Wash + Massage", "60 minutes", "42", "70",75,40));
         serviceDetailsList.add(new ServiceDetail("Hair Curling", "30 - 60 minutes", "400", "0",21,0));
-        serviceDetailsList.add(new ServiceDetail("Hair Loss Treatment", "60 - 120 minutes", "800", "1.200",6,30));
+        serviceDetailsList.add(new ServiceDetail("Hair Loss Treatment", "60 - 120 minutes", "800", "1,200",6,30));
         booking.setServiceDetailsList(serviceDetailsList);
         bookingListUpcoming.add(booking);
 
