@@ -37,7 +37,7 @@ public class TodayStatisticFragment extends Fragment {
         txtRevenue = getView().findViewById(R.id.txtStatisticsRevenue);
         txtAppointment = getView().findViewById(R.id.txtStatisticsAppointment);
         txtLabel.setText("TODAY REVENUE");
-        txtRevenue.setText("1.350.000d");
+        txtRevenue.setText("1,350,000d");
         txtAppointment.setText("1");
     }
 }

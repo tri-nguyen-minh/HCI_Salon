@@ -187,7 +187,7 @@ public class ScheduleActivity extends AppCompatActivity {
     }
 
     public void onBackSchedule(View view) {
-        Intent newIntent = new Intent(ScheduleActivity.this, HomeActivity.class);
+        Intent newIntent = new Intent(getApplicationContext(), HomeActivity.class);
         newIntent.putExtra("BACK_HOME", 3);
         startActivity(newIntent);
     }

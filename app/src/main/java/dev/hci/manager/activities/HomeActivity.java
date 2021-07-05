@@ -96,6 +96,6 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     public void onNotificationClick(View view) {
-        startActivity(new Intent(HomeActivity.this, NotificationActivity.class));
+        startActivity(new Intent(getApplicationContext(), NotificationActivity.class));
     }
 }

@@ -86,7 +86,6 @@ public class HomeFragment extends Fragment {
         viewPagerStatistics.setAdapter(statisticsAdapter);
         statisticCount = 0;
         viewPagerStatistics.setCurrentItem(statisticCount);
-        System.out.println(statisticCount);
 
         imgCommon = getView().findViewById(R.id.imgStatisticsLeft);
         imgCommon.setOnClickListener(new View.OnClickListener() {
@@ -95,7 +94,6 @@ public class HomeFragment extends Fragment {
                 statisticCount--;
                 statisticCount = (statisticCount < 0) ? 2 : statisticCount;
                 viewPagerStatistics.setCurrentItem(statisticCount);
-                System.out.println(statisticCount);
             }
         });
         imgCommon = getView().findViewById(R.id.imgStatisticsRight);
@@ -105,7 +103,6 @@ public class HomeFragment extends Fragment {
                 statisticCount++;
                 statisticCount = (statisticCount > 2) ? 0 : statisticCount;
                 viewPagerStatistics.setCurrentItem(statisticCount);
-                System.out.println(statisticCount);
             }
         });
 

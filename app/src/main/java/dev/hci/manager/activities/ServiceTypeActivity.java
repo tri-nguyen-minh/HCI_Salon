@@ -42,7 +42,7 @@ public class ServiceTypeActivity extends AppCompatActivity {
         servicesList.add(service);
         service = new Service("Hair Treatment", R.drawable.ic_service_restore);
         serviceDetailsList = new ArrayList<>();
-        serviceDetailsList.add(new ServiceDetail("Hair Loss Treatment", "60 - 120 minutes", "800", "1.200",6,30));
+        serviceDetailsList.add(new ServiceDetail("Hair Loss Treatment", "60 - 120 minutes", "840", "1,200",6,30));
         serviceDetailsList.add(new ServiceDetail("Hair Collagen Treatment", "30 - 60 minutes", "270", "450",32,40));
         serviceDetailsList.add(new ServiceDetail("Hair Keratin Treatment", "30 - 60 minutes", "350", "500",29,30));
         service.setServiceDetailsList(serviceDetailsList);
@@ -56,7 +56,7 @@ public class ServiceTypeActivity extends AppCompatActivity {
         service = new Service("Coloring", R.drawable.ic_service_color);
         serviceDetailsList = new ArrayList<>();
         serviceDetailsList.add(new ServiceDetail("Coloring (Short)", "60 - 90 minutes", "550", "0",24,0));
-        serviceDetailsList.add(new ServiceDetail("Coloring (Long)", "60 - 90 minutes", "700", "0",45,0));
+        serviceDetailsList.add(new ServiceDetail("Coloring (Long)", "60 - 90 minutes", "490", "700",45,30));
         service.setServiceDetailsList(serviceDetailsList);
         servicesList.add(service);
         service = new Service("Curling", R.drawable.ic_service_curling);
@@ -79,7 +79,7 @@ public class ServiceTypeActivity extends AppCompatActivity {
     }
 
     public void onBackService(View view) {
-        Intent newIntent = new Intent(ServiceTypeActivity.this, HomeActivity.class);
+        Intent newIntent = new Intent(getApplicationContext(), HomeActivity.class);
         newIntent.putExtra("BACK_HOME", 3);
         startActivity(newIntent);
     }

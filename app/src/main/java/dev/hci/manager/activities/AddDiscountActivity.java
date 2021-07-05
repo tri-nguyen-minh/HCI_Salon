@@ -6,11 +6,11 @@ import android.os.Bundle;
 
 import dev.hci.manager.R;
 
-public class statisticsActivity extends AppCompatActivity {
+public class AddDiscountActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_statistics);
+        setContentView(R.layout.activity_add_discount);
     }
 }

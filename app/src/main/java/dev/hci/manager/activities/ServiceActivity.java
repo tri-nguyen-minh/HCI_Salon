@@ -1,19 +1,18 @@
 package dev.hci.manager.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import dev.hci.manager.R;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
+import dev.hci.manager.R;
 import dev.hci.manager.dtos.Service;
 import dev.hci.manager.dtos.ServiceDetail;
 import dev.hci.manager.recycleviewadapter.RecViewServiceAdapter;
@@ -41,7 +40,7 @@ public class ServiceActivity extends AppCompatActivity {
 
         txtCommon = findViewById(R.id.txtServiceLabel);
         RecyclerView recViewService = findViewById(R.id.recViewService);
-        setupServiceCount(service.getServiceCount(), recViewService);
+        setupServiceCount(service.getServiceDetailsList().size(), recViewService);
 
         RecViewServiceAdapter adapter = new RecViewServiceAdapter(ServiceActivity.this, ServiceActivity.this,0);
         adapter.setServiceDetailsList(serviceDetailsList);
@@ -66,6 +65,13 @@ public class ServiceActivity extends AppCompatActivity {
     }
 
     public void onBackService(View view) {
-        startActivity(new Intent(ServiceActivity.this, ServiceTypeActivity.class));
+        startActivity(new Intent(getApplicationContext(), ServiceTypeActivity.class));
+    }
+
+    public void onAddServiceClick(View view) {
+
+        intent = new Intent(getApplicationContext(), EditServiceActivity.class);
+        intent.putExtra("SERVICE", service);
+        startActivity(intent);
     }
 }

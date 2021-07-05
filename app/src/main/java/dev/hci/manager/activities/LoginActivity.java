@@ -18,6 +18,6 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void onLoginClick(View view) {
-        startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+        startActivity(new Intent(getApplicationContext(), HomeActivity.class));
     }
 }

@@ -271,7 +271,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity="center"
-                            android:text="100.000d"
+                            android:text="100,000d"
                             android:textSize="22sp"
                             android:textStyle="bold"
                             android:textColor="@color/dark_gold"

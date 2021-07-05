@@ -115,7 +115,7 @@ public class RecViewBookingAdapter  extends RecyclerView.Adapter<RecViewBookingA
                 remain = total % 1000;
                 total /= 1000;
             }
-            holder.txtBookingTotalPrice.setText(total + ((remain == 0) ? "" : ("." + remain)) + ".000d");
+            holder.txtBookingTotalPrice.setText(total + ((remain == 0) ? "" : ("," + remain)) + ",000d");
 
             holder.cardBookingFinished.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -236,7 +236,7 @@ public class RecViewBookingAdapter  extends RecyclerView.Adapter<RecViewBookingA
                 remain = total % 1000;
                 total /= 1000;
             }
-            holder.txtBookingTotalPrice.setText(total + ((remain == 0) ? "" : ("." + remain)) + ".000d");
+            holder.txtBookingTotalPrice.setText(total + ((remain == 0) ? "" : ("," + remain)) + ",000d");
             holder.txtBookingStatus.setVisibility(View.VISIBLE);
             if (bookingList.get(position).getActionCode() == 1) {
                 holder.txtBookingStatus.setText("Customer's absence");

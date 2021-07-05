@@ -101,7 +101,7 @@ public class BookingViewActivity extends AppCompatActivity {
             remain = total % 1000;
             total /= 1000;
         }
-        txtBookingTotalPrice.setText(total + ((remain == 0) ? "" : ("." + remain)) + ".000d");
+        txtBookingTotalPrice.setText(total + ((remain == 0) ? "" : ("," + remain)) + ",000d");
 
         cardBookingFinished.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -194,7 +194,7 @@ public class BookingViewActivity extends AppCompatActivity {
                                 booking.setActionCode(actionCode);
                                 bookingList.set(position, booking);
                                 Serializable obj = (Serializable) bookingList;
-                                newIntent = new Intent(BookingViewActivity.this, HomeActivity.class);
+                                newIntent = new Intent(getApplicationContext(), HomeActivity.class);
                                 bundle.putSerializable("LIST",(Serializable) bookingList);
                                 newIntent.putExtra("BUNDLE", bundle);
                                 newIntent.putExtra("PAGE_IDENTIFIER", pageIdentifier);

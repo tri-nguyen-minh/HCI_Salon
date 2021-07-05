@@ -37,7 +37,7 @@ public class WeeklyStatisticsFragment extends Fragment {
         txtRevenue = getView().findViewById(R.id.txtStatisticsRevenue);
         txtAppointment = getView().findViewById(R.id.txtStatisticsAppointment);
         txtLabel.setText("WEEKLY REVENUE");
-        txtRevenue.setText("24.900.000d");
+        txtRevenue.setText("24,900,000d");
         txtAppointment.setText("32");
 
     }

@@ -18,9 +18,12 @@ import dev.hci.manager.recycleviewadapter.RecViewServiceAdapter;
 
 public class DiscountActivity extends AppCompatActivity {
 
+    private ServiceDetail serviceDetail;
     private ArrayList<ServiceDetail> serviceDetailsList;
+    private ArrayList<ServiceDetail> discountList;
     private Intent intent;
     private TextView txtCommon;
+    private int position;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,16 +31,45 @@ public class DiscountActivity extends AppCompatActivity {
         setContentView(R.layout.activity_discount);
 
         RecyclerView recViewService = findViewById(R.id.recViewDiscount);
+
+        discountList = new ArrayList<>();
+        serviceDetail = new ServiceDetail("Summer Discount","","0","0", 0 ,40);
+
+
+        serviceDetailsList = new ArrayList<>();
+        serviceDetailsList.add(new ServiceDetail("Hair Collagen Treatment", "30 - 60 minutes", "270", "450",32,40));
+        serviceDetailsList.add(new ServiceDetail("Wash + Massage", "60 minutes", "42", "70",75,40));
+        serviceDetail.setList(serviceDetailsList);
+        serviceDetail.setIsDiscount(true);
+        discountList.add(serviceDetail);
+
+        serviceDetail = new ServiceDetail("General Discount","","0","0", 0 ,30);
+
         serviceDetailsList = new ArrayList<>();
         serviceDetailsList.add(new ServiceDetail("Hair Loss Treatment", "60 - 120 minutes", "800", "1.200",6,30));
-        serviceDetailsList.add(new ServiceDetail("Hair Collagen Treatment", "30 - 60 minutes", "270", "450",32,40));
         serviceDetailsList.add(new ServiceDetail("Hair Keratin Treatment", "30 - 60 minutes", "350", "500",29,30));
-        serviceDetailsList.add(new ServiceDetail("Wash + Massage", "60 minutes", "42", "70",75,40));
-        txtCommon = findViewById(R.id.txtDiscountLabel);
-        setupServiceCount(serviceDetailsList.size(), recViewService);
+        serviceDetailsList.add(new ServiceDetail("Coloring (Long)", "60 - 90 minutes", "490", "700",45,30));
+        serviceDetail.setList(serviceDetailsList);
+        serviceDetail.setIsDiscount(true);
+        discountList.add(serviceDetail);
 
-        RecViewServiceAdapter adapter = new RecViewServiceAdapter(DiscountActivity.this, DiscountActivity.this,0);
-        adapter.setServiceDetailsList(serviceDetailsList);
+        txtCommon = findViewById(R.id.txtDiscountLabel);
+
+        intent = getIntent();
+        position = intent.getIntExtra("POSITION", -2);
+
+        if (position != -2) {
+            serviceDetail = (ServiceDetail)intent.getSerializableExtra("DISCOUNT");
+            if (position == -1) {
+                discountList.add(serviceDetail);
+            } else {
+                discountList.set(position, serviceDetail);
+            }
+        }
+        setupServiceCount(discountList.size(), recViewService);
+
+        RecViewServiceAdapter adapter = new RecViewServiceAdapter(DiscountActivity.this, DiscountActivity.this,2);
+        adapter.setServiceDetailsList(discountList);
         recViewService.setAdapter(adapter);
         recViewService.setLayoutManager(new LinearLayoutManager(DiscountActivity.this, RecyclerView.VERTICAL,false));
 
@@ -49,16 +81,16 @@ public class DiscountActivity extends AppCompatActivity {
             txtCommon.setText("You have not added any discount");
             recViewService.setVisibility(View.GONE);
         } else if (serviceCount == 1) {
-            txtCommon.setText("1 service with Discount");
+            txtCommon.setText("1 Discount");
             recViewService.setVisibility(View.VISIBLE);
         } else {
-            txtCommon.setText(serviceCount + " services with Discounts");
+            txtCommon.setText(serviceCount + " Discounts");
             recViewService.setVisibility(View.VISIBLE);
         }
     }
 
     public void onBackDiscount(View view) {
-        Intent newIntent = new Intent(DiscountActivity.this, HomeActivity.class);
+        Intent newIntent = new Intent(getApplicationContext(), HomeActivity.class);
         newIntent.putExtra("BACK_HOME", 3);
         startActivity(newIntent);
     }
