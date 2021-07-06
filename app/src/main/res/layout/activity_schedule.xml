@@ -15,7 +15,7 @@
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/viewPagerSchedule"
             android:layout_width="match_parent"
-            android:layout_height="700dp"
+            android:layout_height="730dp"
             android:layout_centerInParent="true"/>
 
         <RelativeLayout

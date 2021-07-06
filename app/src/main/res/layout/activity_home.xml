@@ -9,7 +9,7 @@ tools:context="dev.hci.manager.activities.HomeActivity">
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
-        android:layout_height="690dp"
+        android:layout_height="730dp"
         android:layout_below="@id/tabLayout"
         android:layout_centerInParent="true"
         app:layout_constraintLeft_toLeftOf="parent"

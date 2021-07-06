@@ -61,7 +61,11 @@ public class DiscountActivity extends AppCompatActivity {
             if (position == -1) {
                 discountList.add(serviceDetail);
             } else {
-                discountList.set(position, serviceDetail);
+                if (position > (discountList.size() - 1)) {
+                    discountList.add(serviceDetail);
+                } else {
+                    discountList.set(position, serviceDetail);
+                }
             }
         }
         setupServiceCount(discountList.size(), recViewService);

@@ -69,24 +69,6 @@ public class RecViewNotificationAdapter extends RecyclerView.Adapter<RecViewNoti
         holder.parent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                switch (contentType) {
-                    case 0: {
-                        System.out.println("0");
-                        break;
-                    }
-                    case 1: {
-                        System.out.println("1");
-                        break;
-                    }
-                    case 2: {
-                        System.out.println(2);
-                        break;
-                    }
-                    case 3: {
-                        System.out.println(3);
-                        break;
-                    }
-                }
             }
         });
         holder.parent.setBackground(activity.getDrawable(R.drawable.background_separator_bottom));

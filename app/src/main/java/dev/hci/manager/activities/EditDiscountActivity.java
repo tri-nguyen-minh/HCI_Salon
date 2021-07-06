@@ -44,13 +44,13 @@ public class EditDiscountActivity extends AppCompatActivity {
         intent = getIntent();
         position = intent.getIntExtra("POSITION", -1);
         setUpList();
-
         editTitle = findViewById(R.id.editDiscountName);
         editValue = findViewById(R.id.editDiscountValue);
 
-        if (position >= 0) {
+        if (discount != null) {
             editTitle.setText(discount.getName());
             editValue.setText(discount.getDiscount() + "");
+            setupDiscount();
             setupRecycleView(discount.getList());
         }
 
@@ -67,20 +67,10 @@ public class EditDiscountActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                int discountValue = 0, price = 0;
-                discount.setDiscount(discountValue);
-                for (ServiceDetail serviceDetail: discount.getList()) {
-                    discountValue = Integer.parseInt(editValue.getText().toString()) / 10;
-                    if (serviceDetail.getDiscount() > 0) {
-                        price = Integer.parseInt(checkPriceString(serviceDetail.getOrgPrice()));
-                    } else {
-                        price = Integer.parseInt(checkPriceString(serviceDetail.getPrice()));
-                    }
-                    price = (price / 10) * (10 - discountValue);
-                    serviceDetail.setPrice(price + "");
-                    serviceDetail.setDiscount(discountValue);
+                if (discount != null) {
+                    setupDiscount();
+                    setupRecycleView(discount.getList());
                 }
-                setupRecycleView(discount.getList());
             }
         });
 
@@ -104,20 +94,12 @@ public class EditDiscountActivity extends AppCompatActivity {
     }
 
     public void onRegisterClick(View view) {
-        discount.setName(editTitle.getText().toString());
-        int discountValue = 0, price = 0;
-        discount.setDiscount(discountValue);
-        for (ServiceDetail serviceDetail: discount.getList()) {
-            discountValue = Integer.parseInt(editValue.getText().toString()) / 10;
-            if (serviceDetail.getDiscount() > 0) {
-                price = Integer.parseInt(checkPriceString(serviceDetail.getOrgPrice()));
-            } else {
-                price = Integer.parseInt(checkPriceString(serviceDetail.getPrice()));
-            }
-            price = (price / 10) * (10 - discountValue);
-            serviceDetail.setPrice(price + "");
-            serviceDetail.setDiscount(discountValue);
+        if (discount == null) {
+            discount = new ServiceDetail();
+            discount.setList(new ArrayList<>());
         }
+        discount.setName(editTitle.getText().toString());
+        setupDiscount();
 
         AlertDialog.Builder builder = new AlertDialog.Builder(EditDiscountActivity.this);
         builder.setCancelable(true);
@@ -142,14 +124,31 @@ public class EditDiscountActivity extends AppCompatActivity {
         dialog.show();
     }
 
+    private void setupDiscount() {
+        int discountValue = 0, price = 0;
+        discount.setDiscount(checkDiscountValue());
+        for (ServiceDetail serviceDetail: discount.getList()) {
+            discountValue = checkDiscountValue() / 10;
+            if (serviceDetail.getDiscount() > 0) {
+                price = Integer.parseInt(checkPriceString(serviceDetail.getOrgPrice()));
+            } else {
+                price = Integer.parseInt(checkPriceString(serviceDetail.getPrice()));
+            }
+            serviceDetail.setOrgPrice(decimalFormat.format(price));
+            price = (price / 10) * (10 - discountValue);
+            serviceDetail.setPrice(price + "");
+            serviceDetail.setDiscount(checkDiscountValue());
+        }
+    }
+
     public void onAddDiscountClick(View view) {
 
         if (position >= 0) {
             discount.setName(editTitle.getText().toString());
             int discountValue = 0, price = 0;
-            discount.setDiscount(discountValue);
+            discount.setDiscount(checkDiscountValue());
             for (ServiceDetail serviceDetail: discount.getList()) {
-                discountValue = Integer.parseInt(editValue.getText().toString()) / 10;
+                discountValue = checkDiscountValue() / 10;
                 if (serviceDetail.getDiscount() > 0) {
                     price = Integer.parseInt(checkPriceString(serviceDetail.getOrgPrice()));
                 } else {
@@ -162,7 +161,7 @@ public class EditDiscountActivity extends AppCompatActivity {
         }else {
             discount = new ServiceDetail();
             discount.setName(editTitle.getText().toString());
-            int price = editValue.getText().toString().isEmpty() ? 0 : Integer.parseInt(editValue.getText().toString());
+            int price = checkDiscountValue();
             discount.setDiscount(price);
             discount.setList(new ArrayList<>());
         }
@@ -170,6 +169,10 @@ public class EditDiscountActivity extends AppCompatActivity {
         intent.putExtra("DISCOUNT", discount);
         intent.putExtra("POSITION", position);
         startActivity(intent);
+    }
+
+    private int checkDiscountValue() {
+        return editValue.getText().toString().isEmpty() ? 0 : Integer.parseInt(editValue.getText().toString());
     }
 
 
