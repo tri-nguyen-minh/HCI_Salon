@@ -33,21 +33,21 @@ public class DiscountActivity extends AppCompatActivity {
         RecyclerView recViewService = findViewById(R.id.recViewDiscount);
 
         discountList = new ArrayList<>();
-        serviceDetail = new ServiceDetail("Summer Discount","","0","0", 0 ,40);
+        serviceDetail = new ServiceDetail("Summer Discount","01/06/2021 - 31/08/2021","0","0", 1 ,20);
 
 
         serviceDetailsList = new ArrayList<>();
-        serviceDetailsList.add(new ServiceDetail("Hair Collagen Treatment", "30 - 60 minutes", "270", "450",32,40));
-        serviceDetailsList.add(new ServiceDetail("Wash + Massage", "60 minutes", "42", "70",75,40));
+        serviceDetailsList.add(new ServiceDetail(   "Hair Collagen Treatment", "30 - 60 minutes", "360", "450",32,20));
+        serviceDetailsList.add(new ServiceDetail("Wash + Massage", "60 minutes", "56", "70",75,20));
         serviceDetail.setList(serviceDetailsList);
         discountList.add(serviceDetail);
 
-        serviceDetail = new ServiceDetail("General Discount","","0","0", 0 ,30);
+        serviceDetail = new ServiceDetail("Spring Discount","01/01/2021 - 28/02/2021","0","0", 0 ,0);
 
         serviceDetailsList = new ArrayList<>();
-        serviceDetailsList.add(new ServiceDetail("Hair Loss Treatment", "60 - 120 minutes", "800", "1,200",6,30));
-        serviceDetailsList.add(new ServiceDetail("Hair Keratin Treatment", "30 - 60 minutes", "350", "500",29,30));
-        serviceDetailsList.add(new ServiceDetail("Coloring (Long)", "60 - 90 minutes", "490", "700",45,30));
+        serviceDetailsList.add(new ServiceDetail("Hair Loss Treatment", "60 - 120 minutes", "1,080", "1,200",6,10));
+        serviceDetailsList.add(new ServiceDetail("Hair Keratin Treatment", "30 - 60 minutes", "425", "500",29,15));
+        serviceDetailsList.add(new ServiceDetail("Coloring (Long)", "60 - 90 minutes", "630", "700",45,10));
         serviceDetail.setList(serviceDetailsList);
         discountList.add(serviceDetail);
 

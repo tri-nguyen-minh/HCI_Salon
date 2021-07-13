@@ -1,38 +1,31 @@
 package dev.hci.manager.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.KeyEvent;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import dev.hci.manager.R;
-import dev.hci.manager.dtos.Booking;
 import dev.hci.manager.dtos.Service;
 import dev.hci.manager.dtos.ServiceDetail;
-import dev.hci.manager.recycleviewadapter.RecViewBookingAdapter;
 
 public class EditServiceActivity extends AppCompatActivity {
 
     private Intent intent;
     private Service service;
+    private ServiceDetail serviceDetail;
     private TextView txtCommon;
     private EditText editCommon;
     private Spinner spinnerCommon;
@@ -49,18 +42,8 @@ public class EditServiceActivity extends AppCompatActivity {
         decimalFormat.setGroupingUsed(true);
         decimalFormat.setGroupingSize(3);
 
-        layoutWithDiscount = findViewById(R.id.layoutWithDiscount);
         intent = getIntent();
         service = (Service)intent.getSerializableExtra("SERVICE");
-
-        spinnerCommon = findViewById(R.id.spinnerDiscount);
-        dataSpinnerService = new ArrayList<>();
-        dataSpinnerService.add("No Discount");
-        dataSpinnerService.add("40% - Summer Discount");
-        dataSpinnerService.add("30% - General Discount");
-        dataAdapter = new ArrayAdapter<>(EditServiceActivity.this, android.R.layout.simple_spinner_item, dataSpinnerService);
-        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerCommon.setAdapter(dataAdapter);
 
         ImageView imgServiceType = findViewById(R.id.imgServiceType);
         imgServiceType.setImageResource(service.getImageId());
@@ -69,44 +52,21 @@ public class EditServiceActivity extends AppCompatActivity {
 
         position = intent.getIntExtra("POSITION", -1);
 
-        layoutWithDiscount.setVisibility(View.GONE);
-
-        spinnerCommon.setSelection(0);
 
         if (position >= 0) {
-            ServiceDetail serviceDetail = service.getServiceDetailsList().get(position);
+            serviceDetail = service.getServiceDetailsList().get(position);
             editCommon = findViewById(R.id.editServiceName);
             editCommon.setText(serviceDetail.getName());
             String priceString = serviceDetail.getOrgPrice();
             int price = 0;
             if (priceString.equals("0")) {
                 priceString = serviceDetail.getPrice();
-                priceString = checkPriceString(priceString);
-                price = Integer.parseInt(priceString) * 1000;
-                editCommon = findViewById(R.id.editPrice);
-                editCommon.setText(price + "");
-            } else {
-                priceString = checkPriceString(priceString);
-                price = Integer.parseInt(priceString) * 1000;
-                editCommon = findViewById(R.id.editPrice);
-                editCommon.setText(price + "");
-                priceString = serviceDetail.getPrice();
-                priceString = checkPriceString(priceString);
-                price = Integer.parseInt(priceString) * 1000;
-                txtCommon = findViewById(R.id.txtDiscountPrice);
-                txtCommon.setText(price + "");
             }
+            priceString = checkPriceString(priceString);
+            price = Integer.parseInt(priceString) * 1000;
+            editCommon = findViewById(R.id.editPrice);
+            editCommon.setText(price + "");
 
-            if (serviceDetail.getDiscount() > 0) {
-                for (int i = 1; i < dataSpinnerService.size(); i++) {
-                    String discountString = dataSpinnerService.get(i);
-                    discountString = discountString.substring(0,discountString.indexOf("%"));
-                    if (serviceDetail.getDiscount() == Integer.parseInt(discountString)) {
-                        spinnerCommon.setSelection(i);
-                        layoutWithDiscount.setVisibility(View.VISIBLE);
-                    }
-                }
-            }
             String durationString = serviceDetail.getDuration();
             int indexCheck = durationString.indexOf("-");
             int fromDuration;
@@ -121,34 +81,9 @@ public class EditServiceActivity extends AppCompatActivity {
                 fromDuration = Integer.parseInt(durationString.substring(0, durationString.indexOf(" ")));
                 editCommon.setText(fromDuration + "");
             }
+        } else {
+            serviceDetail = null;
         }
-
-        spinnerCommon.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (position == 0) {
-                    layoutWithDiscount.setVisibility(View.GONE);
-                } else {
-                    editCommon = findViewById(R.id.editPrice);
-                    String priceString = editCommon.getText().toString();
-                    if (!priceString.isEmpty()) {
-                        layoutWithDiscount.setVisibility(View.VISIBLE);
-                        String discountString = dataSpinnerService.get(position);
-                        int price = Integer.parseInt(priceString);
-                        discountString = discountString.substring(0,dataSpinnerService.get(position).indexOf("0"));
-                        int discount = Integer.parseInt(discountString);
-                        price = (price / 10) * (10 - discount);
-                        txtCommon = findViewById(R.id.txtDiscountPrice);
-                        txtCommon.setText(price + "");
-                    }
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
 
         this.getSupportActionBar().hide();
     }
@@ -168,22 +103,25 @@ public class EditServiceActivity extends AppCompatActivity {
 
     public void onRegisterClick(View view) {
 
-        ServiceDetail serviceDetail = new ServiceDetail();
+        ServiceDetail newService = new ServiceDetail();
         editCommon = findViewById(R.id.editServiceName);
-        serviceDetail.setName(editCommon.getText().toString());
+        newService.setName(editCommon.getText().toString());
         editCommon = findViewById(R.id.editPrice);
         int price = Integer.parseInt(editCommon.getText().toString()) / 1000;
-        if (spinnerCommon.getSelectedItemPosition() == 0) {
-            serviceDetail.setDiscount(0);
-            serviceDetail.setPrice(decimalFormat.format(price));
+        if (serviceDetail == null) {
+            newService.setDiscount(0);
+            newService.setPrice(decimalFormat.format(price));
         } else {
-            serviceDetail.setOrgPrice(decimalFormat.format(price));
-            String discountString = dataSpinnerService.get(spinnerCommon.getSelectedItemPosition());
-            txtCommon = findViewById(R.id.txtDiscountPrice);
-            price = Integer.parseInt(txtCommon.getText().toString()) / 1000;
-            serviceDetail.setPrice(decimalFormat.format(price));
-            discountString = discountString.substring(0,discountString.indexOf("%"));
-            serviceDetail.setDiscount(Integer.parseInt(discountString));
+            if (serviceDetail.getDiscount() == 0) {
+                newService.setDiscount(0);
+                newService.setPrice(decimalFormat.format(price));
+            } else {
+                newService.setOrgPrice(decimalFormat.format(price));
+                int discountValue = serviceDetail.getDiscount();
+                price = (price / 100) * (100 - discountValue);
+                newService.setPrice(decimalFormat.format(price));
+                newService.setDiscount(serviceDetail.getDiscount());
+            }
         }
         editCommon = findViewById(R.id.editFromDuration);
         String fromDuration = editCommon.getText().toString();
@@ -195,8 +133,8 @@ public class EditServiceActivity extends AppCompatActivity {
         } else {
             duration = fromDuration + " - " + toDuration + " minutes";
         }
-        serviceDetail.setDuration(duration);
-        serviceDetail.setBookCount(0);
+        newService.setDuration(duration);
+        newService.setBookCount(0);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(EditServiceActivity.this);
         builder.setCancelable(true);
@@ -207,9 +145,9 @@ public class EditServiceActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         if (position >= 0) {
-                            service.getServiceDetailsList().set(position, serviceDetail);
+                            service.getServiceDetailsList().set(position, newService);
                         } else {
-                            service.getServiceDetailsList().add(serviceDetail);
+                            service.getServiceDetailsList().add(newService);
                         }
                         intent = new Intent(getApplicationContext(), ServiceActivity.class);
                         intent.putExtra("SERVICE", service);

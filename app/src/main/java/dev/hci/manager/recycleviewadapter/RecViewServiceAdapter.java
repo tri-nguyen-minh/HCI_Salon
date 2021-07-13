@@ -6,9 +6,12 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Paint;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -18,6 +21,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import dev.hci.manager.R;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import dev.hci.manager.activities.EditDiscountActivity;
@@ -35,6 +39,7 @@ public class RecViewServiceAdapter extends RecyclerView.Adapter<RecViewServiceAd
     private Activity activity;
     private ServiceDetail serviceDetail;
     private int cardId;
+    private DecimalFormat decimalFormat = new DecimalFormat("#.##");
     private int[] LAYOUT_LIST = {R.layout.recycle_view_service_card, R.layout.recycle_view_service_booked_card,
                             R.layout.recycle_view_discount_card, R.layout.recycle_view_discount_service_card,
                             R.layout.recycle_view_add_discount_service_card};
@@ -48,6 +53,8 @@ public class RecViewServiceAdapter extends RecyclerView.Adapter<RecViewServiceAd
         this.activity = activity;
         this.cardId = cardId;
         intent = activity.getIntent();
+        decimalFormat.setGroupingUsed(true);
+        decimalFormat.setGroupingSize(3);
     }
 
     @Override
@@ -134,9 +141,9 @@ public class RecViewServiceAdapter extends RecyclerView.Adapter<RecViewServiceAd
             }
         } else if (cardId == 2) {
             holder.txtServiceName.setText(serviceDetailsList.get(position).getName());
-            holder.txtPrice.setText(serviceDetailsList.get(position).getDiscount() + "%");
+            holder.txtDuration.setText(serviceDetailsList.get(position).getDuration());
             holder.txtBookCount.setText(serviceDetailsList.get(position).getList().size() + "");
-
+            holder.txtDiscountStatus.setText(serviceDetailsList.get(position).getBookCount() == 0 ? "Ended" : "Ongoing");
             holder.txtEditService.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -179,21 +186,17 @@ public class RecViewServiceAdapter extends RecyclerView.Adapter<RecViewServiceAd
             holder.txtServiceName.setText(serviceDetailsList.get(position).getName());
             holder.txtDuration.setText(serviceDetailsList.get(position).getDuration());
             holder.txtPrice.setText(serviceDetailsList.get(position).getPrice() + ",000d");
-            holder.txtPrice.setTextColor(context.getResources().getColor(R.color.black));
-            holder.txtOrgPrice.setTextColor(context.getResources().getColor(R.color.black));
-            holder.txtPrice.setTextColor(context.getResources().getColor(R.color.red));
-            holder.txtOrgPrice.setPaintFlags(Paint.STRIKE_THRU_TEXT_FLAG);
             holder.txtOrgPrice.setText(serviceDetailsList.get(position).getOrgPrice() + ",000d");
             if (cardId == 4) {
                 holder.txtPrice.setText(serviceDetailsList.get(position).getPrice() + ",000d");
                 holder.txtPrice.setTextColor(context.getResources().getColor(R.color.black));
                 holder.txtOrgPrice.setTextColor(context.getResources().getColor(R.color.black));
+                holder.txtOrgPrice.setPaintFlags(Paint.STRIKE_THRU_TEXT_FLAG);
                 if(serviceDetailsList.get(position).getDiscount() == 0) {
                     holder.layoutDiscount.setVisibility(View.GONE);
                 } else {
                     holder.txtPrice.setTextColor(context.getResources().getColor(R.color.red));
                     holder.layoutDiscount.setVisibility(View.VISIBLE);
-                    holder.txtOrgPrice.setPaintFlags(Paint.STRIKE_THRU_TEXT_FLAG);
                     holder.txtOrgPrice.setText(serviceDetailsList.get(position).getOrgPrice() + ",000d");
                     holder.txtDiscount.setText("-" + serviceDetailsList.get(position).getDiscount() + "%");
                 }
@@ -215,6 +218,56 @@ public class RecViewServiceAdapter extends RecyclerView.Adapter<RecViewServiceAd
                     }
                 });
             } else {
+                holder.txtOrgPrice.setTextColor(context.getResources().getColor(R.color.black));
+                holder.txtPrice.setTextColor(context.getResources().getColor(R.color.red));
+                holder.editDiscountValue.setText(serviceDetailsList.get(position).getDiscount() + "");
+                holder.editDiscountValue.addTextChangedListener(new TextWatcher() {
+                    String beforeString;
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                        beforeString = s.toString();
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+                        int discountValue = 0, price = 0;
+
+                        String value = s.toString();
+                        if (value.length() > 1 && value.indexOf("0") == 0) {
+                            holder.editDiscountValue.setText(value.substring(1));
+                        }
+                        discountValue = checkDiscountValue(s);
+                        if(discountValue > 100) {
+                            discountValue = 100;
+                            holder.editDiscountValue.setText(discountValue + "");
+                        }
+
+                        serviceDetail = serviceDetailsList.get(position);
+                        if (serviceDetail.getDiscount() > 0) {
+                            price = Integer.parseInt(checkPriceString(serviceDetail.getOrgPrice())) * 10;
+                        } else {
+                            price = Integer.parseInt(checkPriceString(serviceDetail.getPrice())) * 10;
+                        }
+                        serviceDetail.setOrgPrice(decimalFormat.format(price  / 10));
+                        holder.txtOrgPrice.setText(decimalFormat.format(price * 100) + "d");
+                        price = (price / 100) * (100 - discountValue);
+                        serviceDetail.setPrice(decimalFormat.format(price  / 10));
+                        holder.txtPrice.setText(decimalFormat.format(price * 100) + "d");
+                        serviceDetail.setDiscount(checkDiscountValue(s));
+                        serviceDetailsList.set(position, serviceDetail);
+                        Intent newIntent = new Intent();
+                        intent = activity.getIntent();
+                        ServiceDetail discount = (ServiceDetail) intent.getSerializableExtra("DISCOUNT");
+                        discount.getList().set(position, serviceDetail);
+                        newIntent.putExtra("DISCOUNT", discount);
+                        activity.setIntent(newIntent);
+                    }
+                });
                 holder.imgDeleteDiscountService.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -255,7 +308,8 @@ public class RecViewServiceAdapter extends RecyclerView.Adapter<RecViewServiceAd
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         private TextView txtServiceName, txtDuration, txtPrice, txtOrgPrice, txtDiscount, txtBookCount;
-        private TextView txtEditService, txtDeleteService;
+        private TextView txtEditService, txtDeleteService, txtDiscountStatus;
+        private EditText editDiscountValue;
         private LinearLayout parent, layoutDiscount;
         private ImageView imgDeleteDiscountService, imgStatusDiscountService;
 
@@ -269,10 +323,25 @@ public class RecViewServiceAdapter extends RecyclerView.Adapter<RecViewServiceAd
             txtBookCount = view.findViewById(R.id.txtServiceBookCount);
             txtEditService = view.findViewById(R.id.txtEditService);
             txtDeleteService = view.findViewById(R.id.txtDeleteService);
+            txtDiscountStatus = view.findViewById(R.id.txtDiscountStatus);
+            editDiscountValue = view.findViewById(R.id.editDiscountValue);
             imgDeleteDiscountService = view.findViewById(R.id.imgDeleteDiscountService);
             imgStatusDiscountService = view.findViewById(R.id.imgStatusDiscountService);
             parent = view.findViewById(R.id.serviceDetailCard);
             layoutDiscount = view.findViewById(R.id.layoutDiscount);
         }
+    }
+
+    private int checkDiscountValue(Editable e) {
+        return e.toString().isEmpty() ? 0 : Integer.parseInt(e.toString());
+    }
+
+    private String checkPriceString(String string) {
+        if (string.indexOf(",") >= 0) {
+            String start = string.substring(0, string.indexOf(","));
+            String end = string.substring(string.indexOf(",") + 1);
+            string =  start + end;
+        }
+        return string;
     }
 }
