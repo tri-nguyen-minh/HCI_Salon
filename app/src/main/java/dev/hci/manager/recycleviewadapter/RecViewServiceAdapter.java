@@ -185,8 +185,6 @@ public class RecViewServiceAdapter extends RecyclerView.Adapter<RecViewServiceAd
         }  else {
             holder.txtServiceName.setText(serviceDetailsList.get(position).getName());
             holder.txtDuration.setText(serviceDetailsList.get(position).getDuration());
-            holder.txtPrice.setText(serviceDetailsList.get(position).getPrice() + ",000d");
-            holder.txtOrgPrice.setText(serviceDetailsList.get(position).getOrgPrice() + ",000d");
             if (cardId == 4) {
                 holder.txtPrice.setText(serviceDetailsList.get(position).getPrice() + ",000d");
                 holder.txtPrice.setTextColor(context.getResources().getColor(R.color.black));
@@ -218,56 +216,69 @@ public class RecViewServiceAdapter extends RecyclerView.Adapter<RecViewServiceAd
                     }
                 });
             } else {
+                if (serviceDetailsList.get(position).getOrgPrice().equals("0")) {
+                    holder.txtPrice.setText(serviceDetailsList.get(position).getPrice() + ",000d");
+                    holder.txtOrgPrice.setText(serviceDetailsList.get(position).getPrice() + ",000d");
+                } else {
+                    holder.txtPrice.setText(serviceDetailsList.get(position).getPrice() + ",000d");
+                    holder.txtOrgPrice.setText(serviceDetailsList.get(position).getOrgPrice() + ",000d");
+                }
                 holder.txtOrgPrice.setTextColor(context.getResources().getColor(R.color.black));
                 holder.txtPrice.setTextColor(context.getResources().getColor(R.color.red));
-                holder.editDiscountValue.setText(serviceDetailsList.get(position).getDiscount() + "");
-                holder.editDiscountValue.addTextChangedListener(new TextWatcher() {
-                    String beforeString;
-                    @Override
-                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                        beforeString = s.toString();
-                    }
 
-                    @Override
-                    public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-                    }
-
-                    @Override
-                    public void afterTextChanged(Editable s) {
-                        int discountValue = 0, price = 0;
-
-                        String value = s.toString();
-                        if (value.length() > 1 && value.indexOf("0") == 0) {
-                            holder.editDiscountValue.setText(value.substring(1));
-                        }
-                        discountValue = checkDiscountValue(s);
-                        if(discountValue > 100) {
-                            discountValue = 100;
-                            holder.editDiscountValue.setText(discountValue + "");
+                intent = activity.getIntent();
+                ServiceDetail discount = (ServiceDetail) intent.getSerializableExtra("DISCOUNT");
+                if (discount.isDiscounted()) {
+                    holder.linearLayoutDiscountValueService.setVisibility(View.GONE);
+                } else {
+                    holder.linearLayoutDiscountValueService.setVisibility(View.VISIBLE);
+                    holder.editDiscountValue.setText(serviceDetailsList.get(position).getDiscount() + "");
+                    holder.editDiscountValue.addTextChangedListener(new TextWatcher() {
+                        String beforeString;
+                        @Override
+                        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                            beforeString = s.toString();
                         }
 
-                        serviceDetail = serviceDetailsList.get(position);
-                        if (serviceDetail.getDiscount() > 0) {
-                            price = Integer.parseInt(checkPriceString(serviceDetail.getOrgPrice())) * 10;
-                        } else {
-                            price = Integer.parseInt(checkPriceString(serviceDetail.getPrice())) * 10;
+                        @Override
+                        public void onTextChanged(CharSequence s, int start, int before, int count) {
+
                         }
-                        serviceDetail.setOrgPrice(decimalFormat.format(price  / 10));
-                        holder.txtOrgPrice.setText(decimalFormat.format(price * 100) + "d");
-                        price = (price / 100) * (100 - discountValue);
-                        serviceDetail.setPrice(decimalFormat.format(price  / 10));
-                        holder.txtPrice.setText(decimalFormat.format(price * 100) + "d");
-                        serviceDetail.setDiscount(checkDiscountValue(s));
-                        serviceDetailsList.set(position, serviceDetail);
-                        Intent newIntent = new Intent();
-                        intent = activity.getIntent();
-                        ServiceDetail discount = (ServiceDetail) intent.getSerializableExtra("DISCOUNT");
-                        discount.getList().set(position, serviceDetail);
-                        newIntent.putExtra("DISCOUNT", discount);
-                        activity.setIntent(newIntent);
-                    }
-                });
+
+                        @Override
+                        public void afterTextChanged(Editable s) {
+                            int discountValue = 0, price = 0;
+
+                            String value = s.toString();
+                            if (value.length() > 1 && value.indexOf("0") == 0) {
+                                holder.editDiscountValue.setText(value.substring(1));
+                            }
+                            discountValue = checkDiscountValue(s);
+                            if(discountValue > 100) {
+                                discountValue = 100;
+                                holder.editDiscountValue.setText(discountValue + "");
+                            }
+
+                            serviceDetail = serviceDetailsList.get(position);
+                            if (serviceDetail.getDiscount() > 0) {
+                                price = Integer.parseInt(checkPriceString(serviceDetail.getOrgPrice())) * 10;
+                            } else {
+                                price = Integer.parseInt(checkPriceString(serviceDetail.getPrice())) * 10;
+                            }
+                            serviceDetail.setOrgPrice(decimalFormat.format(price  / 10));
+                            holder.txtOrgPrice.setText(decimalFormat.format(price * 100) + "d");
+                            price = (price / 100) * (100 - discountValue);
+                            serviceDetail.setPrice(decimalFormat.format(price  / 10));
+                            holder.txtPrice.setText(decimalFormat.format(price * 100) + "d");
+                            serviceDetail.setDiscount(checkDiscountValue(s));
+                            serviceDetailsList.set(position, serviceDetail);
+                            Intent newIntent = new Intent();
+                            discount.getList().set(position, serviceDetail);
+                            newIntent.putExtra("DISCOUNT", discount);
+                            activity.setIntent(newIntent);
+                        }
+                    });
+                }
                 holder.imgDeleteDiscountService.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -310,7 +321,7 @@ public class RecViewServiceAdapter extends RecyclerView.Adapter<RecViewServiceAd
         private TextView txtServiceName, txtDuration, txtPrice, txtOrgPrice, txtDiscount, txtBookCount;
         private TextView txtEditService, txtDeleteService, txtDiscountStatus;
         private EditText editDiscountValue;
-        private LinearLayout parent, layoutDiscount;
+        private LinearLayout parent, layoutDiscount, linearLayoutDiscountValueService;
         private ImageView imgDeleteDiscountService, imgStatusDiscountService;
 
         public ViewHolder(View view) {
@@ -329,6 +340,7 @@ public class RecViewServiceAdapter extends RecyclerView.Adapter<RecViewServiceAd
             imgStatusDiscountService = view.findViewById(R.id.imgStatusDiscountService);
             parent = view.findViewById(R.id.serviceDetailCard);
             layoutDiscount = view.findViewById(R.id.layoutDiscount);
+            linearLayoutDiscountValueService = view.findViewById(R.id.linearLayoutDiscountValueService);
         }
     }
 

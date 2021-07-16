@@ -100,7 +100,7 @@
                             android:layout_marginRight="5dp">
 
                             <TextView
-                                android:layout_width="75dp"
+                                android:layout_width="95dp"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="monospace"
                                 android:gravity="left|center"
@@ -155,12 +155,12 @@
                             android:layout_marginRight="5dp">
 
                             <TextView
-                                android:layout_width="75dp"
+                                android:layout_width="95dp"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="monospace"
                                 android:gravity="left|center"
-                                android:text="Start\nDate"
-                                android:maxLines="2"
+                                android:text="Start Date"
+                                android:maxLines="1"
                                 android:textColor="@color/black"
                                 android:textSize="15sp"
                                 android:textStyle="bold" />
@@ -213,12 +213,12 @@
                             android:layout_marginRight="5dp">
 
                             <TextView
-                                android:layout_width="75dp"
+                                android:layout_width="95dp"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="monospace"
                                 android:gravity="left|center"
-                                android:text="End\nDate"
-                                android:maxLines="2"
+                                android:text="End Date"
+                                android:maxLines="1"
                                 android:textColor="@color/black"
                                 android:textSize="15sp"
                                 android:textStyle="bold" />
@@ -257,44 +257,136 @@
 
 
                     </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="match_parent"
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@color/white">
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/btnAddDiscount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="5dp"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="15dp"
+                    android:onClick="onAddDiscountClick"
+                    android:background="@drawable/background_separator_bottom">
+
+                    <TextView
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:gravity="left|center"
-                        android:orientation="horizontal">
+                        android:text="Add Services"
+                        android:fontFamily="monospace"
+                        android:textStyle="bold"
+                        android:textColor="@color/dark_gray"
+                        android:textSize="18dp"
+                        android:layout_marginLeft="10dp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
 
-                        <LinearLayout
+                    <ImageView
+                        android:id="@+id/imgAddService"
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:src="@drawable/ic_add"
+                        android:layout_marginHorizontal="5dp"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="left|center"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="15dp"
+                    android:paddingVertical="7dp"
+                    android:background="@drawable/background_separator_bottom">
+
+<!--                    <LinearLayout-->
+<!--                        android:id="@+id/layoutDiscountValue"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:orientation="horizontal"-->
+<!--                        android:gravity="center"-->
+<!--                        android:layout_marginRight="5dp"-->
+<!--                        app:layout_constraintLeft_toLeftOf="parent"-->
+<!--                        app:layout_constraintTop_toTopOf="parent">-->
+
+<!--                        <TextView-->
+<!--                            android:layout_width="140dp"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:fontFamily="monospace"-->
+<!--                            android:gravity="left|center"-->
+<!--                            android:text="Discount Value"-->
+<!--                            android:maxLines="1"-->
+<!--                            android:textColor="@color/black"-->
+<!--                            android:textSize="16sp"-->
+<!--                            android:textStyle="bold" />-->
+
+<!--                    </LinearLayout>-->
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="5dp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:background="@drawable/background_date_default">
+
+                        <Spinner
+                            android:id="@+id/spinnerSortReview"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:gravity="center"
-                            android:layout_marginRight="5dp">
+                            android:layout_height="40dp"/>
 
-                            <TextView
-                                android:layout_width="75dp"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="monospace"
-                                android:gravity="left|center"
-                                android:text="Discount"
-                                android:maxLines="1"
-                                android:textColor="@color/black"
-                                android:textSize="15sp"
-                                android:textStyle="bold" />
+                    </RelativeLayout>
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="monospace"
-                                android:gravity="left|center"
-                                android:text="@string/general_required_hint"
-                                android:maxLines="1"
-                                android:textColor="@color/dark_gray"
-                                android:textSize="14sp" />
+<!--                    <RelativeLayout-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginVertical="5dp"-->
+<!--                        app:layout_constraintLeft_toLeftOf="parent"-->
+<!--                        app:layout_constraintTop_toBottomOf="@+id/layoutDiscountValue"-->
+<!--                        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                        android:background="@drawable/background_date_default">-->
 
-                        </LinearLayout>
+<!--                        <Spinner-->
+<!--                            android:id="@+id/spinnerSortReview"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="40dp"/>-->
 
+<!--                    </RelativeLayout>-->
 
-                        <RelativeLayout style="@style/edit_box">
+                    <LinearLayout
+                        android:id="@+id/linearLayoutDiscountValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent">
+
+                        <RelativeLayout
+                            style="@style/edit_box">
 
 
                             <EditText
@@ -325,50 +417,6 @@
 
                     </LinearLayout>
 
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:background="@color/white">
-
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/btnAddDiscount"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingHorizontal="5dp"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="15dp"
-                    android:onClick="onAddDiscountClick"
-                    android:background="@drawable/background_separator_bottom">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Add Discount"
-                        android:fontFamily="monospace"
-                        android:textStyle="bold"
-                        android:textColor="@color/dark_gray"
-                        android:textSize="18dp"
-                        android:layout_marginLeft="10dp"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"/>
-
-                    <ImageView
-                        android:id="@+id/imgAddService"
-                        android:layout_width="45dp"
-                        android:layout_height="45dp"
-                        android:src="@drawable/ic_add"
-                        android:layout_marginHorizontal="5dp"
-                        app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent" />
-
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </RelativeLayout>
@@ -382,6 +430,7 @@
         </LinearLayout>
 
         <androidx.cardview.widget.CardView
+            android:visibility="gone"
             android:id="@+id/cardStartDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -400,6 +449,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
+            android:visibility="gone"
             android:id="@+id/cardEndDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

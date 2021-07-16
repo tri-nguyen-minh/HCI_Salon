@@ -7,10 +7,13 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.CalendarView;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -27,12 +30,15 @@ import java.util.Calendar;
 import java.util.Date;
 
 import dev.hci.manager.R;
+import dev.hci.manager.dtos.Booking;
 import dev.hci.manager.dtos.ServiceDetail;
 import dev.hci.manager.recycleviewadapter.RecViewServiceAdapter;
 
 public class EditDiscountActivity extends AppCompatActivity {
 
     private Intent intent;
+    private boolean jointDiscount;
+    private Spinner spinnerCommon;
     private CardView cardStartDate, cardEndDate;
     private CalendarView calendarEndDate, calendarStartDate;
     private Calendar calendar = Calendar.getInstance();
@@ -42,7 +48,8 @@ public class EditDiscountActivity extends AppCompatActivity {
     private RecViewServiceAdapter adapter;
     private int position;
     private TextView txtCommon;
-    private LinearLayout layoutParent;
+    private LinearLayout layoutParent, linearLayoutDiscountValue;
+    private String date;
     private RelativeLayout txtStartDateDiscount, txtEndDateDiscount;
     private DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
     private DecimalFormat decimalFormat = new DecimalFormat("#.##");
@@ -53,7 +60,8 @@ public class EditDiscountActivity extends AppCompatActivity {
         setContentView(R.layout.activity_edit_discount);
         decimalFormat.setGroupingUsed(true);
         decimalFormat.setGroupingSize(3);
-
+        jointDiscount = true;
+        linearLayoutDiscountValue = findViewById(R.id.linearLayoutDiscountValue);
         cardStartDate = findViewById(R.id.cardStartDate);
         cardEndDate = findViewById(R.id.cardEndDate);
 
@@ -86,23 +94,19 @@ public class EditDiscountActivity extends AppCompatActivity {
         calendarEndDate.setMinDate((new Date().getTime()));
 
         intent = getIntent();
-        System.out.println("Intent1: " + intent);
         position = intent.getIntExtra("POSITION", -1);
         setUpList();
         editTitle = findViewById(R.id.editDiscountName);
         editValue = findViewById(R.id.editDiscountValueEdit);
 
-        if (discount != null) {
-            editTitle.setText(discount.getName());
-            editValue.setText(discount.getDiscount() + "");
-            String duration = discount.getDuration();
-            txtCommon = findViewById(R.id.txtStartDateDiscount);
-            txtCommon.setText(duration.substring(0, duration.indexOf("-") - 1));
-            txtCommon = findViewById(R.id.txtEndDateDiscount);
-            txtCommon.setText(duration.substring(duration.indexOf("-") + 2));
-//            setupDiscount();
-            setupRecycleView(discount.getList());
-        }
+
+        editTitle.setText(discount.getName());
+        editValue.setText(discount.getDiscount() + "");
+        String duration = discount.getDuration();
+        txtCommon = findViewById(R.id.txtStartDateDiscount);
+        txtCommon.setText(duration.substring(0, duration.indexOf("-") - 1));
+        txtCommon = findViewById(R.id.txtEndDateDiscount);
+        txtCommon.setText(duration.substring(duration.indexOf("-") + 2));
 
         editValue.addTextChangedListener(new TextWatcher() {
             String beforeString;
@@ -169,11 +173,59 @@ public class EditDiscountActivity extends AppCompatActivity {
             }
         });
 
+        setupDiscountValue();
+
+        spinnerCommon = findViewById(R.id.spinnerSortReview);
+        ArrayList<String> dataSpinnerService = new ArrayList<>();
+        dataSpinnerService.add("Discount for all Services");
+        dataSpinnerService.add("Discount for each Service");
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(EditDiscountActivity.this, android.R.layout.simple_spinner_item, dataSpinnerService);
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerCommon.setAdapter(dataAdapter);
+        spinnerCommon.setSelection(jointDiscount ? 0 : 1);
+        spinnerCommon.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (position == 0) {
+                    jointDiscount = true;
+                } else {
+                    jointDiscount = false;
+                }
+                System.out.println("test");
+                discount.setDiscounted(jointDiscount);
+                setupDiscountValue();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
         this.getSupportActionBar().hide();
+    }
+
+    private void setupDiscountValue() {
+        jointDiscount = discount.isDiscounted();
+        System.out.println("in " + jointDiscount);
+        linearLayoutDiscountValue.setVisibility(jointDiscount ? View.VISIBLE : View.GONE);
+        setupRecycleView(discount.getList());
+
     }
 
     private void setUpList() {
         discount = (ServiceDetail) intent.getSerializableExtra("DISCOUNT");
+        if (discount == null) {
+            discount = new ServiceDetail();
+            discount.setName("");
+            discount.setBookCount(0);
+            discount.setDiscount(0);
+            discount.setDiscounted(jointDiscount);
+            date = format.format(calendar.getTime());
+            discount.setDuration(date + " - " + date);
+            discount.setList(new ArrayList<ServiceDetail>());
+        }
+        jointDiscount = discount.isDiscounted();
     }
 
     private void setupRecycleView(ArrayList<ServiceDetail> list) {
@@ -189,22 +241,14 @@ public class EditDiscountActivity extends AppCompatActivity {
     }
 
     public void onRegisterClick(View view) {
-        if (discount == null) {
-            discount = new ServiceDetail();
-            discount.setList(new ArrayList<>());
-        } else {
-            intent = getIntent();
-            setUpList();
-        }
 
         for (int i = 0; i < discount.getList().size() - 1; i ++) {
             if (discount.getList().get(i).getDiscount() != discount.getList().get(i + 1).getDiscount()) {
-                System.out.println(discount.getList().get(i).getDiscount() != discount.getList().get(i + 1).getDiscount());
                 discount.setDiscount(0);
             }
         }
         discount.setName(editTitle.getText().toString());
-//        setupDiscount();
+        discount.setDiscounted(jointDiscount);
 
         txtCommon = findViewById(R.id.txtStartDateDiscount);
         String duration = txtCommon.getText().toString();
@@ -256,19 +300,11 @@ public class EditDiscountActivity extends AppCompatActivity {
 
     public void onAddDiscountClick(View view) {
 
-        if (position >= 0) {
-            intent = getIntent();
-            setUpList();
-            discount.setName(editTitle.getText().toString());
-            int discountValue = 0, price = 0;
-            discount.setDiscount(checkDiscountValue());
-        }else {
-            discount = new ServiceDetail();
-            discount.setName(editTitle.getText().toString());
-            int price = checkDiscountValue();
-            discount.setDiscount(price);
-            discount.setList(new ArrayList<>());
-        }
+        System.out.println(jointDiscount);
+        discount.setName(editTitle.getText().toString());
+        discount.setDiscount(checkDiscountValue());
+        discount.setDiscounted(jointDiscount);
+
         txtCommon = findViewById(R.id.txtStartDateDiscount);
         String duration = txtCommon.getText().toString();
         txtCommon = findViewById(R.id.txtEndDateDiscount);

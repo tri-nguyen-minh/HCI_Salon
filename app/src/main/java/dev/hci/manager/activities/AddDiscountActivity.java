@@ -34,11 +34,6 @@ public class AddDiscountActivity extends AppCompatActivity {
         position = intent.getIntExtra("POSITION", -1);
         setUpList();
 
-        System.out.println(discount.getDuration());
-        for (int i = 0; i < discount.getList().size(); i ++) {
-            System.out.println(discount.getList().get(i).getName());
-            System.out.println(discount.getList().get(i).getDiscount());
-        }
         serviceDetailsList = new ArrayList<>();
         serviceDetailsList.add(new ServiceDetail("Male Haircut", "30 - 40 minutes", "50", "0",35,0));
         serviceDetailsList.add(new ServiceDetail("Female Haircut", "30 - 45 minutes", "100", "0",61,0));

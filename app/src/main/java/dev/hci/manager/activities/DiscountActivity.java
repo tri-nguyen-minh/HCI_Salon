@@ -34,6 +34,7 @@ public class DiscountActivity extends AppCompatActivity {
 
         discountList = new ArrayList<>();
         serviceDetail = new ServiceDetail("Summer Discount","01/06/2021 - 31/08/2021","0","0", 1 ,20);
+        serviceDetail.setDiscounted(true);
 
 
         serviceDetailsList = new ArrayList<>();
